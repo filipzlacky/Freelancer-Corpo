@@ -26,5 +26,5 @@ of job,...) and ask the candidates some questions (why did he apply for the job,
 
 ## Authors
 
-**Nikoa Kunzová**
+**Nikola Kunzová**
 **Filip Zlacký**
