@@ -12,14 +12,14 @@ of job,...) and ask the candidates some questions (why did he apply for the job,
 
 # Registered Users:
 - they must provide personal information
-- during registration must choose if he represents corporation or freelancer
-- can look through the offers
+- during registration must choose if they represent corporation or freelancer
+- can look through offers
 - data are automatically filled when they apply for a job offer
 - rating by registered users they worked for/ hired
 
 # Unregistered Users:
-- look through the offers
-- cannot rate the corporations
+- look through offers
+- cannot rate corporations
 - must fill the data every time they apply for a job
 
 
