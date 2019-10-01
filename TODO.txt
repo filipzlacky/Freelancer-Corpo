@@ -1,0 +1,2 @@
+- interface - v priklade demo je interface spraveny ako samostatny project
+	    - asi treba prerobit + pridat atribut "Name" pod akym menom to bude v tabulke
