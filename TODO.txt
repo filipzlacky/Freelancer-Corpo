@@ -1,2 +1,3 @@
-- interface - v priklade demo je interface spraveny ako samostatny project
-	    - asi treba prerobit + pridat atribut "Name" pod akym menom to bude v tabulke
+- migrations - pise ze uz databaza existuje, tkz to odporuca spravit 
+migrations. zatial ale nechame migrations tak (ked tak by to nemal byt 
+taky problem) a ptm ich pridame.

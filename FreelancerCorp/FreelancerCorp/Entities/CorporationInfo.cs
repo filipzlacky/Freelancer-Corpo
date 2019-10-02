@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace FreelancerCorp.Entities {
-    class CorporationInfo : IGeneralInfo {
-        [Key]
-        public int Id { get; set; }
-        [Required]
-        public string Name { get; set; }
-        [Required]
-        public string City { get; set; }
-        [Required]
-        public string Email { get; set; }
+    public class CorporationInfo : GeneralInfo {
 
-        public string PhoneNumber { get; set; }
+        public CorporationInfo(string name, string city, string email) : base(name, city, email) {
+        }
+
+        public CorporationInfo(string name, string city, string email, string phone) : base(name, city, email, phone) {
+        }
     }
 }

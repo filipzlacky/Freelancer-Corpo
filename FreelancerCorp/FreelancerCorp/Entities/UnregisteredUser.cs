@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FreelancerCorp.Entities {
-    class UnregisteredUser : IUser {
-        [Key]
-        public int Id { get; set; }
+    public class UnregisteredUser : User {
 
-        [Required]
-        public IGeneralInfo Info { get; set; }
+        public UnregisteredUser(int infoId) : base (infoId) {
+
+        }
+        
     }
 }

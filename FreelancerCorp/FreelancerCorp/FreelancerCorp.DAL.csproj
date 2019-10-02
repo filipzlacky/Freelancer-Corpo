@@ -51,18 +51,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Entities\Corporation.cs" />
     <Compile Include="Entities\CorporationInfo.cs" />
     <Compile Include="Entities\Freelancer.cs" />
     <Compile Include="Entities\FreelancerInfo.cs" />
+    <Compile Include="Entities\BaseClasses\GeneralInfo.cs" />
     <Compile Include="Entities\Interfaces\IGeneralInfo.cs" />
     <Compile Include="Entities\Interfaces\IOffer.cs" />
     <Compile Include="Entities\Interfaces\IUser.cs" />
     <Compile Include="Entities\JobOffer.cs" />
+    <Compile Include="Entities\BaseClasses\Offer.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Rating.cs" />
     <Compile Include="Entities\UnregisteredUser.cs" />
+    <Compile Include="Entities\BaseClasses\User.cs" />
     <Compile Include="Enums\Cathegory.cs" />
     <Compile Include="Enums\Sex.cs" />
     <Compile Include="FreelancerCorpDbContext.cs" />

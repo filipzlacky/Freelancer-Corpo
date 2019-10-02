@@ -7,10 +7,10 @@ using FreelancerCorp.Enums;
 
 namespace FreelancerCorp.Entities {
     public interface IOffer {
-        int Id { get; set; }
+        int IOfferId { get; set; }
         Cathegory Cathegory { get; set; }
         string Description { get; set; }
         long Price { get; set; }
-        int CreatorId { get; set; }
+        int UserId { get; set; }
     }
 }

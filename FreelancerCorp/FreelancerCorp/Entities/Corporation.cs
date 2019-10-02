@@ -1,12 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FreelancerCorp.Entities {
-    class Corporation : IUser {
-        [Key]
-        public int Id { get; set; }        
+    public class Corporation : User {
 
-        [Required]    
-        public IGeneralInfo Info { get; set; }
+        public Corporation(int id) : base(id) {
+
+        }
     }
 }

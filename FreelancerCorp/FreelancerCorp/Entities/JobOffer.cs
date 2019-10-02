@@ -8,21 +8,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FreelancerCorp.Entities {
-    class JobOffer : IOffer {
-        [Key]
-        public int Id { get; set; }
-        [Required]
-        public Cathegory Cathegory { get; set; }
-        [Required]
-        public string Description { get; set; }
-        [Required]
-        public long Price { get; set; }
-        [ForeignKey("IUserId")]
-        public int CreatorId { get; set; }
-
+    public class JobOffer : Offer {
         [Required]
         public DateTime StartDate { get; set; }
         [Required]
         public DateTime EndDate { get; set; }
+
+        public JobOffer(Cathegory cat, string description, long price, int creatorId, DateTime startDate, DateTime endDate) : base (cat, description, price, creatorId) {
+            StartDate = startDate;
+            EndDate = endDate;
+        }
     }
 }

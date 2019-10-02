@@ -7,9 +7,7 @@ using FreelancerCorp.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace FreelancerCorp.Entities {
-    class FreelancerInfo : IGeneralInfo { 
-        [Key]
-        public int Id { get; set; }
+    public class FreelancerInfo : GeneralInfo { 
         [Required]
         public DateTime DateOfBirth { get; set; }
         [Required]
@@ -17,13 +15,22 @@ namespace FreelancerCorp.Entities {
 
         public string ImagePath { get; set; }
 
-        [Required]
-        public string Name { get; set; }
-        [Required]
-        public string City { get; set; }
-        [Required]
-        public string Email { get; set; }
-        [Required]
-        public string PhoneNumber { get; set; }
+        public FreelancerInfo(string name, string city, string email, DateTime dob, Sex sex) : base (name, city, email) {
+            DateOfBirth = dob;
+            Sex = sex;
+        }
+
+        public FreelancerInfo(string name, string city, string email, string phone, DateTime dob, Sex sex) : base(name, city, email, phone) {
+            DateOfBirth = dob;
+            Sex = sex;
+        }
+
+        public FreelancerInfo(string name, string city, string email, DateTime dob, Sex sex, string imagePath) : this(name, city, email, dob, sex) {
+            ImagePath = imagePath;
+        }
+
+        public FreelancerInfo(string name, string city, string email, string phone, DateTime dob, Sex sex, string imagePath) : this(name, city, email, phone, dob, sex) {
+            ImagePath = imagePath;
+        }
     }
 }

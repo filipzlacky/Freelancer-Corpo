@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FreelancerCorp.Entities {
     public interface IUser {
-        int Id { get; set; }
-        IGeneralInfo Info { get; set; }
+        int IUserId { get; set; }
+        int GeneralInfoId { get; set; }
     }
 }
