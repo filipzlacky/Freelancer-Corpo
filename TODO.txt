@@ -1,3 +1,4 @@
-- migrations - pise ze uz databaza existuje, tkz to odporuca spravit 
-migrations. zatial ale nechame migrations tak (ked tak by to nemal byt 
-taky problem) a ptm ich pridame.
+initializer - je moznost pretazit funkciu Seed a vytvorit nejaky zaznam uz v nej
+		alebo ju nepretazime a nejaky zaznam spravime az v maine. ja navrhujem main.
+ak sa budes nudit mozes spravit nejaky zaznam, nieco jednoduche staci, a pridaj ho do 
+mainu alebo Seed (podla toho ako sa vyjadris ku prvej veci)

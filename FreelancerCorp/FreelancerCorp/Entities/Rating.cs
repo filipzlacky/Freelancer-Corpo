@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -25,10 +23,10 @@ namespace FreelancerCorp.Entities {
         [Required]
         public string Comment { get; set; }
 
-        public Rating (int score, int creatorId, string comment) {
+        public Rating(int score, int creatorId, string comment) {
             Score = score;
             CreatorId = creatorId;
             Comment = comment;
-        }
+        }        
     }
 }

@@ -68,6 +68,7 @@
     <Compile Include="Enums\Cathegory.cs" />
     <Compile Include="Enums\Sex.cs" />
     <Compile Include="FreelancerCorpDbContext.cs" />
+    <Compile Include="Initializers\FreelancerCorpInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

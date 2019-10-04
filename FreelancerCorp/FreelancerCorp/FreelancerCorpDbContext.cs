@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Data.Common;
 using System.Data.Entity;
+using FreelancerCorp.Initializers;
 using FreelancerCorp.Entities;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace FreelancerCorp {
     public class FreelancerCorpDbContext : DbContext {
@@ -15,7 +17,9 @@ namespace FreelancerCorp {
 
         private const string ConnectionString = "Data source=(localdb)\\mssqllocaldb;Database=FreelanceCorpDatabase;Trusted_Connection=True;MultipleActiveResultSets=true";
 
-        public FreelancerCorpDbContext() : base (ConnectionString) {           
+        public FreelancerCorpDbContext() : base (ConnectionString) {
+            Database.SetInitializer(new FreelancerCorpInitializer());
+
             var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;            
         }
 
@@ -23,5 +27,8 @@ namespace FreelancerCorp {
             Database.CreateIfNotExists();
         }
 
+        override protected void OnModelCreating(DbModelBuilder modelBuilder) {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        }
     }
 }

@@ -1,4 +1,3 @@
-C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.DAL.csproj.CoreCompileInputs.cache
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\bin\Debug\FreelancerCorp.dll.config
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\bin\Debug\FreelancerCorp.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\bin\Debug\FreelancerCorp.pdb
@@ -6,6 +5,7 @@ C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\bin\D
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\bin\Debug\EntityFramework.SqlServer.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\bin\Debug\EntityFramework.xml
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.DAL.csproj.CoreCompileInputs.cache
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.DAL.csproj.CopyComplete
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.pdb
