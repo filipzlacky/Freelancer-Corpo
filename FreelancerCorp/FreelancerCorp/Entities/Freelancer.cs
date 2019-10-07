@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FreelancerCorp.Entities {
     public class Freelancer : User {
 
-        public Freelancer(int id) : base(id) {
+        public Freelancer(int infoId) : base(infoId/*, "Freelancer"*/) {
 
         }
 

@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using FreelancerCorp.Infrastructure;
 using FreelancerCorp.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FreelancerCorp.Entities {
-    public class Offer {
+    public class Offer : IEntity {
         [Key]
         public int Id { get; set; }
+
+        //public string TableName { get; set; }
+
         [Required]
         public Cathegory Cathegory { get; set; }
         [Required]
@@ -20,11 +21,12 @@ namespace FreelancerCorp.Entities {
         public int CreatorId { get; set; }
         public virtual User Creator { get; set; }
 
-        public Offer(Cathegory cat, string description, long price, int creatorId) {
+        public Offer(Cathegory cat, string description, long price, int creatorId/*, string tableName*/) {
             Cathegory = cat;
             Description = description;
             Price = price;
             CreatorId = creatorId;
+            //TableName = tableName;
         }
     }
 }

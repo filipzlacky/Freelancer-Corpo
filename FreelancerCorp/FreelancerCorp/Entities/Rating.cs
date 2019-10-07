@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using FreelancerCorp.Infrastructure;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FreelancerCorp.Entities {
-    public class Rating {
+    public class Rating : IEntity {
         [Key]
-        public int RatingId { get; set; }
+        public int Id { get; set; }
+
+        //public string TableName { get; set; }
+
         [Required]
         public int Score { get; set; }
 
@@ -27,6 +28,7 @@ namespace FreelancerCorp.Entities {
             Score = score;
             CreatorId = creatorId;
             Comment = comment;
+            //TableName = "Rating";
         }        
     }
 }

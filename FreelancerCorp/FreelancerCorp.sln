@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.DAL", "Freel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.Executable", "FreelancerCorp.Executable\FreelancerCorp.Executable.csproj", "{76C794E1-3F75-4622-A29E-033D5B3052CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.Infrastructure", "FreelancerCorp.Infrastructure\FreelancerCorp.Infrastructure.csproj", "{2992777D-3BA3-4909-849B-6BF932857063}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{76C794E1-3F75-4622-A29E-033D5B3052CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76C794E1-3F75-4622-A29E-033D5B3052CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76C794E1-3F75-4622-A29E-033D5B3052CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2992777D-3BA3-4909-849B-6BF932857063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2992777D-3BA3-4909-849B-6BF932857063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2992777D-3BA3-4909-849B-6BF932857063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2992777D-3BA3-4909-849B-6BF932857063}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

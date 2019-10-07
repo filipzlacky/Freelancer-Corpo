@@ -10,3 +10,5 @@ C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\obj\D
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.pdb
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.DAL.csprojAssemblyReference.cache
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\bin\Debug\FreelancerCorp.Infrastructure.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp\bin\Debug\FreelancerCorp.Infrastructure.pdb

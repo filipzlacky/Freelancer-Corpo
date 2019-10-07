@@ -1,4 +1,2 @@
-initializer - je moznost pretazit funkciu Seed a vytvorit nejaky zaznam uz v nej
-		alebo ju nepretazime a nejaky zaznam spravime az v maine. ja navrhujem main.
-ak sa budes nudit mozes spravit nejaky zaznam, nieco jednoduche staci, a pridaj ho do 
-mainu alebo Seed (podla toho ako sa vyjadris ku prvej veci)
+-unitofwork (no idea what to do there :-D)
+-zistit ako funguje parameter TableName u IEntity
