@@ -15,3 +15,4 @@ C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Execu
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Executable\obj\Debug\FreelancerCorp.Executable.pdb
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Executable\bin\Debug\FreelancerCorp.Infrastructure.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Executable\bin\Debug\FreelancerCorp.Infrastructure.pdb
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Executable\bin\Debug\FreelancerCorp.Infrastructure.dll.config
