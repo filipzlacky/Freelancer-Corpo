@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FreelancerCorp.Entities {
     public class Corporation : User {
 
-        public Corporation(int infoId) : base(infoId/*, "Corporation"*/) {
+        public Corporation(int infoId) : base(infoId, nameof(FreelancerCorpDbContext.Corporations)) {
 
         }
     }

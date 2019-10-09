@@ -9,6 +9,6 @@ namespace FreelancerCorp.Infrastructure {
 
         int Id { get; set; }
 
-        //string TableName { get; set; }
+        string TableName { get; }
     }
 }

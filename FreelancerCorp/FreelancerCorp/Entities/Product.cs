@@ -10,7 +10,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FreelancerCorp.Entities {
     public class Product : Offer {
 
-        public Product(Cathegory cat, string description, long price, int creatorId) : base (cat, description, price, creatorId/*, "Product"*/) {
+        public Product(Cathegory cat, string description, long price, int creatorId) 
+            : base (cat, description, price, creatorId, nameof(FreelancerCorpDbContext.Products)) {
 
         }
     }

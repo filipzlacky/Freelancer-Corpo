@@ -8,7 +8,7 @@ namespace FreelancerCorp.Entities {
         [Key]
         public int Id { get; set; }
 
-        //public string TableName { get; set; }
+        public string TableName { get; }
 
         [Required]
         public Cathegory Cathegory { get; set; }
@@ -21,12 +21,12 @@ namespace FreelancerCorp.Entities {
         public int CreatorId { get; set; }
         public virtual User Creator { get; set; }
 
-        public Offer(Cathegory cat, string description, long price, int creatorId/*, string tableName*/) {
+        public Offer(Cathegory cat, string description, long price, int creatorId, string tableName) {
             Cathegory = cat;
             Description = description;
             Price = price;
             CreatorId = creatorId;
-            //TableName = tableName;
+            TableName = tableName;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace FreelancerCorp.Entities {
         [Key]
         public int Id { get; set; }
 
-        //public string TableName { get; set; }
+        public string TableName { get; }
 
         [Required]
         public int Score { get; set; }
@@ -28,7 +28,7 @@ namespace FreelancerCorp.Entities {
             Score = score;
             CreatorId = creatorId;
             Comment = comment;
-            //TableName = "Rating";
+            TableName = nameof(FreelancerCorpDbContext.Ratings);
         }        
     }
 }

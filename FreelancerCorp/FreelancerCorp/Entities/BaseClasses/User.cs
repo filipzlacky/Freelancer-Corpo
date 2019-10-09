@@ -7,15 +7,15 @@ namespace FreelancerCorp.Entities {
         [Key]
         public int Id { get; set; }
 
-        //public string TableName { get; set; }
+        public string TableName { get; }
 
         [ForeignKey(nameof(Info))]
         public int InfoId { get; set; }
         public virtual GeneralInfo Info { get; set; }
 
-        public User (int infoId/*, string tableName*/) {
+        public User (int infoId, string tableName) {
             InfoId = infoId;
-            //TableName = tableName;
+            TableName = tableName;
         }
     }
 }

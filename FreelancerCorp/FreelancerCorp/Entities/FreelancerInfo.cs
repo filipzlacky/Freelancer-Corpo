@@ -15,12 +15,12 @@ namespace FreelancerCorp.Entities {
 
         public string ImagePath { get; set; }
 
-        public FreelancerInfo(string name, string city, string email, DateTime dob, Sex sex) : base (name, city, email/*, "FreelancerInfo"*/) {
+        public FreelancerInfo(string name, string city, string email, DateTime dob, Sex sex) : base (name, city, email, nameof(FreelancerCorpDbContext.FreeInfos)) {
             DateOfBirth = dob;
             Sex = sex;
         }
 
-        public FreelancerInfo(string name, string city, string email, string phone, DateTime dob, Sex sex) : base(name, city, email, phone/*, "FreelancerInfo"*/) {
+        public FreelancerInfo(string name, string city, string email, string phone, DateTime dob, Sex sex) : base(name, city, email, phone, nameof(FreelancerCorpDbContext.FreeInfos)) {
             DateOfBirth = dob;
             Sex = sex;
         }

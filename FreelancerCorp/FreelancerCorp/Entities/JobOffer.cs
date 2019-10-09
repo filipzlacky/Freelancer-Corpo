@@ -15,7 +15,7 @@ namespace FreelancerCorp.Entities {
         public DateTime EndDate { get; set; }
 
         public JobOffer(Cathegory cat, string description, long price, int creatorId, DateTime startDate, DateTime endDate) 
-            : base (cat, description, price, creatorId/*, "JobOffer"*/) {
+            : base (cat, description, price, creatorId, nameof(FreelancerCorpDbContext.Offers)) {
             StartDate = startDate;
             EndDate = endDate;
         }

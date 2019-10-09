@@ -1,2 +1,0 @@
--unitofwork (no idea what to do there :-D)
--zistit ako funguje parameter TableName u IEntity
