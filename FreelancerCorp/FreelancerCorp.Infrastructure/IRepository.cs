@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FreelancerCorp.Infrastructure {
-    interface IRepository<TEntity> where TEntity : class, IEntity, new() {
+    public interface IRepository<TEntity> where TEntity : class, IEntity, new() {
 
         Task<TEntity> GetAsync(Guid id);
 

@@ -15,6 +15,11 @@ namespace FreelancerCorp.Infrastructure.Query
         protected IUnitOfWorkProvider UOWProvider { get; set; }
         private int DefaultPageSize { get; set; }
 
+        protected QueryBase(IUnitOfWorkProvider provider)
+        {
+            UOWProvider = provider;
+        }
+
         protected QueryBase(int pageSize, int desiredPage, string sortAccordingTo, bool useAscendingOrder, IPredicate predicate, IUnitOfWorkProvider uOWProvider, int defaultPageSize) {
             PageSize = pageSize;
             DesiredPage = desiredPage;
