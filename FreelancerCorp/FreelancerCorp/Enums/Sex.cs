@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FreelancerCorp.Enums {
+namespace FreelancerCorp.DataAccessLayer.Enums {
     public enum Sex {
         MALE,
         FEMALE,

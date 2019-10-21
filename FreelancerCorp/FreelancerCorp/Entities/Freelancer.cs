@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FreelancerCorp.Entities {
+namespace FreelancerCorp.DataAccessLayer.Entities {
     public class Freelancer : User {
 
-        public Freelancer(int infoId) : base(infoId, nameof(FreelancerCorpDbContext.Freelancers)) {
+        public Freelancer() : base("", nameof(FreelancerCorpDbContext.Freelancers)) { }
+
+        public Freelancer(string info) : base(info, nameof(FreelancerCorpDbContext.Freelancers)) {
 
         }
 

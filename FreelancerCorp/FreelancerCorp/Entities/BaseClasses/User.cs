@@ -2,20 +2,18 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FreelancerCorp.Entities {
+namespace FreelancerCorp.DataAccessLayer.Entities {
     public class User : IEntity {
         [Key]
         public int Id { get; set; }
 
         public string TableName { get; }
 
-        [ForeignKey(nameof(Info))]
-        public int InfoId { get; set; }
-        public virtual GeneralInfo Info { get; set; }
+        public string Info { get; set; }
 
-        public User (int infoId, string tableName) {
-            InfoId = infoId;
+        public User (string info, string tableName) {
             TableName = tableName;
+            Info = info;
         }
     }
 }

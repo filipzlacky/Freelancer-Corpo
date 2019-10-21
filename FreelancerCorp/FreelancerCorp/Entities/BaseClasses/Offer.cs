@@ -1,9 +1,9 @@
 ﻿using FreelancerCorp.Infrastructure;
-using FreelancerCorp.Enums;
+using FreelancerCorp.DataAccessLayer.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FreelancerCorp.Entities {
+namespace FreelancerCorp.DataAccessLayer.Entities {
     public class Offer : IEntity {
         [Key]
         public int Id { get; set; }
@@ -11,7 +11,7 @@ namespace FreelancerCorp.Entities {
         public string TableName { get; }
 
         [Required]
-        public Cathegory Cathegory { get; set; }
+        public Category Cathegory { get; set; }
         [Required]
         public string Description { get; set; }
         [Required]
@@ -21,12 +21,15 @@ namespace FreelancerCorp.Entities {
         public int CreatorId { get; set; }
         public virtual User Creator { get; set; }
 
-        public Offer(Cathegory cat, string description, long price, int creatorId, string tableName) {
+        public string AdditionalInfo { get; set; }
+
+        public Offer(Category cat, string description, long price, int creatorId, string tableName, string addInfo) {
             Cathegory = cat;
             Description = description;
             Price = price;
             CreatorId = creatorId;
             TableName = tableName;
+            AdditionalInfo = addInfo;
         }
     }
 }

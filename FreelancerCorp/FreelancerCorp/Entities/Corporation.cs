@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FreelancerCorp.Entities {
+namespace FreelancerCorp.DataAccessLayer.Entities {
     public class Corporation : User {
 
-        public Corporation(int infoId) : base(infoId, nameof(FreelancerCorpDbContext.Corporations)) {
+        public Corporation(string info) : base(info, nameof(FreelancerCorpDbContext.Corporations)) {
 
         }
     }

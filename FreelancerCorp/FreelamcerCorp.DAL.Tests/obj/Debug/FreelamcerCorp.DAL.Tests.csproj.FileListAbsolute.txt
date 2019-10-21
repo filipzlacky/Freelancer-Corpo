@@ -1,0 +1,1 @@
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelamcerCorp.DAL.Tests\obj\Debug\FreelamcerCorp.DAL.Tests.csprojAssemblyReference.cache

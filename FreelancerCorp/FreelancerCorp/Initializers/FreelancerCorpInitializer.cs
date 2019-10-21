@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Data.Entity;
+using FreelancerCorp.DataAccessLayer.Entities;
 
-namespace FreelancerCorp.Initializers {
+namespace FreelancerCorp.DataAccessLayer.Initializers {
     public class FreelancerCorpInitializer : DropCreateDatabaseAlways<FreelancerCorpDbContext> {
 
         protected override void Seed(FreelancerCorpDbContext context) {
-            context.FreeInfos.Add(new Entities.FreelancerInfo("Jozko Vajda", "Brno", "noob@gmail.com", new DateTime(2002, 2, 2), Enums.Sex.FEMALE));
+            context.Freelancers.Add(new Freelancer("name: Jozko Vajda"));
 
             base.Seed(context);
         }

@@ -1,25 +1,19 @@
 ﻿using System;
 using System.Data.Common;
 using System.Data.Entity;
-using FreelancerCorp.Initializers;
-using FreelancerCorp.Entities;
+using FreelancerCorp.DataAccessLayer.Initializers;
+using FreelancerCorp.DataAccessLayer.Entities;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace FreelancerCorp {
+namespace FreelancerCorp.DataAccessLayer {
     public class FreelancerCorpDbContext : DbContext {
 
         public DbSet<Freelancer> Freelancers { get; set; }
         public DbSet<Corporation> Corporations { get; set; }
         public DbSet<UnregisteredUser> UnregisteredUsers { get; set; }
 
-        public DbSet<FreelancerInfo> FreeInfos { get; set; }
-        public DbSet<CorporationInfo> CorpInfos { get; set; }
-
         public DbSet<Rating> Ratings { get; set; }
-
-        public DbSet<JobOffer> Offers { get; set; }
-        public DbSet<Product> Products { get; set; }
-
+        public DbSet<Offer> Offers { get; set; }
 
 
         private const string ConnectionString = "Data source=(localdb)\\mssqllocaldb;Database=FreelanceCorpDatabase;Trusted_Connection=True;MultipleActiveResultSets=true";

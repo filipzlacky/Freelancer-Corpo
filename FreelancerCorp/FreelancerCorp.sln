@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.852
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29403.142
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.DAL", "FreelancerCorp\FreelancerCorp.DAL.csproj", "{660B20AF-C796-4FB9-A1DC-5B345C329CEE}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.Infrastructure", "FreelancerCorp.Infrastructure\FreelancerCorp.Infrastructure.csproj", "{2992777D-3BA3-4909-849B-6BF932857063}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.Infrastructure.EntityFramework", "FreelancerCorp.Infrastructure.EntityFramework\FreelancerCorp.Infrastructure.EntityFramework.csproj", "{DD82811D-78EE-4A6C-9AAD-F7798F950DB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.DAL.Tests", "FreelamcerCorp.DAL.Tests\FreelancerCorp.DAL.Tests.csproj", "{F247E31A-E9BD-4199-B0AB-BB416B9D1250}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DD82811D-78EE-4A6C-9AAD-F7798F950DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD82811D-78EE-4A6C-9AAD-F7798F950DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD82811D-78EE-4A6C-9AAD-F7798F950DB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F247E31A-E9BD-4199-B0AB-BB416B9D1250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F247E31A-E9BD-4199-B0AB-BB416B9D1250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F247E31A-E9BD-4199-B0AB-BB416B9D1250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F247E31A-E9BD-4199-B0AB-BB416B9D1250}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

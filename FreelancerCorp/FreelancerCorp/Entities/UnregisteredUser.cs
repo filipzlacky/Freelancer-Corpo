@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FreelancerCorp.Entities {
+namespace FreelancerCorp.DataAccessLayer.Entities {
     public class UnregisteredUser : User {
 
-        public UnregisteredUser(int infoId) : base (infoId, nameof(FreelancerCorpDbContext.UnregisteredUsers)) {
+        public UnregisteredUser(string info) : base (info, nameof(FreelancerCorpDbContext.UnregisteredUsers)) {
 
         }
         
