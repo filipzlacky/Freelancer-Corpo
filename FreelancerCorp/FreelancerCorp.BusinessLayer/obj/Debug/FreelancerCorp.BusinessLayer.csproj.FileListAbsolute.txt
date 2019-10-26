@@ -1,0 +1,4 @@
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.BusinessLayer\bin\Debug\FreelancerCorp.BusinessLayer.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.BusinessLayer\bin\Debug\FreelancerCorp.BusinessLayer.pdb
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.BusinessLayer\obj\Debug\FreelancerCorp.BusinessLayer.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.BusinessLayer\obj\Debug\FreelancerCorp.BusinessLayer.pdb

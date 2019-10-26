@@ -8,4 +8,3 @@ C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infra
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\bin\Debug\EntityFramework.xml
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\bin\Debug\EntityFramework.SqlServer.xml
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Debug\FreelancerCorp.Infrastructure.csproj.CopyComplete
-C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Debug\FreelancerCorp.Infrastructure.csprojAssemblyReference.cache

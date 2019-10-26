@@ -42,15 +42,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\Common\DTOBase.cs" />
+    <Compile Include="DTOs\Common\FilterDTOBase.cs" />
+    <Compile Include="DTOs\Common\QueryResultDTO.cs" />
     <Compile Include="DTOs\CorporationDTO.cs" />
     <Compile Include="DTOs\Enums\Category.cs" />
+    <Compile Include="DTOs\Enums\Sex.cs" />
+    <Compile Include="DTOs\Filter\CorporationFilterDTO.cs" />
+    <Compile Include="DTOs\Filter\FreelancerFilterDTO.cs" />
+    <Compile Include="DTOs\Filter\OfferFilterDTO.cs" />
     <Compile Include="DTOs\FreelancerDTO.cs" />
     <Compile Include="DTOs\OfferDTO.cs" />
     <Compile Include="DTOs\CreateRatingDTO.cs" />
+    <Compile Include="DTOs\QueryObjects\Common\QueryObjectBase.cs" />
     <Compile Include="DTOs\RatingDTO.cs" />
     <Compile Include="DTOs\UserCreateOfferDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\FreelancerCorp.Infrastructure\FreelancerCorp.Infrastructure.csproj">
+      <Project>{2992777d-3ba3-4909-849b-6bf932857063}</Project>
+      <Name>FreelancerCorp.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
