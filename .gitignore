@@ -1,2 +1,2 @@
 # ignore all /bin repositories
-*/bin
+*bin*
