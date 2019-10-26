@@ -9,11 +9,14 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
 
         public string TableName { get; }
 
+        public string Name { get; set; }
+
         public string Info { get; set; }
 
-        public User (string info, string tableName) {
+        public User (string info, string tableName, string name) {
             TableName = tableName;
             Info = info;
+            Name = name;
         }
     }
 }

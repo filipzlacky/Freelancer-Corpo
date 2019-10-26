@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FreelancerCorp.DataAccessLayer.Entities {
     public class Corporation : User {
 
-        public Corporation(string info) : base(info, nameof(FreelancerCorpDbContext.Corporations)) {
+        public Corporation(string name, string info) : base(info, nameof(FreelancerCorpDbContext.Corporations), name) {
 
         }
     }

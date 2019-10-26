@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FreelancerCorp.DataAccessLayer.Entities {
     public class UnregisteredUser : User {
 
-        public UnregisteredUser(string info) : base (info, nameof(FreelancerCorpDbContext.UnregisteredUsers)) {
+        public UnregisteredUser(string name, string info) : base (info, nameof(FreelancerCorpDbContext.UnregisteredUsers), name) {
 
         }
         

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.DAL.Tests", "FreelamcerCorp.DAL.Tests\FreelancerCorp.DAL.Tests.csproj", "{F247E31A-E9BD-4199-B0AB-BB416B9D1250}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.BusinessLayer", "FreelancerCorp.BusinessLayer\FreelancerCorp.BusinessLayer.csproj", "{F4C80260-EE75-49B0-8AB1-22CA82B585DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F247E31A-E9BD-4199-B0AB-BB416B9D1250}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F247E31A-E9BD-4199-B0AB-BB416B9D1250}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F247E31A-E9BD-4199-B0AB-BB416B9D1250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4C80260-EE75-49B0-8AB1-22CA82B585DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4C80260-EE75-49B0-8AB1-22CA82B585DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4C80260-EE75-49B0-8AB1-22CA82B585DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4C80260-EE75-49B0-8AB1-22CA82B585DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

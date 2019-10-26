@@ -8,10 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FreelancerCorp.DataAccessLayer.Entities {
     public class Freelancer : User {
-
-        public Freelancer() : base("", nameof(FreelancerCorpDbContext.Freelancers)) { }
-
-        public Freelancer(string info) : base(info, nameof(FreelancerCorpDbContext.Freelancers)) {
+        public Freelancer(string name, string info) : base(info, nameof(FreelancerCorpDbContext.Freelancers), name) {
 
         }
 
