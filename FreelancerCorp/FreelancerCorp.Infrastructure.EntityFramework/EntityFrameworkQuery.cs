@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
@@ -11,7 +11,8 @@ using FreelancerCorp.Infrastructure.Query;
 using FreelancerCorp.Infrastructure.Query.Predicates;
 using FreelancerCorp.Infrastructure.Query.Predicates.Operators;
 using FreelancerCorp.Infrastructure.UnitOfWork;
-
+using System.Text;
+using FreelancerCorp.Infrastructure.Query.Helpers;
 
 namespace FreelancerCorp.Infrastructure.EntityFramework
 {
@@ -26,11 +27,35 @@ namespace FreelancerCorp.Infrastructure.EntityFramework
 
         public override async Task<QueryResult<TEntity>> ExecuteAsync()
         {
-            if (Predicate == null)
+            QueryResult<TEntity> result;
+            var sql = new StringBuilder().Append($"{SqlConstants.SelectFromClause}[{new TEntity().TableName}] WITH (NOLOCK) ");
+
+            if (Predicate != null)
             {
-                throw new ArgumentException("Predicate can't be null.");
+                var predicateResult = Predicate is CompositePredicate composite ?
+                                            composite.BuildCompositePredicate() :
+                                            (Predicate as SimplePredicate).BuildSimplePredicate();
+
+                sql.Append($"{SqlConstants.WhereClause}{predicateResult}");
             }
-            
+
+            if (!string.IsNullOrWhiteSpace(SortAccordingTo))
+            {
+                sql.Append(SqlConstants.OrderByClause + SortAccordingTo + (UseAscendingOrder ? SqlConstants.Ascending : SqlConstants.Descending));
+            }
+
+            if (DesiredPage > 0)
+            {
+                var items = (await Context.Set<TEntity>().SqlQuery(sql.ToString()).ToListAsync()).Skip((DesiredPage.Value - 1) * PageSize).Take(PageSize).ToList();
+                result = new QueryResult<TEntity>(items, items.Count, PageSize, DesiredPage);
+            }
+            else
+            {
+                List<TEntity> items = await Context.Database.SqlQuery<TEntity>(sql.ToString()).ToListAsync();
+                result = new QueryResult<TEntity>(items, items.Count);
+            }
+            return result;
         }
-    }
+
+    }    
 }

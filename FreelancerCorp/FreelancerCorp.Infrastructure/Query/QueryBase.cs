@@ -7,8 +7,8 @@ using FreelancerCorp.Infrastructure.UnitOfWork;
 namespace FreelancerCorp.Infrastructure.Query
 {
     public abstract class QueryBase<TEntity> : IQuery<TEntity> where TEntity : class, IEntity, new() {
-        public int PageSize { get; set; }
-        public int DesiredPage { get; set; }
+        public int PageSize { get; private set; }
+        public int? DesiredPage { get; private set; }
         public string SortAccordingTo { get; set; }
         public bool UseAscendingOrder { get; set; }
         public IPredicate Predicate { get; set; }

@@ -15,8 +15,8 @@ namespace FreelancerCorp.Infrastructure.Query.Helpers
         public const string Descending = " DESC";
         public const string Or = " OR ";
         public const string And = " AND ";
-        public const string OpenParanthesis = "(";
-        public const string CloseParanthesis = ")";
+        public const string OpenParenthesis = "(";
+        public const string CloseParenthesis = ")";
         public const string SelectCountFromOpen = "SELECT COUNT (*) FROM (";
         public const string SelectCountFromClose = ") AS [TableCount]";
 

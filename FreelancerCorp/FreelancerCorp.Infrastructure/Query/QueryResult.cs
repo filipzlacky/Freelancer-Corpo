@@ -6,18 +6,19 @@ namespace FreelancerCorp.Infrastructure.Query
 {
     public class QueryResult<TEntity> where TEntity : IEntity
     {
-        public long TotalItemsCount { get; set; }
-        public int RequestedPageNumber { get; set; }
-        public int PageSize { get; set; }
-        public IList<TEntity> Items { get; set; }
-        public bool PagingEnabled { get; set; }
+        public long TotalItemsCount { get; }
+        public int? RequestedPageNumber { get; }
+        public int PageSize { get; }
+        public IList<TEntity> Items { get; }
 
-        public QueryResult(long totalItemsCount, int requestedPageNumber, int pageSize, IList<TEntity> items, bool pagingEnabled) {
+        public bool PagingEnabled => RequestedPageNumber != null;
+
+        public QueryResult(IList<TEntity> items, long totalItemsCount, int pageSize = 10, int? requestedPageNumber = null)
+        {
             TotalItemsCount = totalItemsCount;
             RequestedPageNumber = requestedPageNumber;
             PageSize = pageSize;
             Items = items;
-            PagingEnabled = pagingEnabled;
         }
 
         public override bool Equals(object obj) {
