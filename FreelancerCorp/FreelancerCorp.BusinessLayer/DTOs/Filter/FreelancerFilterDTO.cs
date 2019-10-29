@@ -14,7 +14,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs.Filter
         public string[] FreelancerNames { get; set; }
         public string SearchedName { get; set; }
 
-        public DateTime SearchedDoB { get; set; }
+        public int SearchedAge { get; set; }
 
         public string SearchedLocation { get; set; }
 

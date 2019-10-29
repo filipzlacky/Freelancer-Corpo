@@ -5,11 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FreelancerCorp.DataAccessLayer.Entities {
     public class Corporation : User {
 
-        public string Address { get; set; }
-        public string Email { get; set; }
+        public string Address { get; set; }       
 
-        public Corporation(string name, string info) : base(info, nameof(FreelancerCorpDbContext.Corporations), name) {
-
+        public Corporation(string address, string email, string name, string info) 
+            : base(info, nameof(FreelancerCorpDbContext.Corporations), name, email) 
+        {
+            Address = address;
         }
     }
 }

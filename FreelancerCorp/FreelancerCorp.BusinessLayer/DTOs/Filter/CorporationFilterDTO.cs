@@ -14,5 +14,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs.Filter
         public string SearchedName { get; set; }
 
         public string SearchedLocation { get; set; }
+
+        public int AvgRating { get; set; }
     }
 }

@@ -32,13 +32,13 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects.Common
             {
                 query = query.SortBy(filter.SortCriteria, filter.SortAscending);
             }
-            if (filter.RequestedPageNumber.HasValue())
+            if (filter.RequestedPageNumber.HasValue)
             {
                 query = query.Page(filter.RequestedPageNumber.Value, filter.PageSize);
             }
             var queryResult = await query.ExecuteAsync();
 
-            var queryResultDTO = mapper.Map<queryResultDTO<TDto, TFilter>>(queryResult);
+            var queryResultDTO = mapper.Map<QueryResultDTO<TDto, TFilter>>(queryResult);
             queryResultDTO.Filter = filter;
 
             return queryResultDTO;

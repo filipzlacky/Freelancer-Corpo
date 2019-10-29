@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -54,6 +57,9 @@
     <Compile Include="DTOs\OfferDTO.cs" />
     <Compile Include="DTOs\CreateRatingDTO.cs" />
     <Compile Include="DTOs\QueryObjects\Common\QueryObjectBase.cs" />
+    <Compile Include="DTOs\QueryObjects\CorporationQueryObject.cs" />
+    <Compile Include="DTOs\QueryObjects\FreelancerQueryObject.cs" />
+    <Compile Include="DTOs\QueryObjects\OfferQueryObject.cs" />
     <Compile Include="DTOs\RatingDTO.cs" />
     <Compile Include="DTOs\UserCreateOfferDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +69,13 @@
       <Project>{2992777d-3ba3-4909-849b-6bf932857063}</Project>
       <Name>FreelancerCorp.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FreelancerCorp\FreelancerCorp.DAL.csproj">
+      <Project>{660b20af-c796-4fb9-a1dc-5b345c329cee}</Project>
+      <Name>FreelancerCorp.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
