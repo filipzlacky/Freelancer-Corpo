@@ -19,17 +19,12 @@ namespace FreelancerCorp.BusinessLayer.DTOs.QueryObjects
         {
             List<IPredicate> predicates = new List<IPredicate>();
 
-            if (!string.IsNullOrEmpty(filter.SearchedName))
-            {
-                predicates.Add(new SimplePredicate(nameof(Freelancer.Name), ValueComparingOperator.Equal, filter.SearchedName));
-            }
-
             if (!string.IsNullOrEmpty(filter.SearchedLocation))
             {
                 predicates.Add(new SimplePredicate(nameof(Freelancer.Location), ValueComparingOperator.Equal, filter.SearchedLocation));
             }
 
-            if (filter.FreelancerNames.Count != 0)
+            if (filter.FreelancerNames != null && filter.FreelancerNames.Length != 0)
             {
                 var predicate = new List<IPredicate>(filter.FreelancerNames
                 .Select(name => new SimplePredicate(

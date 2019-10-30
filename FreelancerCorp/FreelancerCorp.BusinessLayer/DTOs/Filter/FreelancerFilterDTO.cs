@@ -10,11 +10,10 @@ namespace FreelancerCorp.BusinessLayer.DTOs.Filter
 {
     public class FreelancerFilterDTO : FilterDTOBase
     {
-        //public int[] FreelancerIds { get; set; }
+        public int[] FreelancerIds { get; set; }
 
-        public List<string> FreelancerNames { get; set; } = new List<string>();
+        public string[] FreelancerNames { get; set; }
 
-        public string SearchedName { get; set; }
         public string SearchedLocation { get; set; }
     }
 }
