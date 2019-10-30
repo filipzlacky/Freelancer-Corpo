@@ -26,6 +26,10 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
 
         public string AdditionalInfo { get; set; }
 
+        public Offer()
+        {
+
+        }
         public Offer(Category cat, string description, long price, int creatorId, string tableName, string addInfo) {
             Cathegory = cat;
             Description = description;

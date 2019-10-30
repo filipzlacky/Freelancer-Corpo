@@ -10,7 +10,7 @@ namespace FreelancerCorp.Infrastructure.Query.Predicates
         public string TargetPropertyName { get; set; }
         public Object ComparedValue { get; set; }        
         public ValueComparingOperator ValueComparingOperator { get; }
-        public SimplePredicate(string targetPropertyName, Object value, ValueComparingOperator valOp) {
+        public SimplePredicate(string targetPropertyName, ValueComparingOperator valOp, Object value) {
             TargetPropertyName = targetPropertyName;
             ComparedValue = value;
             ValueComparingOperator = valOp;

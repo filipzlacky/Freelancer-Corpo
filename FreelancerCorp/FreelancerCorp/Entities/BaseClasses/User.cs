@@ -14,7 +14,7 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
         public string Info { get; set; }
 
         public string Email { get; set; }
-        //public string? PhoneNumber { get; set; }  
+        public string PhoneNumber { get; set; }  
 
         public User (string info, string tableName, string name, string email) {
             TableName = tableName;

@@ -1,4 +1,5 @@
-﻿using FreelancerCorp.BusinessLayer.DTOs.Enums;
+﻿using FreelancerCorp.BusinessLayer.DTOs.Common;
+using FreelancerCorp.BusinessLayer.DTOs.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +8,13 @@ using System.Threading.Tasks;
 
 namespace FreelancerCorp.BusinessLayer.DTOs.Filter
 {
-    public class FreelancerFilterDTO
+    public class FreelancerFilterDTO : FilterDTOBase
     {
-        public int[] FreelancerIds { get; set; }
+        //public int[] FreelancerIds { get; set; }
 
-        public string[] FreelancerNames { get; set; }
+        public List<string> FreelancerNames { get; set; } = new List<string>();
+
         public string SearchedName { get; set; }
-
-        public int SearchedAge { get; set; }
-
         public string SearchedLocation { get; set; }
-
-        public Sex SearchedSex { get; set; }
-
-        public int AvgRating { get; set; }
     }
 }

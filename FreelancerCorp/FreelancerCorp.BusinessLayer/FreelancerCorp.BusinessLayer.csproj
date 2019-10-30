@@ -63,6 +63,9 @@
     <Compile Include="DTOs\RatingDTO.cs" />
     <Compile Include="DTOs\UserCreateOfferDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Corporation\CorporationService.cs" />
+    <Compile Include="Services\Corporation\ICorporationService.cs" />
+    <Compile Include="Services\Freelancer\IFreelancerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FreelancerCorp.Infrastructure\FreelancerCorp.Infrastructure.csproj">
@@ -76,6 +79,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\Offer\" />
+    <Folder Include="Services\Rating\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,7 +12,7 @@ namespace FreelamcerCorp.DAL.Tests
     {
         private const string TestDbConnectionString = "InMemoryTestDBDemoEshop";
 
-        internal static readonly IUnitOfWorkProvider Provider = new EntityFrameworkUnitOfWorkProvider();
+        //internal static readonly IUnitOfWorkProvider Provider = new EntityFrameworkUnitOfWorkProvider();
 
     }
 }
