@@ -24,9 +24,9 @@ namespace FreelancerCorp.BusinessLayer.DTOs.QueryObjects
                 predicates.Add(new SimplePredicate(nameof(Freelancer.Location), ValueComparingOperator.Equal, filter.SearchedLocation));
             }
 
-            if (filter.FreelancerNames != null && filter.FreelancerNames.Length != 0)
+            if (filter.SearchedFreelancerNames != null && filter.SearchedFreelancerNames.Length != 0)
             {
-                var predicate = new List<IPredicate>(filter.FreelancerNames
+                var predicate = new List<IPredicate>(filter.SearchedFreelancerNames
                 .Select(name => new SimplePredicate(
                     nameof(Freelancer.Name),
                     ValueComparingOperator.Equal,
@@ -35,8 +35,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs.QueryObjects
                 predicates.Add(new CompositePredicate(predicate));
             }
 
-            var compositePredicate = new CompositePredicate(predicates);
-            return query.Where(compositePredicate);
+            return query.Where(new CompositePredicate(predicates));
         }
     }
 }

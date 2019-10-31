@@ -11,7 +11,7 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
         public string TableName { get; }
 
         [Required]
-        public Category Cathegory { get; set; }
+        public Category Category { get; set; }
         
         [Required]
         public string Description { get; set; }
@@ -31,7 +31,7 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
 
         }
         public Offer(Category cat, string description, long price, int creatorId, string tableName, string addInfo) {
-            Cathegory = cat;
+            Category = cat;
             Description = description;
             Price = price;
             CreatorId = creatorId;

@@ -9,8 +9,6 @@ namespace FreelancerCorp.BusinessLayer.DTOs.Filter
 {
     public class CorporationFilterDTO : FilterDTOBase
     {
-        public int[] CorporationIds { get; set; }
-
         public string[] CorporationNames { get; set; }
 
         public string SearchedLocation { get; set; }

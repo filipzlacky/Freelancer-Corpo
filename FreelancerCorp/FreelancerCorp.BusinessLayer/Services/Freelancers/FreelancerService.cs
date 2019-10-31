@@ -21,7 +21,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Freelancers
 
         public async Task<int[]> GetFreelancerIdsByAllAsync(string location, params string[] names)
         {
-            var queryResult = await Query.ExecuteQuery(new FreelancerFilterDTO { SearchedLocation = location, FreelancerNames = names });
+            var queryResult = await Query.ExecuteQuery(new FreelancerFilterDTO { SearchedLocation = location, SearchedFreelancerNames = names });
             return queryResult.Items.Select(freelancer => freelancer.Id).ToArray();
         }
 
@@ -33,7 +33,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Freelancers
 
         public async Task<int[]> GetFreelancerIdsByNamesAsync(params string[] names)
         {
-            var queryResult = await Query.ExecuteQuery(new FreelancerFilterDTO { FreelancerNames = names });
+            var queryResult = await Query.ExecuteQuery(new FreelancerFilterDTO { SearchedFreelancerNames = names });
             return queryResult.Items.Select(freelancer => freelancer.Id).ToArray();
         }        
 
