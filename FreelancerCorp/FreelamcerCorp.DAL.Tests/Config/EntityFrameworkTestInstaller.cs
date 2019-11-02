@@ -17,6 +17,8 @@ namespace FreelamcerCorp.DAL.Tests.Config
 {
     class EntityFrameworkTestInstaller : IWindsorInstaller
     {
+        private const string TestDbConnectionString = "InMemoryTestFreelancerCorp";
+
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
@@ -43,6 +45,7 @@ namespace FreelamcerCorp.DAL.Tests.Config
             context.UnregisteredUsers.RemoveRange(context.UnregisteredUsers);
             context.Offers.RemoveRange(context.Offers);
             context.Ratings.RemoveRange(context.Ratings);
+            context.SaveChanges();
 
             context.Freelancers.Add(new Freelancer(Sex.MALE, new DateTime(1968, 12, 5), "Bardejov", "hookaj25@gmail.com", "Karol Kovach", "som super"));
             context.Freelancers.Add(new Freelancer(Sex.MALE, new DateTime(1954, 3, 9), "Brno", "serzant@gmail.com", "Pavel Mnich", "milujte jedlo"));
