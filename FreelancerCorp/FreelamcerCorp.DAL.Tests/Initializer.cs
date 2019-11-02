@@ -1,18 +1,21 @@
-﻿using FreelancerCorp.Infrastructure.EntityFramework.UnitOfWork;
-using FreelancerCorp.Infrastructure.UnitOfWork;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Castle.Windsor;
+using FreelamcerCorp.DAL.Tests.Config;
+using FreelancerCorp.DataAccessLayer;
+using NUnit.Framework;
+using System.Data.Entity;
 
 namespace FreelamcerCorp.DAL.Tests
 {
+    [SetUpFixture]
     public class Initializer
     {
-        private const string TestDbConnectionString = "InMemoryTestDBDemoEshop";
+        internal static readonly IWindsorContainer Container = new WindsorContainer();
 
-        //internal static readonly IUnitOfWorkProvider Provider = new EntityFrameworkUnitOfWorkProvider();
-
+        [OneTimeSetUp]
+        public void InitializeBusinessLayerTests()
+        {
+            Database.SetInitializer(new DropCreateDatabaseAlways<FreelancerCorpDbContext>());
+            Container.Install(new EntityFrameworkTestInstaller());
+        }
     }
 }
