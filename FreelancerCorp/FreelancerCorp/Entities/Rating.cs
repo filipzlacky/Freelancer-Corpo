@@ -24,6 +24,8 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
         [Required]
         public string Comment { get; set; }
 
+        public Rating() {}
+
         public Rating(int score, int creatorId, string comment) {
             Score = score;
             CreatorId = creatorId;

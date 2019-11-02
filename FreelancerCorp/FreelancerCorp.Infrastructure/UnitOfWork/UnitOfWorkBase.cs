@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FreelancerCorp.Infrastructure.UnitOfWork {
     public abstract class UnitOfWorkBase : IUnitOfWork {
-        private IList<Action> afterCommitActions;
+        private IList<Action> afterCommitActions = new List<Action>();
 
         public async Task Commit() {
 
