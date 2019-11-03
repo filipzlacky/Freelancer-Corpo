@@ -30,12 +30,12 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
         {
 
         }
-        public Offer(Category cat, string description, long price, int creatorId, string tableName, string addInfo) {
+        public Offer(Category cat, string description, long price, int creatorId, string addInfo) {
             Category = cat;
             Description = description;
             Price = price;
             CreatorId = creatorId;
-            TableName = tableName;
+            TableName = nameof(FreelancerCorpDbContext.Offers);
             AdditionalInfo = addInfo;
         }
     }
