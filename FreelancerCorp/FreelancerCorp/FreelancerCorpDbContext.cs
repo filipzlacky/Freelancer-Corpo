@@ -8,9 +8,11 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 namespace FreelancerCorp.DataAccessLayer {
     public class FreelancerCorpDbContext : DbContext {
 
-        public DbSet<Freelancer> Freelancers { get; set; }
-        public DbSet<Corporation> Corporations { get; set; }
-        public DbSet<UnregisteredUser> UnregisteredUsers { get; set; }
+        //public DbSet<Freelancer> Freelancers { get; set; }
+        //public DbSet<Corporation> Corporations { get; set; }
+        //public DbSet<UnregisteredUser> UnregisteredUsers { get; set; }
+
+        public DbSet<User> Users { get; set; }
 
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Offer> Offers { get; set; }
@@ -20,8 +22,6 @@ namespace FreelancerCorp.DataAccessLayer {
 
         public FreelancerCorpDbContext() : base (ConnectionString) {
             Database.SetInitializer(new FreelancerCorpInitializer());
-
-            var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;            
         }
 
         public FreelancerCorpDbContext(DbConnection connection) : base (connection, true) {

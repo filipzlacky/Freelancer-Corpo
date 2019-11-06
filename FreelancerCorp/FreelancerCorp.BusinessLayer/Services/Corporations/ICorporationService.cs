@@ -15,7 +15,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Corporations
 
         Task<int[]> GetCorporationIdsByLocationAsync(string location);
 
-        Task<int[]> GetCorporationIdsByAllAsync(string location, params string[] names);
+        Task<int[]> corporationService(string location, params string[] names);
 
         Task<CorporationDTO> GetAsync(int entityId, bool withIncludes = true);
 
@@ -23,7 +23,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Corporations
 
         Task Update(CorporationDTO entityDto);
 
-        void DeleteProduct(int entityId);
+        void Delete(int entityId);
 
         Task<QueryResultDTO<CorporationDTO, CorporationFilterDTO>> ListAllAsync();
     }

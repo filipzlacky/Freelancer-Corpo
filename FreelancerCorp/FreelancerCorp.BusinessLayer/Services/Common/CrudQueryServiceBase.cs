@@ -54,7 +54,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Common
             Repository.Update(entity);
         }
         
-        public virtual void DeleteProduct(int entityId)
+        public virtual void Delete(int entityId)
         {
             Repository.Delete(entityId);
         }

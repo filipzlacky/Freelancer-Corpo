@@ -7,10 +7,10 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
 
         public string Address { get; set; }       
 
-        public Corporation() : base("", nameof(FreelancerCorpDbContext.Corporations), "", "") { }
+        public Corporation() : base("", nameof(FreelancerCorpDbContext.Users), "", "") { }
 
         public Corporation(string address, string email, string name, string info) 
-            : base(info, nameof(FreelancerCorpDbContext.Corporations), name, email) 
+            : base(info, nameof(FreelancerCorpDbContext.Users), name, email) 
         {
             Address = address;
         }

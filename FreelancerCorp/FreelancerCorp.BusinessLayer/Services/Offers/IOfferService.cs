@@ -21,7 +21,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Offers
 
         Task Update(OfferDTO entityDto);
 
-        void DeleteProduct(int entityId);
+        void Delete(int entityId);
 
         Task<QueryResultDTO<OfferDTO, OfferFilterDTO>> ListAllAsync();
     }
