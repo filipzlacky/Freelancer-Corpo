@@ -15,7 +15,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Corporations
 
         Task<int[]> GetCorporationIdsByLocationAsync(string location);
 
-        Task<int[]> corporationService(string location, params string[] names);
+        Task<int[]> GetCorporationIdsByAllAsync(string location, params string[] names);
 
         Task<CorporationDTO> GetAsync(int entityId, bool withIncludes = true);
 

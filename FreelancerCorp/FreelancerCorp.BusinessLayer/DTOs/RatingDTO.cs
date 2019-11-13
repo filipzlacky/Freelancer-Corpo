@@ -8,8 +8,7 @@ using FreelancerCorp.BusinessLayer.DTOs.Common;
 namespace FreelancerCorp.BusinessLayer.DTOs
 {
     public class RatingDTO : DTOBase
-    {
-        public int Id { get; set; }
+    {        
         public int RatedUserId { get; set; }
 
         public string Comment { get; set; }

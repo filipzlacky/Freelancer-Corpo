@@ -19,7 +19,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             corporationService = corporation;
         }
 
-        public async Task<int> CreateFreelancer(FreelancerDTO freelancer)
+        public async Task<int> CreateFreelancerAsync(FreelancerDTO freelancer)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
@@ -30,7 +30,15 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<bool> EditFreelancer(FreelancerDTO freelancer)
+        //public async Task<int> CreateProduct(FreelancerDTO freelancer, OfferDTO product)
+        //{
+        //    using (var uow = UnitOfWorkProvider.Create())
+        //    {
+        //        var newProduct = await
+        //    }
+        //}
+
+        public async Task<bool> EditFreelancerAsync(FreelancerDTO freelancer)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
@@ -45,7 +53,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<bool> DeleteFreelancer(int id)
+        public async Task<bool> DeleteFreelancerAsync(int id)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
@@ -60,7 +68,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<int> CreateCorporation(CorporationDTO corporation)
+        public async Task<int> CreateCorporationAsync(CorporationDTO corporation)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
@@ -71,7 +79,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<bool> EditCorporation(CorporationDTO corporation)
+        public async Task<bool> EditCorporationAsync(CorporationDTO corporation)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
@@ -86,7 +94,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<bool> DeleteCorporation(int id)
+        public async Task<bool> DeleteCorporationAsync(int id)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
@@ -153,7 +161,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
         {
             using (UnitOfWorkProvider.Create())
             {
-                return await corporationService.corporationService(location, names);
+                return await corporationService.GetCorporationIdsByAllAsync(location, names);
             }
         }
 

@@ -17,7 +17,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             this.offerService = offerService;
         }
 
-        public async Task<int> CreateOffer(OfferDTO offer)
+        public async Task<int> CreateOfferAsync(OfferDTO offer)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
@@ -27,7 +27,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<bool> EditOffer(OfferDTO offer)
+        public async Task<bool> EditOfferAsync(OfferDTO offer)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
@@ -41,7 +41,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<bool> DeleteOffer(int offerId)
+        public async Task<bool> DeleteOfferAsync(int offerId)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
@@ -55,7 +55,15 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<IEnumerable<int>> GetOffers(Category category)
+        public async Task<OfferDTO> GetOfferAsync(int id)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return (await offerService.GetAsync(id));
+            }
+        }
+
+        public async Task<IEnumerable<int>> GetOffersAsync(Category category)
         {
             using (UnitOfWorkProvider.Create())
             {
@@ -63,7 +71,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<IEnumerable<int>> GetOffers(int price)
+        public async Task<IEnumerable<int>> GetOffersAsync(int price)
         {
             using (UnitOfWorkProvider.Create())
             {
@@ -71,7 +79,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<IEnumerable<int>> GetOffers(int price, Category category)
+        public async Task<IEnumerable<int>> GetOffersAsync(int price, Category category)
         {
             using (UnitOfWorkProvider.Create())
             {
@@ -79,7 +87,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<IEnumerable<OfferDTO>> GetAllCategories()
+        public async Task<IEnumerable<OfferDTO>> GetAllOffersAsync()
         {
             using (UnitOfWorkProvider.Create())
             {

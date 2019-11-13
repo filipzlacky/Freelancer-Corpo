@@ -78,7 +78,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<IEnumerable<RatingDTO>> GetFreelancersAsync()
+        public async Task<IEnumerable<RatingDTO>> GetRatingsAsync()
         {
             using (UnitOfWorkProvider.Create())
             {
