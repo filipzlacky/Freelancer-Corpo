@@ -1,6 +1,6 @@
 ﻿using FreelancerCorp.BusinessLayer.DTOs;
 
-namespace WebApplication1.Models.FreelancerModel
+namespace FreelancerCorp.WebApi.Models.FreelancerModel
 {
     public class FreelancerCreateModel
     {

@@ -109,6 +109,14 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
+        public async Task<FreelancerDTO> GetFreelancerAsync(int id)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await freelancerService.GetAsync(id);
+            }
+        }
+
         public async Task<IEnumerable<int>> GetFreelancersAsync(params string[] names)
         {
             using (UnitOfWorkProvider.Create())
@@ -138,6 +146,14 @@ namespace FreelancerCorp.BusinessLayer.Facades
             using (UnitOfWorkProvider.Create())
             {
                 return (await freelancerService.ListAllAsync()).Items;
+            }
+        }
+
+        public async Task<CorporationDTO> GetCorporationAsync(int id)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await corporationService.GetAsync(id);
             }
         }
 

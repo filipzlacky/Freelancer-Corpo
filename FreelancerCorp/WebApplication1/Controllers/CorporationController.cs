@@ -1,6 +1,6 @@
 ﻿using FreelancerCorp.BusinessLayer.DTOs;
 using FreelancerCorp.BusinessLayer.Facades;
-using FreelancerCorp.WebApi.Models.FreelancerModel;
+using FreelancerCorp.WebApi.Models.CorporationModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,62 +11,62 @@ using System.Web.Http;
 
 namespace WebApplication1.Controllers
 {
-    public class FreelancerController : ApiController
+    public class CorporationController : ApiController
     {
         public UserFacade userFacade { get; set; }
 
-        // GET: api/Freelancer
+        // GET: api/Corporation
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/Freelancer/5
-        public async Task<FreelancerDTO> Get(int id)
+        // GET: api/Corporation/5
+        public async Task<CorporationDTO> Get(int id)
         {
-            var freelancer = await userFacade.GetFreelancerAsync(id);
-            return freelancer;
+            var corporation = await userFacade.GetCorporationAsync(id);
+            return corporation;
         }
 
-        // POST: api/Freelancer
-        public async Task<string> Post([FromBody]FreelancerCreateModel model)
+        // POST: api/Corporation
+        public async Task<string> Post([FromBody]CorporationCreateModel model)
         {
             if (!ModelState.IsValid)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            int freelancerId = await userFacade.CreateFreelancerAsync(model.freelancerDto);
-            if (freelancerId != -1)
+            int corporationId = await userFacade.CreateCorporationAsync(model.CorporationDTO);
+            if (corporationId != -1)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return $"Created new freelancer with id: {freelancerId}";
+            return $"Created new corporation with id: {corporationId}";
         }
 
-        // PUT: api/Freelancer/5
-        public async Task<string> Put(int id, [FromBody]FreelancerDTO freelancer)
+        // PUT: api/Corporation/5
+        public async Task<string> Put(int id, [FromBody]CorporationDTO corporation)
         {
             if (!ModelState.IsValid)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            var success = await userFacade.EditFreelancerAsync(freelancer);
+            var success = await userFacade.EditCorporationAsync(corporation);
             if (!success)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return $"Updated freelancer with id: {id}";
+            return $"Updated corporation with id: {id}";
         }
 
-        // DELETE: api/Freelancer/5
+        // DELETE: api/Corporation/5
         public async Task<string> Delete(int id)
         {
-            bool success = await userFacade.DeleteFreelancerAsync(id);
+            bool success = await userFacade.DeleteCorporationAsync(id);
             if (!success)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return $"Deleted freelancer with id: {id}";
+            return $"Deleted corporation with id: {id}";
         }
     }
 }
