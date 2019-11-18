@@ -56,11 +56,11 @@
     <Compile Include="DTOs\FreelancerDTO.cs" />
     <Compile Include="DTOs\OfferDTO.cs" />
     <Compile Include="DTOs\CreateRatingDTO.cs" />
-    <Compile Include="DTOs\QueryObjects\Common\QueryObjectBase.cs" />
-    <Compile Include="DTOs\QueryObjects\CorporationQueryObject.cs" />
-    <Compile Include="DTOs\QueryObjects\FreelancerQueryObject.cs" />
-    <Compile Include="DTOs\QueryObjects\OfferQueryObject.cs" />
-    <Compile Include="DTOs\QueryObjects\RatingQueryObject.cs" />
+    <Compile Include="QueryObjects\Common\QueryObjectBase.cs" />
+    <Compile Include="QueryObjects\CorporationQueryObject.cs" />
+    <Compile Include="QueryObjects\FreelancerQueryObject.cs" />
+    <Compile Include="QueryObjects\OfferQueryObject.cs" />
+    <Compile Include="QueryObjects\RatingQueryObject.cs" />
     <Compile Include="DTOs\RatingDTO.cs" />
     <Compile Include="DTOs\UserCreateOfferDTO.cs" />
     <Compile Include="Facades\Common\FacadeBase.cs" />
@@ -72,6 +72,8 @@
     <Compile Include="Services\Common\ServiceBase.cs" />
     <Compile Include="Services\Corporations\CorporationService.cs" />
     <Compile Include="Services\Corporations\ICorporationService.cs" />
+    <Compile Include="Services\CreateRatings\CreateRatingService.cs" />
+    <Compile Include="Services\CreateRatings\ICreateRatingService.cs" />
     <Compile Include="Services\Freelancers\FreelancerService.cs" />
     <Compile Include="Services\Freelancers\IFreelancerService.cs" />
     <Compile Include="Services\Offers\IOfferService.cs" />

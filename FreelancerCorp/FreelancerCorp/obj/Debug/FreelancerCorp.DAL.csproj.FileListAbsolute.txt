@@ -26,3 +26,17 @@ C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\NEWW\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.DAL.csproj.CopyComplete
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\NEWW\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\NEWW\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.pdb
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\bin\Debug\FreelancerCorp.dll.config
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\bin\Debug\FreelancerCorp.dll
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\bin\Debug\FreelancerCorp.pdb
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\bin\Debug\EntityFramework.dll
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\bin\Debug\FreelancerCorp.Infrastructure.dll
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\bin\Debug\FreelancerCorp.Infrastructure.pdb
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\bin\Debug\FreelancerCorp.Infrastructure.dll.config
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\bin\Debug\EntityFramework.xml
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.DAL.csprojAssemblyReference.cache
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.DAL.csproj.CopyComplete
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.dll
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp\obj\Debug\FreelancerCorp.pdb

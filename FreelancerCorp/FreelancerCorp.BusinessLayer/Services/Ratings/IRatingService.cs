@@ -8,6 +8,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Ratings
     public interface IRatingService
     {
         Task<int[]> GetRatingsIdsByUserIdsAsync(params int[] userIds);       
+
         Task<int[]> GetRatingsIdsByUserIdsScoreAsync(int score, params int[] userIds);
 
         Task<int[]> GetRatingsIdsByScoreAsync(int score);

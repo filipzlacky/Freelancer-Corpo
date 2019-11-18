@@ -8,9 +8,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs
 {
     public class CreateRatingDTO
     {
-        public int UserId { get; set; }
-
-        //public int RatedUserId { get; set; }
+        public int CreatorId { get; set; }
 
         public RatingDTO Rating { get; set; }
     }
