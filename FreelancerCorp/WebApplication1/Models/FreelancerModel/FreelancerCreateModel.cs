@@ -4,6 +4,6 @@ namespace FreelancerCorp.WebApi.Models.FreelancerModel
 {
     public class FreelancerCreateModel
     {
-        public FreelancerDTO freelancerDto { get; set; }
+        public FreelancerDTO FreelancerDto { get; set; }
     }
 }

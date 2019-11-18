@@ -13,7 +13,7 @@ namespace WebApplication1.Controllers
 {
     public class FreelancerController : ApiController
     {
-        public UserFacade userFacade { get; set; }
+        public UserFacade UserFacade { get; set; }
 
         // GET: api/Freelancer
         public IEnumerable<string> Get()
@@ -24,7 +24,16 @@ namespace WebApplication1.Controllers
         // GET: api/Freelancer/5
         public async Task<FreelancerDTO> Get(int id)
         {
-            var freelancer = await userFacade.GetFreelancerAsync(id);
+            if (id <= 0)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
+            var freelancer = await UserFacade.GetFreelancerAsync(id);
+            if (freelancer == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            //freelancer.Id = 0;
             return freelancer;
         }
 
@@ -35,7 +44,7 @@ namespace WebApplication1.Controllers
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            int freelancerId = await userFacade.CreateFreelancerAsync(model.freelancerDto);
+            int freelancerId = await UserFacade.CreateFreelancerAsync(model.FreelancerDto);
             if (freelancerId != -1)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -50,7 +59,7 @@ namespace WebApplication1.Controllers
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            var success = await userFacade.EditFreelancerAsync(freelancer);
+            var success = await UserFacade.EditFreelancerAsync(freelancer);
             if (!success)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -61,7 +70,7 @@ namespace WebApplication1.Controllers
         // DELETE: api/Freelancer/5
         public async Task<string> Delete(int id)
         {
-            bool success = await userFacade.DeleteFreelancerAsync(id);
+            bool success = await UserFacade.DeleteFreelancerAsync(id);
             if (!success)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

@@ -13,7 +13,7 @@ namespace WebApplication1.Controllers
 {
     public class CorporationController : ApiController
     {
-        public UserFacade userFacade { get; set; }
+        public UserFacade UserFacade { get; set; }
 
         // GET: api/Corporation
         public IEnumerable<string> Get()
@@ -24,8 +24,18 @@ namespace WebApplication1.Controllers
         // GET: api/Corporation/5
         public async Task<CorporationDTO> Get(int id)
         {
-            var corporation = await userFacade.GetCorporationAsync(id);
+            if (id <= 0)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
+            var corporation = await UserFacade.GetCorporationAsync(id);
+            if (corporation == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            //corporation.Id = 0;
             return corporation;
+
         }
 
         // POST: api/Corporation
@@ -35,7 +45,7 @@ namespace WebApplication1.Controllers
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            int corporationId = await userFacade.CreateCorporationAsync(model.CorporationDTO);
+            int corporationId = await UserFacade.CreateCorporationAsync(model.CorporationDTO);
             if (corporationId != -1)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -50,7 +60,7 @@ namespace WebApplication1.Controllers
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            var success = await userFacade.EditCorporationAsync(corporation);
+            var success = await UserFacade.EditCorporationAsync(corporation);
             if (!success)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -61,7 +71,7 @@ namespace WebApplication1.Controllers
         // DELETE: api/Corporation/5
         public async Task<string> Delete(int id)
         {
-            bool success = await userFacade.DeleteCorporationAsync(id);
+            bool success = await UserFacade.DeleteCorporationAsync(id);
             if (!success)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

@@ -30,14 +30,6 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        //public async Task<int> CreateProduct(FreelancerDTO freelancer, OfferDTO product)
-        //{
-        //    using (var uow = UnitOfWorkProvider.Create())
-        //    {
-        //        var newProduct = await
-        //    }
-        //}
-
         public async Task<bool> EditFreelancerAsync(FreelancerDTO freelancer)
         {
             using (var uow = UnitOfWorkProvider.Create())

@@ -4,7 +4,7 @@ namespace FreelancerCorp.WebApi.Models.OffersModel
 {
     public class OfferCreateModel
     {
-        public OfferDTO offerDTO { get; set; }
+        public OfferDTO OfferDTO { get; set; }
         
     }
 }

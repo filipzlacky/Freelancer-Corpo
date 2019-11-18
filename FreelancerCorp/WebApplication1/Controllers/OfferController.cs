@@ -22,7 +22,16 @@ namespace FreelancerCorp.WebApi.Controllers
         // GET: api/Offer/5
         public async Task<OfferDTO> Get(int id)
         {
+            if (id <= 0)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
             var offer = await OfferFacade.GetOfferAsync(id);
+            if (offer == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            //offer.Id = 0;
             return offer;
         }
 
@@ -33,7 +42,7 @@ namespace FreelancerCorp.WebApi.Controllers
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            int offerId = await OfferFacade.CreateOfferAsync(model.offerDTO);
+            int offerId = await OfferFacade.CreateOfferAsync(model.OfferDTO);
             if (offerId != -1)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

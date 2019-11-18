@@ -16,7 +16,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             ratingService = rating;
         }
 
-        public async Task<int> CreateRating(RatingDTO rating)
+        public async Task<int> CreateRatingAsync(RatingDTO rating)
         {
             using(var uow = UnitOfWorkProvider.Create())
             {
@@ -26,7 +26,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<bool> EditRating(RatingDTO rating)
+        public async Task<bool> EditRatingAsync(RatingDTO rating)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
@@ -40,7 +40,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<bool> DeleteRating(int ratingId)
+        public async Task<bool> DeleteRatingAsync(int ratingId)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {

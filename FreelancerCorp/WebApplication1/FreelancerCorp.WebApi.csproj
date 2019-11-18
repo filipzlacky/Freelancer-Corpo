@@ -171,13 +171,14 @@
     <Compile Include="Controllers\FreelancerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CorporationModel\CorporationCreateModel.cs" />
     <Compile Include="Models\FreelancerModel\FreelancerCreateModel.cs" />
     <Compile Include="Models\OffersModel\OfferCreateModel.cs" />
+    <Compile Include="Models\RatingsModel\RatingCreateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
