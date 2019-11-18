@@ -62,12 +62,14 @@
     <Compile Include="QueryObjects\OfferQueryObject.cs" />
     <Compile Include="QueryObjects\RatingQueryObject.cs" />
     <Compile Include="DTOs\RatingDTO.cs" />
-    <Compile Include="DTOs\UserCreateOfferDTO.cs" />
+    <Compile Include="DTOs\UserAppliesForOfferDTO.cs" />
     <Compile Include="Facades\Common\FacadeBase.cs" />
     <Compile Include="Facades\OfferFacade.cs" />
     <Compile Include="Facades\RatingFacade.cs" />
     <Compile Include="Facades\UserFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ApplyForOffer\ApplyForOfferService.cs" />
+    <Compile Include="Services\ApplyForOffer\IApplyForOfferService.cs" />
     <Compile Include="Services\Common\CrudQueryServiceBase.cs" />
     <Compile Include="Services\Common\ServiceBase.cs" />
     <Compile Include="Services\Corporations\CorporationService.cs" />

@@ -17,5 +17,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public long Price { get; set; }
 
         public string AdditionalInfo { get; set; }
+        
+        public int CreatorId { get; set; }
     }
 }

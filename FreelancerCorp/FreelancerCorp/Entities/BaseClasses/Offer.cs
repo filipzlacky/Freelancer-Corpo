@@ -24,6 +24,12 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
         public int CreatorId { get; set; }
         public virtual User Creator { get; set; }
 
+        [ForeignKey(nameof(Applier))]
+        public int ApplierId { get; set; }
+        public virtual User Applier { get; set; }
+
+
+
         public string AdditionalInfo { get; set; }
 
         public Offer()

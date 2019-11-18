@@ -26,6 +26,7 @@ namespace FreelancerCorp.BusinessLayer.Services.CreateRatings
         public int CreateNewRating(CreateRatingDTO createRatingDTO)
         {
             var rating = Mapper.Map<Rating>(createRatingDTO.Rating);
+            rating.CreatorId = createRatingDTO.CreatorId;
             ratingRepository.Create(rating);
             return rating.Id;
         }
