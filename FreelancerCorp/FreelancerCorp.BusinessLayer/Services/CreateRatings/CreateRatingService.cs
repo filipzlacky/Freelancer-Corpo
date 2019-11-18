@@ -23,6 +23,7 @@ namespace FreelancerCorp.BusinessLayer.Services.CreateRatings
             this.ratingRepository = ratingRepository;
         }
 
+        //
         public int CreateNewRating(CreateRatingDTO createRatingDTO)
         {
             var rating = Mapper.Map<Rating>(createRatingDTO.Rating);
