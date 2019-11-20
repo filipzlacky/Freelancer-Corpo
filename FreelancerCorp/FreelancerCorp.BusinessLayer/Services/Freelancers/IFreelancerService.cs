@@ -11,11 +11,14 @@ namespace FreelancerCorp.BusinessLayer.Services.Freelancers
 {
     public interface IFreelancerService
     {
-        Task<int[]> GetFreelancerIdsByNamesAsync(params string[] names);
 
-        Task<int[]> GetFreelancerIdsByLocationAsync(string location);
+        Task<QueryResultDTO<FreelancerDTO, FreelancerFilterDTO>> ListFreelancersAsync(FreelancerFilterDTO filter);
 
-        Task<int[]> GetFreelancerIdsByAllAsync(string location, params string[] names);
+        //Task<int[]> GetFreelancerIdsByNamesAsync(params string[] names);
+
+        //Task<int[]> GetFreelancerIdsByLocationAsync(string location);
+
+        //Task<int[]> GetFreelancerIdsByAllAsync(string location, params string[] names);
 
         Task<FreelancerDTO> GetAsync(int entityId, bool withIncludes = true);
 

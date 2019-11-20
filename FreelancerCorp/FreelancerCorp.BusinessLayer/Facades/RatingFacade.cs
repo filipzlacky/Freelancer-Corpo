@@ -4,6 +4,8 @@ using FreelancerCorp.BusinessLayer.Services.Ratings;
 using FreelancerCorp.BusinessLayer.DTOs;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FreelancerCorp.BusinessLayer.DTOs.Common;
+using FreelancerCorp.BusinessLayer.DTOs.Filter;
 
 namespace FreelancerCorp.BusinessLayer.Facades
 {
@@ -54,27 +56,35 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<IEnumerable<int>> GetRatingsAsync(int score)
-        {
-            using (UnitOfWorkProvider.Create())
-            {
-                return (await ratingService.GetRatingsIdsByScoreAsync(score));
-            }
-        }
+        //public async Task<IEnumerable<int>> GetRatingsAsync(int score)
+        //{
+        //    using (UnitOfWorkProvider.Create())
+        //    {
+        //        return (await ratingService.GetRatingsIdsByScoreAsync(score));
+        //    }
+        //}
 
-        public async Task<IEnumerable<int>> GetRatingsAsync(int[] ids)
-        {
-            using (UnitOfWorkProvider.Create())
-            {
-                return (await ratingService.GetRatingsIdsByUserIdsAsync(ids));
-            }
-        }
+        //public async Task<IEnumerable<int>> GetRatingsAsync(int[] ids)
+        //{
+        //    using (UnitOfWorkProvider.Create())
+        //    {
+        //        return (await ratingService.GetRatingsIdsByUserIdsAsync(ids));
+        //    }
+        //}
 
-        public async Task<IEnumerable<int>> GetRatingsAsync(int score, int[] ids)
+        //public async Task<IEnumerable<int>> GetRatingsAsync(int score, int[] ids)
+        //{
+        //    using (UnitOfWorkProvider.Create())
+        //    {
+        //        return (await ratingService.GetRatingsIdsByUserIdsScoreAsync(score, ids));
+        //    }
+        //}
+
+            public async Task<QueryResultDTO<RatingDTO, RatingFilterDTO>> ListRatingsAsync(RatingFilterDTO filter)
         {
             using (UnitOfWorkProvider.Create())
             {
-                return (await ratingService.GetRatingsIdsByUserIdsScoreAsync(score, ids));
+                return await ratingService.ListRatingsAsync(filter);
             }
         }
 

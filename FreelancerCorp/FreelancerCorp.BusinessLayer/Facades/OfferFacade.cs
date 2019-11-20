@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FreelancerCorp.BusinessLayer.DTOs;
 using FreelancerCorp.BusinessLayer.DTOs.Filter;
 using FreelancerCorp.BusinessLayer.DTOs.Enums;
+using FreelancerCorp.BusinessLayer.DTOs.Common;
 
 namespace FreelancerCorp.BusinessLayer.Facades
 {
@@ -63,27 +64,35 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<IEnumerable<int>> GetOffersAsync(Category category)
-        {
-            using (UnitOfWorkProvider.Create())
-            {
-                return (await offerService.GetOfferIdsByCategoryAsync(category));
-            }
-        }
+        //public async Task<IEnumerable<int>> GetOffersAsync(Category category)
+        //{
+        //    using (UnitOfWorkProvider.Create())
+        //    {
+        //        return (await offerService.GetOfferIdsByCategoryAsync(category));
+        //    }
+        //}
 
-        public async Task<IEnumerable<int>> GetOffersAsync(int price)
-        {
-            using (UnitOfWorkProvider.Create())
-            {
-                return (await offerService.GetOfferIdsByPriceAsync(price));
-            }
-        }
+        //public async Task<IEnumerable<int>> GetOffersAsync(int price)
+        //{
+        //    using (UnitOfWorkProvider.Create())
+        //    {
+        //        return (await offerService.GetOfferIdsByPriceAsync(price));
+        //    }
+        //}
 
-        public async Task<IEnumerable<int>> GetOffersAsync(int price, Category category)
+        //public async Task<IEnumerable<int>> GetOffersAsync(int price, Category category)
+        //{
+        //    using (UnitOfWorkProvider.Create())
+        //    {
+        //        return (await offerService.GetOfferIdsByAllAsync(price, category));
+        //    }
+        //}
+
+        public async Task<QueryResultDTO<OfferDTO, OfferFilterDTO>> ListOffersAsync(OfferFilterDTO filter)
         {
             using (UnitOfWorkProvider.Create())
             {
-                return (await offerService.GetOfferIdsByAllAsync(price, category));
+                return await offerService.ListOffersAsync(filter);
             }
         }
 

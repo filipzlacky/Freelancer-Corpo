@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using FreelancerCorp.BusinessLayer.DTOs;
+using FreelancerCorp.BusinessLayer.DTOs.Common;
 using FreelancerCorp.BusinessLayer.DTOs.Enums;
 using FreelancerCorp.BusinessLayer.DTOs.Filter;
 using FreelancerCorp.BusinessLayer.QueryObjects.Common;
@@ -19,23 +20,28 @@ namespace FreelancerCorp.BusinessLayer.Services.Offers
         public OfferService(IMapper mapper, IRepository<Offer> categoryRepository, QueryObjectBase<OfferDTO, Offer, OfferFilterDTO, IQuery<Offer>> categoryListQuery)
             : base(mapper, categoryRepository, categoryListQuery) { }
 
-        public async Task<int[]> GetOfferIdsByAllAsync(int price, Category category)
-        {
-            var queryResult = await Query.ExecuteQuery(new OfferFilterDTO { SearchedCategory = category, SearchedPrice = price });
-            return queryResult.Items.Select(offer => offer.Id).ToArray();
-        }
+        //public async Task<int[]> GetOfferIdsByAllAsync(int price, Category category)
+        //{
+        //    var queryResult = await Query.ExecuteQuery(new OfferFilterDTO { SearchedCategory = category, SearchedPrice = price });
+        //    return queryResult.Items.Select(offer => offer.Id).ToArray();
+        //}
 
-        public async Task<int[]> GetOfferIdsByCategoryAsync(Category category)
-        {
-            var queryResult = await Query.ExecuteQuery(new OfferFilterDTO { SearchedCategory = category });
-            return queryResult.Items.Select(offer => offer.Id).ToArray();
-        }
+        //public async Task<int[]> GetOfferIdsByCategoryAsync(Category category)
+        //{
+        //    var queryResult = await Query.ExecuteQuery(new OfferFilterDTO { SearchedCategory = category });
+        //    return queryResult.Items.Select(offer => offer.Id).ToArray();
+        //}
 
-        public async Task<int[]> GetOfferIdsByPriceAsync(int price)
+        //public async Task<int[]> GetOfferIdsByPriceAsync(int price)
+        //{
+        //    var queryResult = await Query.ExecuteQuery(new OfferFilterDTO { SearchedPrice = price });
+        //    return queryResult.Items.Select(offer => offer.Id).ToArray();
+        //}        
+
+        public async Task<QueryResultDTO<OfferDTO, OfferFilterDTO>> ListOffersAsync(OfferFilterDTO filter)
         {
-            var queryResult = await Query.ExecuteQuery(new OfferFilterDTO { SearchedPrice = price });
-            return queryResult.Items.Select(offer => offer.Id).ToArray();
-        }        
+            return await Query.ExecuteQuery(filter);
+        }
 
         protected async override Task<Offer> GetWithIncludesAsync(int entityId)
         {

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\MappingConfig.cs" />
     <Compile Include="DTOs\Common\DTOBase.cs" />
     <Compile Include="DTOs\Common\FilterDTOBase.cs" />
     <Compile Include="DTOs\Common\QueryResultDTO.cs" />
