@@ -1,0 +1,3 @@
+pridavat ratings/ offers do Freelancer/CorporationDTO
+
+spravit paging pri queries

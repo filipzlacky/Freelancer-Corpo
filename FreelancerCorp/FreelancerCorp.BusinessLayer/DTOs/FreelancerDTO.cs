@@ -13,7 +13,11 @@ namespace FreelancerCorp.BusinessLayer.DTOs
 
         public string Email { get; set; }
 
+        public string Location { get; set; }
+
         public DateTime DoB { get; set; }
+
+        public double Average { get; set; }
 
         public IEnumerable<OfferDTO> Offers { get; set; } = new List<OfferDTO>();
 

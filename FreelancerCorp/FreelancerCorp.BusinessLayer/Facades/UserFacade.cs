@@ -5,6 +5,8 @@ using FreelancerCorp.BusinessLayer.Services.Corporations;
 using System.Threading.Tasks;
 using FreelancerCorp.BusinessLayer.DTOs;
 using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace FreelancerCorp.BusinessLayer.Facades
 {
@@ -179,6 +181,20 @@ namespace FreelancerCorp.BusinessLayer.Facades
             {
                 return (await corporationService.ListAllAsync()).Items;
             }
+        }
+
+        public double GetFreelancerAverageRating(FreelancerDTO freelancer)
+        {
+            return freelancer.Ratings.Average(rating => rating.Score);
+        }
+        public double GetCorporationAverageRating(CorporationDTO corporation)
+        {
+            return corporation.Ratings.Average(rating => rating.Score);
+        }
+
+        public int GetAge(FreelancerDTO freelancer)
+        {
+            return (DateTime.Now - freelancer.DoB).Days/365;
         }
     }
 }

@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 namespace FreelancerCorp.BusinessLayer.DTOs.Filter
 {
     public class FreelancerFilterDTO : FilterDTOBase
-    {        
+    {
+
+        public int SearchedAverage { get; set; }
+
         public string[] SearchedFreelancerNames { get; set; }
 
         public string SearchedLocation { get; set; }
