@@ -16,25 +16,25 @@ namespace FreelancerCorp.BusinessLayer.Facades
             ratingService = rating;
         }
 
-        public async Task<int> CreateRatingAsync(RatingDTO rating)
+        public async Task<int> CreateRatingAsync(CreateRatingDTO rating)
         {
             using(var uow = UnitOfWorkProvider.Create())
             {
-                var ratingId = ratingService.Create(rating);
+                var ratingId = ratingService.Create(rating.Rating, rating.RatedUserId);
                 await uow.Commit();
                 return ratingId;
             }
         }
 
-        public async Task<bool> EditRatingAsync(RatingDTO rating)
+        public async Task<bool> EditRatingAsync(CreateRatingDTO rating)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
-                if ((await ratingService.GetAsync(rating.Id, false)) == null)
+                if ((await ratingService.GetAsync(rating.Rating.Id, false)) == null)
                 {
                     return false;
                 }
-                await ratingService.Update(rating);
+                await ratingService.Update(rating.Rating, rating.RatedUserId);
                 await uow.Commit();
                 return true;
             }

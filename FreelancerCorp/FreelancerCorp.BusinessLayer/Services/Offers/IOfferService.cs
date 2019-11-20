@@ -17,9 +17,9 @@ namespace FreelancerCorp.BusinessLayer.Services.Offers
 
         Task<OfferDTO> GetAsync(int entityId, bool withIncludes = true);
 
-        int Create(OfferDTO entityDto);
+        int Create(OfferDTO entityDto, int applierId);
 
-        Task Update(OfferDTO entityDto);
+        Task Update(OfferDTO entityDto, int applierId);
 
         void Delete(int entityId);
 

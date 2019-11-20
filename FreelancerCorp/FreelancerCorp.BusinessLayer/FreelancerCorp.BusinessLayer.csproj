@@ -50,12 +50,15 @@
     <Compile Include="DTOs\CorporationDTO.cs" />
     <Compile Include="DTOs\Enums\Category.cs" />
     <Compile Include="DTOs\Enums\Sex.cs" />
+    <Compile Include="DTOs\Enums\UserRole.cs" />
     <Compile Include="DTOs\Filter\CorporationFilterDTO.cs" />
     <Compile Include="DTOs\Filter\FreelancerFilterDTO.cs" />
     <Compile Include="DTOs\Filter\OfferFilterDTO.cs" />
     <Compile Include="DTOs\FreelancerDTO.cs" />
     <Compile Include="DTOs\OfferDTO.cs" />
     <Compile Include="DTOs\CreateRatingDTO.cs" />
+    <Compile Include="Facades\ApplyForOfferFacade.cs" />
+    <Compile Include="Facades\CreateUserRatingFacade.cs" />
     <Compile Include="QueryObjects\Common\QueryObjectBase.cs" />
     <Compile Include="QueryObjects\CorporationQueryObject.cs" />
     <Compile Include="QueryObjects\FreelancerQueryObject.cs" />
@@ -74,8 +77,6 @@
     <Compile Include="Services\Common\ServiceBase.cs" />
     <Compile Include="Services\Corporations\CorporationService.cs" />
     <Compile Include="Services\Corporations\ICorporationService.cs" />
-    <Compile Include="Services\CreateRatings\CreateRatingService.cs" />
-    <Compile Include="Services\CreateRatings\ICreateRatingService.cs" />
     <Compile Include="Services\Freelancers\FreelancerService.cs" />
     <Compile Include="Services\Freelancers\IFreelancerService.cs" />
     <Compile Include="Services\Offers\IOfferService.cs" />

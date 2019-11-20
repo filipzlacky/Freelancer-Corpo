@@ -8,6 +8,6 @@ namespace FreelancerCorp.WebApi.Models.RatingsModel
 {
     public class RatingCreateModel
     {
-        public RatingDTO RatingDTO { get; set; }
+        public CreateRatingDTO RatingDTO { get; set; }
     }
 }

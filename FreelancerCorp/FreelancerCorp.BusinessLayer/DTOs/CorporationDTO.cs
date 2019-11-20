@@ -15,8 +15,8 @@ namespace FreelancerCorp.BusinessLayer.DTOs
 
         //public string? Number { get; set; }
 
-        public IEnumerable<OfferDTO> Offers { get; set; } = new List<OfferDTO>();
+        public List<OfferDTO> Offers { get; set; } = new List<OfferDTO>();
 
-        public IEnumerable<RatingDTO> Ratings { get; set; } = new List<RatingDTO>();
+        public List<RatingDTO> Ratings { get; set; } = new List<RatingDTO>();
     }
 }

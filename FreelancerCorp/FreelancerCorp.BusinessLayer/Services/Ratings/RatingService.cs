@@ -38,5 +38,21 @@ namespace FreelancerCorp.BusinessLayer.Services.Ratings
         {
             return await Repository.GetAsync(entityId);
         }
+
+        public int Create(RatingDTO entityDto, int ratedUserId)
+        {
+            var entity = Mapper.Map<Rating>(entityDto);
+            entity.RatedUserId = ratedUserId;
+            Repository.Create(entity);
+            return entity.Id;
+        }
+
+        public async Task Update(RatingDTO entityDto, int ratedUserId)
+        {
+            var entity = await GetWithIncludesAsync(entityDto.Id);
+            Mapper.Map(entityDto, entity);
+            entity.RatedUserId = ratedUserId;
+            Repository.Update(entity);
+        }
     }
 }

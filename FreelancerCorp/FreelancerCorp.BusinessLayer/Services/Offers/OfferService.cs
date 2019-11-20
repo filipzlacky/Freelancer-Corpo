@@ -41,5 +41,21 @@ namespace FreelancerCorp.BusinessLayer.Services.Offers
         {
             return await Repository.GetAsync(entityId);
         }
+
+        public int Create(OfferDTO entityDto, int applierId)
+        {
+            var entity = Mapper.Map<Offer>(entityDto);
+            entity.ApplierId = applierId;
+            Repository.Create(entity);
+            return entity.Id;
+        }
+
+        public async Task Update(OfferDTO entityDto, int applierId)
+        {
+            var entity = await GetWithIncludesAsync(entityDto.Id);
+            Mapper.Map(entityDto, entity);
+            entity.ApplierId = applierId;
+            Repository.Update(entity);
+        }
     }
 }

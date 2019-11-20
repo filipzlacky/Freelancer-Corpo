@@ -51,7 +51,7 @@ namespace WebApplication1.Controllers
         }
 
         // PUT: api/Offer/5
-        public async Task<string> Put(int id, [FromBody]RatingDTO rating)
+        public async Task<string> Put(int id, [FromBody]CreateRatingDTO rating)
         {
             if (!ModelState.IsValid)
             {

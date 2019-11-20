@@ -9,7 +9,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs
 {
     public class RatingDTO : DTOBase
     {        
-        public int RatedUserId { get; set; }
+        public int CreatorId { get; set; }
 
         public string Comment { get; set; }
 

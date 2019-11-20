@@ -29,3 +29,4 @@ C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Debug\FreelancerCorp.Infrastructure.csproj.CopyComplete
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Debug\FreelancerCorp.Infrastructure.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Debug\FreelancerCorp.Infrastructure.pdb
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Debug\FreelancerCorp.Infrastructure.csprojAssemblyReference.cache

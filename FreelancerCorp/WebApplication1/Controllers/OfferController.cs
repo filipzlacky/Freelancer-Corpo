@@ -51,7 +51,7 @@ namespace FreelancerCorp.WebApi.Controllers
         }
 
         // PUT: api/Offer/5
-        public async Task<string> Put(int id, [FromBody]OfferDTO offer)
+        public async Task<string> Put(int id, [FromBody]UserAppliesForOfferDTO offer)
         {
             if (!ModelState.IsValid)
             {
