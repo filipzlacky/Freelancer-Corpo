@@ -16,7 +16,7 @@ namespace FreelancerCorp.PresentationLayer.App_Start.Windsor
             container.Register(
                 Classes.FromThisAssembly()
                     .BasedOn<IController>()
-                    .LifestyleTransient()
+                    .LifestylePerWebRequest()
             );
         }
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FreelancerCorp.BusinessLayer.DTOs.Common;
+using FreelancerCorp.BusinessLayer.DTOs.Enums;
 
 namespace FreelancerCorp.BusinessLayer.DTOs
 {
@@ -12,7 +13,8 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public string Name { get; set; }
 
         public string Email { get; set; }
-
+        public string PhoneNumber { get; set; }
+        public Sex Sex { get; set; }
         public string Location { get; set; }
 
         public DateTime DoB { get; set; }

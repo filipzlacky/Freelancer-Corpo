@@ -178,3 +178,7 @@ C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Prese
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Windsor.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Core.xml
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Windsor.xml
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Windsor.Web.Mvc.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\WebActivatorEx.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Facilities.AspNet.SystemWeb.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Facilities.AspNet.SystemWeb.xml
