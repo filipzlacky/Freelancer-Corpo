@@ -78,6 +78,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FreelancerCorp.Infrastructure.EntityFramework\FreelancerCorp.Infrastructure.EntityFramework.csproj">
+      <Project>{DD82811D-78EE-4A6C-9AAD-F7798F950DB1}</Project>
+      <Name>FreelancerCorp.Infrastructure.EntityFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FreelancerCorp.Infrastructure\FreelancerCorp.Infrastructure.csproj">
       <Project>{2992777d-3ba3-4909-849b-6bf932857063}</Project>
       <Name>FreelancerCorp.Infrastructure</Name>

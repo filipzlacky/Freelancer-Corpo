@@ -40,11 +40,6 @@ namespace FreelancerCorp.BusinessLayer.Services.Ratings
             return await Query.ExecuteQuery(filter);
         }
 
-        protected override async Task<Rating> GetWithIncludesAsync(int entityId)
-        {
-            return await Repository.GetAsync(entityId);
-        }
-
         public int Create(RatingDTO entityDto, int ratedUserId)
         {
             var entity = Mapper.Map<Rating>(entityDto);
@@ -59,6 +54,11 @@ namespace FreelancerCorp.BusinessLayer.Services.Ratings
             Mapper.Map(entityDto, entity);
             entity.RatedUserId = ratedUserId;
             Repository.Update(entity);
+        }
+
+        protected override async Task<Rating> GetWithIncludesAsync(int entityId)
+        {
+            return await Repository.GetAsync(entityId);
         }
     }
 }

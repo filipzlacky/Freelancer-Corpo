@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using FreelancerCorp.BusinessLayer.DTOs;
+using FreelancerCorp.BusinessLayer.DTOs.Filter;
 using FreelancerCorp.BusinessLayer.Facades;
 using FreelancerCorp.WebApi.Models.RatingsModel;
 
@@ -20,19 +21,19 @@ namespace WebApplication1.Controllers
         }
 
         // GET: api/Offer/5
-        public async Task<IEnumerable<int>> Get(int id)
+        public async Task<int> Get(int id)
         {
             if (id <= 0)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            var rating = await RatingFacade.GetRatingsAsync(new int[] { id });
+            var rating = await RatingFacade.GetRatingsAsync(id);
             if (rating == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
             //offer.Id = 0;
-            return rating;
+            return rating.Id;
         }
 
         // POST: api/Offer

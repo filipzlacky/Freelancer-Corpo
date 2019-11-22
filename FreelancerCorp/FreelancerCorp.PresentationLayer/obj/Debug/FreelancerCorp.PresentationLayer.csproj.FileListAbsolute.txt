@@ -182,3 +182,6 @@ C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Prese
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\WebActivatorEx.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Facilities.AspNet.SystemWeb.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Facilities.AspNet.SystemWeb.xml
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.EntityFramework.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.EntityFramework.pdb
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.EntityFramework.dll.config

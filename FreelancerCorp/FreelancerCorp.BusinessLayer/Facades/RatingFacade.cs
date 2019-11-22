@@ -56,13 +56,13 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        //public async Task<IEnumerable<int>> GetRatingsAsync(int score)
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        return (await ratingService.GetRatingsIdsByScoreAsync(score));
-        //    }
-        //}
+        public async Task<RatingDTO> GetRatingsAsync(int id)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return (await ratingService.GetAsync(id));
+            }
+        }
 
         //public async Task<IEnumerable<int>> GetRatingsAsync(int[] ids)
         //{
@@ -80,7 +80,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
         //    }
         //}
 
-            public async Task<QueryResultDTO<RatingDTO, RatingFilterDTO>> ListRatingsAsync(RatingFilterDTO filter)
+        public async Task<QueryResultDTO<RatingDTO, RatingFilterDTO>> ListRatingsAsync(RatingFilterDTO filter)
         {
             using (UnitOfWorkProvider.Create())
             {

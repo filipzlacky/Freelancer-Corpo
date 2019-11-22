@@ -24,13 +24,13 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         // GET: FreelancerController
         public async Task<ActionResult> Index(int page = 1)
         {
-            //var filter = Session[FilterSessionKey] as FreelancerFilterDTO ?? new FreelancerFilterDTO { PageSize = PageSize };
-            //filter.RequestedPageNumber = page;
+            var filter = Session[FilterSessionKey] as FreelancerFilterDTO ?? new FreelancerFilterDTO { PageSize = PageSize };
+            filter.RequestedPageNumber = page;
 
-            //var allFreelancers = await UserFacade.GetFreelancersAsync(new FreelancerFilterDTO());
-            //var result = await UserFacade.GetFreelancersAsync(filter);
+            var allFreelancers = await UserFacade.GetFreelancersAsync(new FreelancerFilterDTO());
+            var result = await UserFacade.GetFreelancersAsync(filter);
 
-            //var model = await InitializeFreelancerListViewModel(result, (int)allFreelancers.TotalItemsCount);
+            var model = await InitializeFreelancerListViewModel(result, (int)allFreelancers.TotalItemsCount);
             return View("FreelancerListView"/*, model*/);
         }
 
@@ -110,7 +110,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 newFreelancer.Name = name + " " + lastName;
 
-                //UserFacade.CreateFreelancerAsync(newFreelancer);
+                UserFacade.CreateFreelancerAsync(newFreelancer);
 
                 return RedirectToAction("Index");
             }
