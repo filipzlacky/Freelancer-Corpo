@@ -1,0 +1,8 @@
+spravit list view pre freelancers
+dokoncit controller pre freelancers (edit)
+spravit edit view pre freelancers
+upravit filter pre zobrazovanie bez parametrov
+
+spravit list view pre offers - N
+spravit edit view pre offers - N
+spravit controller pre offers - N
