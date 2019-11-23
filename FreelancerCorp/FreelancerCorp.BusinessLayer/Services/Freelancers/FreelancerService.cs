@@ -19,24 +19,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Freelancers
     {
         public FreelancerService(IMapper mapper, IRepository<Freelancer> categoryRepository, QueryObjectBase<FreelancerDTO, Freelancer, FreelancerFilterDTO, IQuery<Freelancer>> categoryListQuery)
             : base(mapper, categoryRepository, categoryListQuery) { }
-
-        //public async Task<int[]> GetFreelancerIdsByAllAsync(string location, params string[] names)
-        //{
-        //    var queryResult = await Query.ExecuteQuery(new FreelancerFilterDTO { SearchedLocation = location, SearchedFreelancerNames = names });
-        //    return queryResult.Items.Select(freelancer => freelancer.Id).ToArray();
-        //}
-
-        //public async Task<int[]> GetFreelancerIdsByLocationAsync(string location)
-        //{
-        //    var queryResult = await Query.ExecuteQuery(new FreelancerFilterDTO { SearchedLocation = location });
-        //    return queryResult.Items.Select(freelancer => freelancer.Id).ToArray();
-        //}
-
-        //public async Task<int[]> GetFreelancerIdsByNamesAsync(params string[] names)
-        //{
-        //    var queryResult = await Query.ExecuteQuery(new FreelancerFilterDTO { SearchedFreelancerNames = names });
-        //    return queryResult.Items.Select(freelancer => freelancer.Id).ToArray();
-        //}        
+       
 
         protected async override Task<Freelancer> GetWithIncludesAsync(int entityId)
         {

@@ -1,7 +1,37 @@
-﻿
+﻿@model IEnumerable<FreelancerCorp.PresentationLayer.Models.Freelancers.FreelancerListViewModel>
+
 @{
     ViewBag.Title = "FreelancerListView";
 }
 
-<h2>FreelancerListView</h2>
+<h2>Here is the place to list all ULTIMATE freelancers:</h2>
 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageRating)
+        </th>
+        <th></th>
+    </tr>
+    <div class="col-md-9">
+        <div class="card-deck mb-3 text-center">
+            @foreach (var item in Model)
+            {
+                <div class="card clickable-area" @("onclick=GoToDetail('" + item.Id + "')")>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AverageRating)
+                        </td>
+                    </tr>
+                    }
+                </div>
+        </div>
+    </div>
+</table>
+
+
+<script>
+function GoToDetail(id) {
+    window.location = "/Freelancers/Details/" + id;
+}
+</script>

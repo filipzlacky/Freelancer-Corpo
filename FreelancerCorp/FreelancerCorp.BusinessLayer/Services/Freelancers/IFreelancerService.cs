@@ -12,13 +12,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Freelancers
     public interface IFreelancerService
     {
 
-        Task<QueryResultDTO<FreelancerDTO, FreelancerFilterDTO>> ListFreelancersAsync(FreelancerFilterDTO filter);
-
-        //Task<int[]> GetFreelancerIdsByNamesAsync(params string[] names);
-
-        //Task<int[]> GetFreelancerIdsByLocationAsync(string location);
-
-        //Task<int[]> GetFreelancerIdsByAllAsync(string location, params string[] names);
+        Task<QueryResultDTO<FreelancerDTO, FreelancerFilterDTO>> ListFreelancersAsync(FreelancerFilterDTO filter);        
 
         Task<FreelancerDTO> GetAsync(int entityId, bool withIncludes = true);
 

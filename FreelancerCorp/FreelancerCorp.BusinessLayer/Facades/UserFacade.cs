@@ -23,6 +23,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             corporationService = corporation;
         }
 
+        #region CRUD
         public async Task<int> CreateFreelancerAsync(FreelancerDTO freelancer)
         {
             using (var uow = UnitOfWorkProvider.Create())
@@ -103,56 +104,13 @@ namespace FreelancerCorp.BusinessLayer.Facades
 
                 return true;
             }
-        }
+        }        
 
         public async Task<FreelancerDTO> GetFreelancerAsync(int id)
         {
             using (UnitOfWorkProvider.Create())
             {
                 return await freelancerService.GetAsync(id);
-            }
-        }
-
-        //public async Task<IEnumerable<int>> GetFreelancersAsync(params string[] names)
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        var freelancers = await freelancerService.ListFreelancersAsync(new FreelancerFilterDTO { SearchedFreelancerNames = names });
-        //        return freelancers.Items.Select(freelancer => freelancer.Id);
-        //    }
-        //}
-
-        //public async Task<IEnumerable<int>> GetFreelancersAsync(string location)
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        var freelancers = await freelancerService.ListFreelancersAsync(new FreelancerFilterDTO { SearchedLocation = location });
-        //        return freelancers.Items.Select(freelancer => freelancer.Id);
-        //    }
-        //}
-
-        //public async Task<IEnumerable<int>> GetFreelancersAsync(string location, params string[] names)
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        var freelancers = await freelancerService.ListFreelancersAsync(new FreelancerFilterDTO { SearchedFreelancerNames = names, SearchedLocation = location });
-        //        return freelancers.Items.Select(freelancer => freelancer.Id);
-        //    }
-        //}
-
-        //public async Task<IEnumerable<FreelancerDTO>> GetFreelancersAsync()
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        return (await freelancerService.ListAllAsync()).Items;
-        //    }
-        //}
-
-        public async Task<QueryResultDTO<FreelancerDTO, FreelancerFilterDTO>> GetFreelancersAsync(FreelancerFilterDTO filter)
-        {
-            using (UnitOfWorkProvider.Create())
-            {                
-                return await freelancerService.ListFreelancersAsync(filter);               
             }
         }
 
@@ -164,42 +122,36 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<QueryResultDTO<CorporationDTO, CorporationFilterDTO>> GetCorporationsAsync(CorporationFilterDTO filter)
+        #endregion
+
+        public async Task<IEnumerable<FreelancerDTO>> GetFreelancersAsync()
         {
             using (UnitOfWorkProvider.Create())
             {
-                return await corporationService.ListCorporationsAsync(filter);
+                return (await freelancerService.ListAllAsync()).Items;
             }
         }
-        //public async Task<IEnumerable<int>> GetCorporationsAsync(params string[] names)
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        return await corporationService.GetCorporationIdsByNamesAsync(names);
-        //    }
-        //}
-
-        //public async Task<IEnumerable<int>> GetCorporationsAsync(string location)
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        return await corporationService.GetCorporationIdsByLocationAsync(location);
-        //    }
-        //}
-
-        //public async Task<IEnumerable<int>> GetCorporationsAsync(string location, params string[] names)
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        return await corporationService.GetCorporationIdsByAllAsync(location, names);
-        //    }
-        //}
-
         public async Task<IEnumerable<CorporationDTO>> GetCorporationsAsync()
         {
             using (UnitOfWorkProvider.Create())
             {
                 return (await corporationService.ListAllAsync()).Items;
+            }
+        }
+
+        public async Task<QueryResultDTO<FreelancerDTO, FreelancerFilterDTO>> GetFreelancersAsync(FreelancerFilterDTO filter)
+        {
+            using (UnitOfWorkProvider.Create())
+            {                
+                return await freelancerService.ListFreelancersAsync(filter);               
+            }
+        }        
+
+        public async Task<QueryResultDTO<CorporationDTO, CorporationFilterDTO>> GetCorporationsAsync(CorporationFilterDTO filter)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await corporationService.ListCorporationsAsync(filter);
             }
         }
 

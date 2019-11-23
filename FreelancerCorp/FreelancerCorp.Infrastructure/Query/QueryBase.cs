@@ -31,20 +31,20 @@ namespace FreelancerCorp.Infrastructure.Query
         }
 
         public IQuery<TEntity> Where(IPredicate rootPredicate) {
-            if (rootPredicate == null) throw new ArgumentException("ultra fesny exception");
+            if (rootPredicate == null) throw new ArgumentException("Root predicate can't be null");
             Predicate = rootPredicate;
             return this;
         }
 
         public IQuery<TEntity> SortBy(string sortAccordingTo, bool ascendingOrder = true) {
-            if (sortAccordingTo == null) throw new ArgumentException("dalsi pekny exception");
+            if (sortAccordingTo == null) throw new ArgumentException("Sort according to can't be null");
             SortAccordingTo = sortAccordingTo;
             UseAscendingOrder = ascendingOrder;
             return this;
         }
 
         public IQuery<TEntity> Page(int pageToFetch, int pageSize = 10) {
-            if (pageToFetch < 0 || pageSize < 0) throw new ArgumentException("nejaky pekny popisok");
+            if (pageToFetch < 0 || pageSize < 0) throw new ArgumentException("Page size/ page to fetch can't be negative");
 
             DesiredPage = pageToFetch;
             PageSize = pageSize;

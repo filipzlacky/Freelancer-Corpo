@@ -190,8 +190,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Freelancers\FreelancerListView.cshtml" />
     <Content Include="Views\Freelancers\FreelancerCreateView.cshtml" />
+    <Content Include="Views\Freelancers\FreelancerEditView.cshtml" />
+    <Content Include="Views\Freelancers\FreelancerListView.cshtml" />
+    <Content Include="Views\Freelancers\FreelancerDetailView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
