@@ -57,7 +57,7 @@ namespace FreelancerCorp.WebApi.Controllers
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            var success = await OfferFacade.EditOfferAsync(offer);
+            var success = await OfferFacade.AppyForOfferAsync(offer);
             if (!success)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

@@ -9,7 +9,7 @@ namespace FreelancerCorp.PresentationLayer.Models.Offers
 {
     public class OfferListViewModel
     {
-        public string[] SortCriteria => new[] { nameof(OfferDTO.Cathegory), nameof(OfferDTO.Price) };
+        public List<string> SortCriteria => new List<string> { nameof(OfferDTO.Cathegory), nameof(OfferDTO.Price) };
 
         public List<OfferDTO> Offers { get; set; }
 

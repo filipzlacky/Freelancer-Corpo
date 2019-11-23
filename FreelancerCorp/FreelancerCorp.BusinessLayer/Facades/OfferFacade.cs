@@ -18,17 +18,31 @@ namespace FreelancerCorp.BusinessLayer.Facades
             this.offerService = offerService;
         }
 
-        public async Task<int> CreateOfferAsync(UserAppliesForOfferDTO offer)
+        public async Task<int> CreateOfferAsync(OfferDTO offer)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
-                var offerId = offerService.Create(offer.Offer, offer.ApplierId);
+                var offerId = offerService.Create(offer);
                 await uow.Commit();
                 return offerId;
             }
         }
 
-        public async Task<bool> EditOfferAsync(UserAppliesForOfferDTO offer)
+        public async Task<bool> EditOfferAsync(OfferDTO offer)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                if ((await offerService.GetAsync(offer.Id, false)) == null)
+                {
+                    return false;
+                }
+                await offerService.Update(offer, 0);    //need to rewrite
+                await uow.Commit();
+                return true;
+            }
+        }
+
+        public async Task<bool> AppyForOfferAsync(UserAppliesForOfferDTO offer)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {

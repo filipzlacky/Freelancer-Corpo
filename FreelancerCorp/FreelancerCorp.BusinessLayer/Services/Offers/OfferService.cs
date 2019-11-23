@@ -48,10 +48,10 @@ namespace FreelancerCorp.BusinessLayer.Services.Offers
             return await Repository.GetAsync(entityId);
         }
 
-        public int Create(OfferDTO entityDto, int applierId)
+        public override int Create(OfferDTO entityDto)
         {
             var entity = Mapper.Map<Offer>(entityDto);
-            entity.ApplierId = applierId;
+            entity.ApplierId = 0;
             Repository.Create(entity);
             return entity.Id;
         }

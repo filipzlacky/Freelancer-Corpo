@@ -4,5 +4,5 @@ spravit edit view pre freelancers
 upravit filter pre zobrazovanie bez parametrov
 
 spravit list view pre offers - N
-spravit edit view pre offers - N
-spravit controller pre offers - N
+spravit edit view pre offers - N done
+spravit controller pre offers - N done
