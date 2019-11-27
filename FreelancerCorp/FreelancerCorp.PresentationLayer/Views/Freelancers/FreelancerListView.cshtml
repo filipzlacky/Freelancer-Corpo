@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FreelancerCorp.PresentationLayer.Models.Freelancers.FreelancerListViewModel>
+﻿@model FreelancerCorp.PresentationLayer.Models.Freelancers.FreelancerListViewModel
 
 @{
     ViewBag.Title = "FreelancerListView";
@@ -6,27 +6,29 @@
 
 <h2>Here is the place to list all ULTIMATE freelancers:</h2>
 
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AverageRating)
+            Name
         </th>
-        <th></th>
-    </tr>
-    <div class="col-md-9">
-        <div class="card-deck mb-3 text-center">
-            @foreach (var item in Model)
-            {
-                <div class="card clickable-area" @("onclick=GoToDetail('" + item.Id + "')")>
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AverageRating)
-                        </td>
-                    </tr>
-                    }
-                </div>
+        <th>
+            Location
+        </th>        
+    </tr>    
+    @foreach (var freelancer in Model.Freelancers)
+    {
+        <div class="card clickable-area" @("onclick=GoToDetail('" + freelancer.Id + "')")>
+            <tr>
+                <td>
+                    <strong class="text-danger">@freelancer.Name</strong>
+                </td>
+                <td>
+                    <strong class="text-danger">@freelancer.Location</strong>
+                </td>
+            </tr>                
         </div>
-    </div>
+    }    
 </table>
 
 

@@ -42,5 +42,10 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
 
             return query.Where(new CompositePredicate(predicates));
         }
+
+        protected override IQuery<Offer> GetAll(IQuery<Offer> query)
+        {
+            return query;
+        }
     }
 }

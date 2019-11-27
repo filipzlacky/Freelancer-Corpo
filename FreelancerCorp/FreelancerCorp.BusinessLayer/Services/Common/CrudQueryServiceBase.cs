@@ -61,7 +61,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Common
         
         public virtual async Task<QueryResultDTO<TDto, TFilterDto>> ListAllAsync()
         {
-            return await Query.ExecuteQuery(new TFilterDto());
+            return await Query.ExecuteEmptyQuery();
         }
     }
 }

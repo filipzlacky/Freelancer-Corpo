@@ -17,7 +17,8 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
         public FreelancerQueryObject(IMapper mapper, IQuery<Freelancer> offer) : base(mapper, offer) { }
 
         protected override IQuery<Freelancer> ApplyWhereClause(IQuery<Freelancer> query, FreelancerFilterDTO filter)
-        {
+        {            
+
             List<IPredicate> predicates = new List<IPredicate>();
 
             if (!string.IsNullOrEmpty(filter.SearchedLocation))
@@ -42,6 +43,11 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
             }
 
             return query.Where(new CompositePredicate(predicates));
+        }
+
+        protected override IQuery<Freelancer> GetAll(IQuery<Freelancer> query)
+        {
+            return query;
         }
     }
 }

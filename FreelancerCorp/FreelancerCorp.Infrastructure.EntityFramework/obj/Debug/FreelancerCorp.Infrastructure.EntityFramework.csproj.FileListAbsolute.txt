@@ -26,3 +26,5 @@ C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\obj\Debug\FreelancerCorp.Infrastructure.EntityFramework.csproj.CopyComplete
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\obj\Debug\FreelancerCorp.Infrastructure.EntityFramework.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\obj\Debug\FreelancerCorp.Infrastructure.EntityFramework.pdb
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Debug\EFProviderWrapperToolkit.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Debug\EFProviderWrapperToolkit.xml

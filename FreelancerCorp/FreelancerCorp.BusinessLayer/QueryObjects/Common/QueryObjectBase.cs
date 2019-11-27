@@ -24,6 +24,8 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects.Common
 
         protected abstract IQuery<TEntity> ApplyWhereClause(IQuery<TEntity> query, TFilter filter);
 
+        protected abstract IQuery<TEntity> GetAll(IQuery<TEntity> query);
+
         public virtual async Task<QueryResultDTO<TDto, TFilter>> ExecuteQuery(TFilter filter)
         {
             var query = ApplyWhereClause(Query, filter);
@@ -42,6 +44,18 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects.Common
             queryResultDTO.Filter = filter;
 
             return queryResultDTO;
+        }
+
+        public async Task<QueryResultDTO<TDto, TFilter>> ExecuteEmptyQuery()
+        {
+            var query = GetAll(Query);
+
+            var queryResult = await query.ExecuteAsync();
+
+            var queryResultDTO = mapper.Map<QueryResultDTO<TDto, TFilter>>(queryResult);
+
+            return queryResultDTO;
+
         }
     }
 }
