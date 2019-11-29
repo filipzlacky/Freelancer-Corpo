@@ -13,8 +13,11 @@
             Name
         </th>
         <th>
+            Age
+        </th>
+        <th>
             Location
-        </th>        
+        </th>
     </tr>    
     @foreach (var freelancer in Model.Freelancers)
     {
@@ -22,6 +25,9 @@
             <tr>
                 <td>
                     <strong class="text-danger">@freelancer.Name</strong>
+                </td>
+                <td>
+                    <strong class="text-danger">@freelancer.GetAge()</strong>
                 </td>
                 <td>
                     <strong class="text-danger">@freelancer.Location</strong>

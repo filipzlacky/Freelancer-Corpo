@@ -24,5 +24,16 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public List<OfferDTO> Offers { get; set; } = new List<OfferDTO>();
 
         public List<RatingDTO> Ratings { get; set; } = new List<RatingDTO>();
+
+        public int GetAge()
+        {
+            int age = 0;
+            age = DateTime.Now.Year - DoB.Year;
+            if (DateTime.Now.DayOfYear < DoB.DayOfYear)
+                age = age - 1;
+
+            return age;
+        }
+
     }
 }

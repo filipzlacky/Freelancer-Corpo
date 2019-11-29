@@ -17,7 +17,6 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
             Sex = sex;
             DoB = dob;
             Location = location;
-        }
-
+        }        
     }
 }
