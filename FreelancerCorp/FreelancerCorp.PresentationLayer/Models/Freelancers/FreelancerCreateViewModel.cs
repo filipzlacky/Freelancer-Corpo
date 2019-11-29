@@ -14,6 +14,7 @@ namespace FreelancerCorp.PresentationLayer.Models.Freelancers
         public string Location { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+        public string Info { get; set; }
         public Sex Sex { get; set; }
         [DataType(DataType.Date)]        
         [DisplayFormat(DataFormatString = "{0:dd/MMM/yyyy}", ApplyFormatInEditMode = true)]

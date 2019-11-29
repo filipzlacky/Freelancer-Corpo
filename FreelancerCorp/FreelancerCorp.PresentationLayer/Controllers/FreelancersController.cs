@@ -83,6 +83,9 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                         case "PhoneNumber":
                             newFreelancer.PhoneNumber = collection[key];
                             break;
+                        case "Info":
+                            newFreelancer.Info = collection[key];
+                            break;
                         case "Location":
                             newFreelancer.Location = collection[key];
                             break;
@@ -144,6 +147,9 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                             break;                        
                         case "Email":
                             newFreelancer.Email = collection[key];
+                            break;
+                        case "Info":
+                            newFreelancer.Info = collection[key];
                             break;
                         case "PhoneNumber":
                             newFreelancer.PhoneNumber = collection[key];

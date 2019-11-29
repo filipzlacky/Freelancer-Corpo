@@ -1,0 +1,44 @@
+﻿@model FreelancerCorp.PresentationLayer.Models.Corporations.CorporationListViewModel
+
+@{
+    ViewBag.Title = "Corporations";
+}
+
+<h2>Here is the place to list all ULTIMATE corporations:</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>        
+        <th>
+            Address
+        </th>
+        <th>
+            Average rating
+        </th>
+    </tr>
+    @foreach (var corporation in Model.Corporations)
+    {
+        <div class="card clickable-area" @("onclick=GoToDetail('" + corporation.Id + "')")>
+            <tr>
+                <td>
+                    <strong class="text-danger">@corporation.Name</strong>
+                </td>                
+                <td>
+                    <strong class="text-danger">@corporation.Address</strong>
+                </td>
+                <td>
+                    <strong class="text-danger">@corporation.Average</strong>
+                </td>
+            </tr>
+        </div>
+    }
+</table>
+
+
+<script>
+function GoToDetail(id) {
+    window.location = "/Corporations/Details/" + id;
+}
+</script>

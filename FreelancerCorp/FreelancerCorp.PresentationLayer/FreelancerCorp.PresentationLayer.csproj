@@ -147,6 +147,7 @@
     <Compile Include="App_Start\WindsorActivator.cs" />
     <Compile Include="App_Start\Windsor\PresentationLayerInstaller.cs" />
     <Compile Include="App_Start\Windsor\WindsorControllerFactory.cs" />
+    <Compile Include="Controllers\CorporationsController.cs" />
     <Compile Include="Controllers\FreelancersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OffersController.cs" />
@@ -154,6 +155,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Installers\ControllersInstaller.cs" />
+    <Compile Include="Models\Corporations\CorporationCreateViewModel.cs" />
+    <Compile Include="Models\Corporations\CorporationListViewModel.cs" />
     <Compile Include="Models\Freelancers\FreelancerEditViewModel.cs" />
     <Compile Include="Models\Freelancers\FreelancerCreateViewModel.cs" />
     <Compile Include="Models\Freelancers\FreelancerListViewModel.cs" />
@@ -208,6 +211,10 @@
     <Content Include="Views\Offers\OfferEditView.cshtml" />
     <Content Include="Views\Offers\OfferListView.cshtml" />
     <Content Include="Views\Offers\OfferDetailView.cshtml" />
+    <Content Include="Views\Corporations\CorporationCreateView.cshtml" />
+    <Content Include="Views\Corporations\CorporationEditView.cshtml" />
+    <Content Include="Views\Corporations\CorporationDetailView.cshtml" />
+    <Content Include="Views\Corporations\CorporationListView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

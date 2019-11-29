@@ -1,7 +1,7 @@
 ﻿@model FreelancerCorp.PresentationLayer.Models.Freelancers.FreelancerListViewModel
 
 @{
-    ViewBag.Title = "FreelancerListView";
+    ViewBag.Title = "Freelancers";
 }
 
 <h2>Here is the place to list all ULTIMATE freelancers:</h2>
@@ -18,6 +18,9 @@
         <th>
             Location
         </th>
+        <th>
+            Average rating
+        </th>
     </tr>    
     @foreach (var freelancer in Model.Freelancers)
     {
@@ -31,6 +34,9 @@
                 </td>
                 <td>
                     <strong class="text-danger">@freelancer.Location</strong>
+                </td>
+                <td>
+                    <strong class="text-danger">@freelancer.Average</strong>
                 </td>
             </tr>                
         </div>

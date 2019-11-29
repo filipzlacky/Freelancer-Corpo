@@ -18,6 +18,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public string Location { get; set; }
 
         public DateTime DoB { get; set; }
+        public string Info { get; set; }
 
         public double Average { get; set; }
 
