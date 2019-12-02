@@ -11,7 +11,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs
     {
         public int RatedUserId { get; set; }
 
-        public UserRole UserRole { get; set; }
+        public UserRole RatedUserRole { get; set; }
 
         public RatingDTO Rating { get; set; }
     }

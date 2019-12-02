@@ -24,12 +24,15 @@
             <tr>
                 <td>
                     <strong class="text-danger">@corporation.Name</strong>
-                </td>                
+                </td>
                 <td>
                     <strong class="text-danger">@corporation.Address</strong>
                 </td>
                 <td>
                     <strong class="text-danger">@corporation.Average</strong>
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = corporation.Id })
                 </td>
             </tr>
         </div>

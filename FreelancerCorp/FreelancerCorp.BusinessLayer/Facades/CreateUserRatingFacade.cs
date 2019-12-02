@@ -32,15 +32,17 @@ namespace FreelancerCorp.BusinessLayer.Facades
             using (var uow = UnitOfWorkProvider.Create())
             {
                 var rating = await ratingService.GetAsync(createRatingDTO.Rating.Id);
-                if (createRatingDTO.UserRole == UserRole.CORPORATION)
+                if (createRatingDTO.RatedUserRole == UserRole.CORPORATION)
                 {
                     var corporation = await corporationService.GetAsync(createRatingDTO.RatedUserId);
                     corporation.Ratings.Add(createRatingDTO.Rating);
+                    corporation.Average += createRatingDTO.Rating.Score / corporation.Ratings.Count;
                 }
                 else
                 {
                     var freelancer = await freelancerService.GetAsync(createRatingDTO.RatedUserId);
                     freelancer.Ratings.Add(createRatingDTO.Rating);
+                    freelancer.Average += createRatingDTO.Rating.Score / freelancer.Ratings.Count;
                 }
                 return createRatingDTO.Rating.Id;
             }

@@ -24,11 +24,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         // GET: OffersController
         public async Task<ActionResult> Index(int page = 1)
         {
-            //var filter = Session[FilterSessionKey] as OfferFilterDTO ?? new OfferFilterDTO { PageSize = PageSize };
-            //filter.RequestedPageNumber = page;
-
-            var allOffers = await OfferFacade.GetAllOffersAsync();
-            //var result = await OfferFacade.GetAllOffersAsync(filter);
+            var allOffers = await OfferFacade.GetAllOffersAsync();            
 
             var model = InitializeOfferListViewModel(new QueryResultDTO<OfferDTO, OfferFilterDTO> { Items = allOffers });
             return View("OfferListView", model);

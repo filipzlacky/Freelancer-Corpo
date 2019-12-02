@@ -123,9 +123,9 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         }
 
         // GET: FreelancerController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            var model = UserFacade.GetFreelancerAsync(id);
+            var model = await UserFacade.GetFreelancerAsync(id);
             return View("FreelancerEditView", model);
         }
 
@@ -184,7 +184,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 if (!success)
                     // Throw ERROR
                     throw new NotImplementedException();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", id);
             }
             catch
             {

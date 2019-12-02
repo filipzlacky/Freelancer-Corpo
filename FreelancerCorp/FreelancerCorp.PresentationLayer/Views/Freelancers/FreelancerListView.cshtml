@@ -21,26 +21,30 @@
         <th>
             Average rating
         </th>
-    </tr>    
+    </tr>
     @foreach (var freelancer in Model.Freelancers)
     {
-        <div class="card clickable-area" @("onclick=GoToDetail('" + freelancer.Id + "')")>
-            <tr>
-                <td>
-                    <strong class="text-danger">@freelancer.Name</strong>
-                </td>
-                <td>
-                    <strong class="text-danger">@freelancer.GetAge()</strong>
-                </td>
-                <td>
-                    <strong class="text-danger">@freelancer.Location</strong>
-                </td>
-                <td>
-                    <strong class="text-danger">@freelancer.Average</strong>
-                </td>
-            </tr>                
-        </div>
-    }    
+        <div class="card clickable-area" @("onclick=GoToDetail('" + freelancer.Id + "')")></div>
+
+        <tr>
+            <td>
+                <strong class="text-danger">@freelancer.Name</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@freelancer.GetAge()</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@freelancer.Location</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@freelancer.Average</strong>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = freelancer.Id })                
+            </td>
+        </tr>
+
+    }
 </table>
 
 
