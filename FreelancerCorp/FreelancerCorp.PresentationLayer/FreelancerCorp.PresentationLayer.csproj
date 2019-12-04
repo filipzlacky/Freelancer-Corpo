@@ -147,6 +147,7 @@
     <Compile Include="App_Start\WindsorActivator.cs" />
     <Compile Include="App_Start\Windsor\PresentationLayerInstaller.cs" />
     <Compile Include="App_Start\Windsor\WindsorControllerFactory.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\CorporationsController.cs" />
     <Compile Include="Controllers\FreelancersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -155,6 +156,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Installers\ControllersInstaller.cs" />
+    <Compile Include="Models\Accounts\LoginModel.cs" />
     <Compile Include="Models\Corporations\CorporationCreateViewModel.cs" />
     <Compile Include="Models\Corporations\CorporationListViewModel.cs" />
     <Compile Include="Models\Freelancers\FreelancerEditViewModel.cs" />
@@ -215,6 +217,8 @@
     <Content Include="Views\Corporations\CorporationEditView.cshtml" />
     <Content Include="Views\Corporations\CorporationDetailView.cshtml" />
     <Content Include="Views\Corporations\CorporationListView.cshtml" />
+    <Content Include="Views\Accounts\Login.cshtml" />
+    <Content Include="Views\Accounts\RegisterFreelancerView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

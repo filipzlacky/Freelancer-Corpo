@@ -9,6 +9,7 @@ using System.Linq;
 using System;
 using FreelancerCorp.BusinessLayer.DTOs.Common;
 using FreelancerCorp.BusinessLayer.DTOs.Filter;
+using FreelancerCorp.BusinessLayer.Services.Users;
 
 namespace FreelancerCorp.BusinessLayer.Facades
 {
@@ -16,11 +17,13 @@ namespace FreelancerCorp.BusinessLayer.Facades
     {
         private readonly IFreelancerService freelancerService;
         private readonly ICorporationService corporationService;
-        public UserFacade(IUnitOfWorkProvider unitOfWorkProvider, IFreelancerService freelancer, ICorporationService corporation) 
+        private readonly IUserService userService;
+        public UserFacade(IUnitOfWorkProvider unitOfWorkProvider, IFreelancerService freelancer, ICorporationService corporation, IUserService user) 
             : base(unitOfWorkProvider)
         {
             freelancerService = freelancer;
             corporationService = corporation;
+            userService = user;
         }
 
         #region CRUD
@@ -122,6 +125,39 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
+        #endregion
+
+        #region Accounts
+        public async Task<int> RegisterFreelancer(UserCreateFreelancerDTO userDto)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                try
+                {
+                    var id = await userService.RegisterFreelancerUserAsync(userDto);
+                    await uow.Commit();
+                    return id;
+                } catch (ArgumentException)
+                {
+                    throw;
+                }
+            }
+        }
+        public async Task<bool> Login(string username, string password)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await userService.AuthorizeUserAsync(username, password);
+            }
+        }        
+
+        public async Task<UserDTO> GetUserAccordingToUsernameAsync(string username)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await userService.GetUserAccordingToUsernameAsync(username);
+            }
+        }
         #endregion
 
         public async Task<IEnumerable<FreelancerDTO>> GetFreelancersAsync()

@@ -50,7 +50,7 @@ namespace FreelancerCorp.Infrastructure.EntityFramework
                 result = new QueryResult<TEntity>(items, items.Count, PageSize, DesiredPage);
             }
             else
-            {
+            {                
                 List<TEntity> items = await Context.Database.SqlQuery<TEntity>(sql.ToString()).ToListAsync();
                 result = new QueryResult<TEntity>(items, items.Count);
             }

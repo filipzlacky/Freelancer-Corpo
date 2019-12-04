@@ -7,7 +7,7 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
         [Key]
         public int Id { get; set; }
 
-        public string TableName { get; }
+        public string TableName { get; } = "Users";
 
         public string Name { get; set; }
 
@@ -16,6 +16,13 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
 
+        public string UserName { get; set; }
+
+        public string PasswordSalt { get; set; }
+
+        public string PasswordHash { get; set; }
+
+        public string UserType { get; set; }
         public User() { }
         public User (string info, string tableName, string name, string email) {
             TableName = tableName;

@@ -1,0 +1,16 @@
+prihlasovanie:
+	userDTO
+	userCreateFreelancerDTO
+	userFilterDTO
+	userService
+	userQueryObject
+pridat:
+	metody v userFacade:
+		RegisterFreelancer
+		Login
+		GetUserAccordingToUsernameAsync
+	config.CreateMap v MappingConfig:
+		user - userDto
+		user - userCreateFreelancerDto
+		freelancer - userCreateFreelancerDto
+		QueryResult<User> - QueryResultDTO<UserDTO, UserFilterDTO>>

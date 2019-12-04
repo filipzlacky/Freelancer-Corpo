@@ -115,7 +115,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                     {
                         case "Name":
                             newCorporation.Name = collection[key];
-                            break;
+                            break;                        
                         case "Email":
                             newCorporation.Email = collection[key];
                             break;

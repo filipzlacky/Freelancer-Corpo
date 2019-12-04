@@ -10,7 +10,6 @@ namespace FreelancerCorp.BusinessLayer.DTOs
     public class CorporationDTO : DTOBase
     {
         public string Name { get; set; }
-
         public string Info { get; set; }
 
         public string Email { get; set; }

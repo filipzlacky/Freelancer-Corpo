@@ -198,3 +198,4 @@ C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\obj\Debug\FreelancerCorp.PresentationLayer.pdb
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\EntityFramework.SqlServer.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\EntityFramework.SqlServer.xml
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.BusinessLayer.dll.config

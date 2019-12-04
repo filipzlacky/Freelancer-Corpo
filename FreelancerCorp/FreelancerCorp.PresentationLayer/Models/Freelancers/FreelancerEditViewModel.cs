@@ -9,6 +9,7 @@ namespace FreelancerCorp.PresentationLayer.Models.Freelancers
 {
     public class FreelancerEditViewModel
     {
+        public string UserName { get; set; }
         public string Name { get; set; }       
         public string Location { get; set; }
         public string Email { get; set; }
