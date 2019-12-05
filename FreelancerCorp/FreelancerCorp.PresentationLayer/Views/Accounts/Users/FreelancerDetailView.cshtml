@@ -1,0 +1,84 @@
+﻿@model FreelancerCorp.PresentationLayer.Models.Accounts.FreelancerProfileModel
+
+
+@{
+    ViewBag.Title = "Freelancer details";
+}
+
+<h2>Here is the place to look at details about the ULTIMATE freelancer:</h2>
+
+<div>
+    <h4>FreelancerDTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserDTO.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserDTO.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.Info)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.DoB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.DoB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Delete", "Delete", new { id = Model.FreelancerDTO.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FreelancerDTO.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -22,7 +22,7 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
 
         public string PasswordHash { get; set; }
 
-        public string UserType { get; set; }
+        public string UserRole { get; set; }
         public User() { }
         public User (string info, string tableName, string name, string email) {
             TableName = tableName;

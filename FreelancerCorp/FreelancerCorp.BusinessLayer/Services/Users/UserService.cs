@@ -56,7 +56,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Users
             {
                 throw new ArgumentException();
             }
-            freelancer.UserType = "Freelancer";
+            freelancer.UserRole = "Freelancer";
 
             var password = CreateHash(userDto.Password);
             freelancer.PasswordHash = password.Item1;

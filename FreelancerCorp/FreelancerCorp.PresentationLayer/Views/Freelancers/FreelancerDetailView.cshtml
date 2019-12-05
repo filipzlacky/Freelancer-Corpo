@@ -1,4 +1,5 @@
-﻿@model FreelancerCorp.BusinessLayer.DTOs.FreelancerDTO
+﻿@model FreelancerCorp.PresentationLayer.Models.Accounts.FreelancerProfileModel
+
 
 @{
     ViewBag.Title = "Freelancer details";
@@ -11,73 +12,73 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
+            @Html.DisplayNameFor(model => model.UserDTO.UserName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.UserDTO.UserName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.FreelancerDTO.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
+            @Html.DisplayFor(model => model.FreelancerDTO.Email)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Location)
+            @Html.DisplayNameFor(model => model.FreelancerDTO.PhoneNumber)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Location)
+            @Html.DisplayFor(model => model.FreelancerDTO.PhoneNumber)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Info)
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Location)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Info)
+            @Html.DisplayFor(model => model.FreelancerDTO.Location)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sex)
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Info)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Sex)
+            @Html.DisplayFor(model => model.FreelancerDTO.Info)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DoB)
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Sex)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DoB)
+            @Html.DisplayFor(model => model.FreelancerDTO.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.DoB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.DoB)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.FreelancerDTO.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FreelancerDTO.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

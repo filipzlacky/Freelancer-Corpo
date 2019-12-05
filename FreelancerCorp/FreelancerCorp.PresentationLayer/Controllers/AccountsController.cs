@@ -1,4 +1,5 @@
 ﻿using FreelancerCorp.BusinessLayer.DTOs;
+using FreelancerCorp.BusinessLayer.DTOs.Enums;
 using FreelancerCorp.BusinessLayer.Facades;
 using FreelancerCorp.PresentationLayer.Models.Accounts;
 using System;
@@ -23,9 +24,9 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             this.userFacade = userFacade;
         }
 
-        public ActionResult Register()
+        public ActionResult RegisterFreelancer()
         {
-            return View();
+            return View("RegisterFreelancerView");
         }
 
         [HttpPost]
@@ -81,12 +82,117 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             ModelState.AddModelError("", "Wrong username or password!");
             return View();
         }
-        public async Task<ActionResult> Logout()
-        {
-            var user = await userFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);           
 
+        public async Task<ActionResult> Profile(FreelancerDTO freelancer)
+        {
+            var user = await userFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
+
+            return View("Users/FreelancerDetailView", ToProfileModel(freelancer, user));
+        }
+
+        public async Task<ActionResult> Profile()
+        {
+            var user = await userFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
+            if (user.UserRole == "Freelancer")
+            {
+                var freelancer = await userFacade.GetFreelancerAsync(user.Id);
+
+                return View("Users/FreelancerDetailView", ToProfileModel(freelancer, user));
+            } else if (user.UserRole == "Corporation")
+            {
+                var corporation = await userFacade.GetCorporationAsync(user.Id);
+
+                return View("Users/CorporationDetailView.cshtml", corporation);
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<ActionResult> EditProfile()
+        {
+            var user = await userFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
+            if (user.UserRole == "Freelancer")
+            {
+                var freelancer = await userFacade.GetFreelancerAsync(user.Id);
+
+                return View("Users/FreelancerEditView", ToProfileModel(freelancer, user));
+            }
+            else if (user.UserRole == "Corporation")
+            {
+                var corporation = await userFacade.GetCorporationAsync(user.Id);
+
+                return View("Users/CorporationEditView.cshtml", corporation);
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<ActionResult> EditProfile(int id, FormCollection collection)
+        {
+            try
+            {
+                FreelancerDTO newFreelancer = new FreelancerDTO();
+                newFreelancer.Id = id;
+
+                foreach (string key in collection.AllKeys)
+                {
+                    switch (key)
+                    {
+                        case "Name":
+                            newFreelancer.Name = collection[key];
+                            break;
+                        case "Email":
+                            newFreelancer.Email = collection[key];
+                            break;
+                        case "Info":
+                            newFreelancer.Info = collection[key];
+                            break;
+                        case "PhoneNumber":
+                            newFreelancer.PhoneNumber = collection[key];
+                            break;
+                        case "Location":
+                            newFreelancer.Location = collection[key];
+                            break;
+                        case "Sex":
+                            if (Enum.TryParse(collection[key], out Sex newSex))
+                            {
+                                newFreelancer.Sex = newSex;
+                            }
+                            break;
+                        case "DoB":
+                            if (DateTime.TryParse(collection[key], out DateTime newDate))
+                            {
+                                newFreelancer.DoB = newDate;
+                            }
+                            break;
+                    }
+                }
+
+                bool success = await userFacade.EditFreelancerAsync(newFreelancer);
+                if (!success)
+                    // Throw ERROR
+                    throw new NotImplementedException();
+                return RedirectToAction("Profile", newFreelancer);
+            }
+            catch
+            {
+                return View("~/Views/Home/Index.cshtml");
+            }
+        }
+
+        public ActionResult Logout()
+        {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
+        }
+
+        private FreelancerProfileModel ToProfileModel(FreelancerDTO freelancer, UserDTO user)
+        {
+            return new FreelancerProfileModel
+            {
+                FreelancerDTO = freelancer,
+                UserDTO = user
+            };
         }
     }
 }

@@ -156,6 +156,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Installers\ControllersInstaller.cs" />
+    <Compile Include="Models\Accounts\FreelancerProfileModel.cs" />
     <Compile Include="Models\Accounts\LoginModel.cs" />
     <Compile Include="Models\Corporations\CorporationCreateViewModel.cs" />
     <Compile Include="Models\Corporations\CorporationListViewModel.cs" />
@@ -219,6 +220,8 @@
     <Content Include="Views\Corporations\CorporationListView.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Accounts\RegisterFreelancerView.cshtml" />
+    <Content Include="Views\Accounts\Users\FreelancerDetailView.cshtml" />
+    <Content Include="Views\Accounts\Users\FreelancerEditView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
