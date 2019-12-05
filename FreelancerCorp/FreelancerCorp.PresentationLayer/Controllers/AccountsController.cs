@@ -83,13 +83,6 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Profile(FreelancerDTO freelancer)
-        {
-            var user = await userFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
-
-            return View("Users/FreelancerDetailView", ToProfileModel(freelancer, user));
-        }
-
         public async Task<ActionResult> Profile()
         {
             var user = await userFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
@@ -98,7 +91,8 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 var freelancer = await userFacade.GetFreelancerAsync(user.Id);
 
                 return View("Users/FreelancerDetailView", ToProfileModel(freelancer, user));
-            } else if (user.UserRole == "Corporation")
+            } 
+            else if (user.UserRole == "Corporation")
             {
                 var corporation = await userFacade.GetCorporationAsync(user.Id);
 
@@ -109,13 +103,13 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         }
 
         public async Task<ActionResult> EditProfile()
-        {
+        {            
             var user = await userFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
             if (user.UserRole == "Freelancer")
             {
                 var freelancer = await userFacade.GetFreelancerAsync(user.Id);
 
-                return View("Users/FreelancerEditView", ToProfileModel(freelancer, user));
+                return View("Users/FreelancerEditView", freelancer);
             }
             else if (user.UserRole == "Corporation")
             {
@@ -127,17 +121,17 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public async Task<ActionResult> EditProfile(int id, FormCollection collection)
+        private async Task<ActionResult> EditFreelancerProfile(UserDTO user, FormCollection collection)
         {
             try
             {
                 FreelancerDTO newFreelancer = new FreelancerDTO();
-                newFreelancer.Id = id;
+                newFreelancer.Id = user.Id;
 
                 foreach (string key in collection.AllKeys)
                 {
                     switch (key)
-                    {
+                    {                        
                         case "Name":
                             newFreelancer.Name = collection[key];
                             break;
@@ -172,12 +166,23 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 if (!success)
                     // Throw ERROR
                     throw new NotImplementedException();
-                return RedirectToAction("Profile", newFreelancer);
+                return RedirectToAction("Profile");
             }
             catch
             {
                 return View("~/Views/Home/Index.cshtml");
             }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditProfile(FormCollection collection)
+        {
+            var user = await userFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
+            if (user.UserRole == "Freelancer")
+            {
+                return await EditFreelancerProfile(user, collection);
+            }
+            return RedirectToAction("Profile");
         }
 
         public ActionResult Logout()
