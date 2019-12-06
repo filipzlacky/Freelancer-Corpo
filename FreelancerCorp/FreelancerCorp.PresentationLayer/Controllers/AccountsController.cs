@@ -90,7 +90,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             {
                 var freelancer = await userFacade.GetFreelancerAsync(user.Id);
 
-                return View("Users/FreelancerDetailView", ToProfileModel(freelancer, user));
+                return View("Users/FreelancerDetailView", ToProfileModel(freelancer, user.UserName));
             } 
             else if (user.UserRole == "Corporation")
             {
@@ -191,12 +191,12 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        private FreelancerProfileModel ToProfileModel(FreelancerDTO freelancer, UserDTO user)
+        private FreelancerProfileModel ToProfileModel(FreelancerDTO freelancer, string user)
         {
             return new FreelancerProfileModel
             {
                 FreelancerDTO = freelancer,
-                UserDTO = user
+                UserName = user
             };
         }
     }

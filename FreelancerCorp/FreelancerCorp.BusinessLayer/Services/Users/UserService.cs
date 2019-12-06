@@ -51,7 +51,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Users
         public async Task<int> RegisterFreelancerUserAsync(UserCreateFreelancerDTO userDto)
         {
             var freelancer = Mapper.Map<Freelancer>(userDto);
-
+            
             if (await GetIfUserExistsAsync(freelancer.UserName))
             {
                 throw new ArgumentException();
