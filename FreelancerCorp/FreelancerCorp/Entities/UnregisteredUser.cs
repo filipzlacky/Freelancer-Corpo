@@ -9,10 +9,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FreelancerCorp.DataAccessLayer.Entities {
     public class UnregisteredUser : User {
 
-        public UnregisteredUser() : base("", "Users", "", "")
+        public UnregisteredUser() : base("", "Users", "", "", "")
         { }
 
-        public UnregisteredUser(string name, string info) : base (info, "Users", name, "") {
+        public UnregisteredUser(string name, string info) : base (info, "Users", name, "", "") {
 
         }
         

@@ -32,7 +32,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             using (var uow = UnitOfWorkProvider.Create())
             {
                 var rating = await ratingService.GetAsync(createRatingDTO.Rating.Id);
-                if (createRatingDTO.RatedUserRole == UserRole.CORPORATION)
+                if (createRatingDTO.RatedUserRole == UserRole.Corporation)
                 {
                     var corporation = await corporationService.GetAsync(createRatingDTO.RatedUserId);
                     corporation.Ratings.Add(createRatingDTO.Rating);

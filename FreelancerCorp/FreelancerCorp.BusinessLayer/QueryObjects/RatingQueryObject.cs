@@ -39,5 +39,10 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
         {
             return query;
         }
+
+        //protected override IQuery<Rating> GetAll(IQuery<Rating> query, RatingFilterDTO filter)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

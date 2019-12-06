@@ -19,5 +19,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public string AdditionalInfo { get; set; }
         
         public int CreatorId { get; set; }
+
+        public UserRole CreatorRole { get; set; }
     }
 }

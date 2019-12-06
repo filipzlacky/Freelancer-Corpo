@@ -24,10 +24,16 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
         {
             return query.Where(new SimplePredicate(nameof(User.UserName), ValueComparingOperator.Equal, filter.UserName));
         }
+        
 
         protected override IQuery<User> GetAll(IQuery<User> query)
         {
             return query;
         }
+
+        //protected override IQuery<User> GetAll(IQuery<User> query, UserFilterDTO filter)
+        //{
+        //    return query;
+        //}
     }
 }

@@ -11,12 +11,12 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
         public DateTime DoB { get; set; }
         public string Location { get; set; }             
 
-        public Freelancer() : base ("", nameof(FreelancerCorpDbContext.Freelancers), "", "")
+        public Freelancer() : base ("", "Users", "", "", "Freelancer")
         {
 
         }
         public Freelancer(Sex sex, DateTime dob, string location, string email, string name, string info) 
-            : base(info, nameof(FreelancerCorpDbContext.Freelancers), name, email) {
+            : base(info, "Users", name, email, "Freelancer") {
             Sex = sex;
             DoB = dob;
             Location = location;

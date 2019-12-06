@@ -8,6 +8,8 @@ using System.Linq;
 using System.Collections.Generic;
 using FreelancerCorp.Infrastructure.Query.Predicates.Operators;
 using FreelancerCorp.BusinessLayer.DTOs;
+using FreelancerCorp.BusinessLayer.DTOs.Common;
+using System.Threading.Tasks;
 
 namespace FreelancerCorp.BusinessLayer.QueryObjects
 {
@@ -37,6 +39,22 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
             }
 
             return query.Where(new CompositePredicate(predicates));
+        }
+
+        public override async Task<QueryResultDTO<CorporationDTO, CorporationFilterDTO>> ExecuteEmptyQuery()
+        {
+            var query = GetAll(Query, new CorporationFilterDTO());
+
+            var queryResult = await query.ExecuteAsync();
+
+            var queryResultDTO = mapper.Map<QueryResultDTO<CorporationDTO, CorporationFilterDTO>>(queryResult);
+
+            return queryResultDTO;
+        }
+
+        private IQuery<Corporation> GetAll(IQuery<Corporation> query, CorporationFilterDTO filter)
+        {
+            return query.Where(new SimplePredicate(nameof(Corporation.UserRole), ValueComparingOperator.Equal, filter.UserRole));
         }
 
         protected override IQuery<Corporation> GetAll(IQuery<Corporation> query)

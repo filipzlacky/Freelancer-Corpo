@@ -20,6 +20,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         private const string FilterSessionKey = "filter";
 
         public OfferFacade OfferFacade { get; set; }
+        public UserFacade UserFacade { get; set; }
 
         // GET: OffersController
         public async Task<ActionResult> Index(int page = 1)
@@ -92,13 +93,17 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 }
 
                 newOffer.Description = title + ": " + details;
+                var user = await UserFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
+                newOffer.CreatorId = user.Id;
+                newOffer.CreatorRole = (UserRole)Enum.Parse(typeof(UserRole), user.UserRole);
 
                 int newId = await OfferFacade.CreateOfferAsync(newOffer);
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
+                
                 return View("~/Views/Home/Index.cshtml");
             }
         }
@@ -192,7 +197,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         }
 
         private OfferListViewModel InitializeOfferListViewModel(QueryResultDTO<OfferDTO, OfferFilterDTO> result)
-        {
+        {            
             return new OfferListViewModel
             {
                 Offers = new List<OfferDTO>(result.Items),

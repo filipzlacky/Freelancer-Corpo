@@ -24,11 +24,12 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
 
         public string UserRole { get; set; }
         public User() { }
-        public User (string info, string tableName, string name, string email) {
+        public User (string info, string tableName, string name, string email, string userRole) {
             TableName = tableName;
             Info = info;
             Name = name;
             Email = email;
+            UserRole = userRole;
         }
     }
 }

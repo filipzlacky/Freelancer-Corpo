@@ -26,6 +26,7 @@ namespace FreelancerCorp.DataAccessLayer {
         }
 
         override protected void OnModelCreating(DbModelBuilder modelBuilder) {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();                     
         }
     }

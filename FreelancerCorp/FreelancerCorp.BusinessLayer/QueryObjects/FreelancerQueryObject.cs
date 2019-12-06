@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FreelancerCorp.BusinessLayer.DTOs;
+using System.Threading.Tasks;
+using FreelancerCorp.BusinessLayer.DTOs.Common;
 
 namespace FreelancerCorp.BusinessLayer.QueryObjects
 {
@@ -43,6 +45,22 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
             }
 
             return query.Where(new CompositePredicate(predicates));
+        }
+
+        public override async Task<QueryResultDTO<FreelancerDTO, FreelancerFilterDTO>> ExecuteEmptyQuery()
+        {
+            var query = GetAll(Query, new FreelancerFilterDTO());
+
+            var queryResult = await query.ExecuteAsync();
+
+            var queryResultDTO = mapper.Map<QueryResultDTO<FreelancerDTO, FreelancerFilterDTO>>(queryResult);
+
+            return queryResultDTO;
+        }
+
+        protected IQuery<Freelancer> GetAll(IQuery<Freelancer> query, FreelancerFilterDTO filter)
+        {
+            return query.Where(new SimplePredicate(nameof(Freelancer.UserRole), ValueComparingOperator.Equal, filter.UserRole));
         }
 
         protected override IQuery<Freelancer> GetAll(IQuery<Freelancer> query)

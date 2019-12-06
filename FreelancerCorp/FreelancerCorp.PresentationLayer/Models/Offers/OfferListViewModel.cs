@@ -13,6 +13,8 @@ namespace FreelancerCorp.PresentationLayer.Models.Offers
 
         public List<OfferDTO> Offers { get; set; }
 
+        public string CreatorName { get; set; }
+
         public OfferFilterDTO Filter { get; set; }
     }
 }

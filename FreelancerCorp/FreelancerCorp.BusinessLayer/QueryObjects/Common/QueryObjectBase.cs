@@ -12,7 +12,7 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects.Common
         where TQuery : IQuery<TEntity>
         where TEntity : class, IEntity, new()
     {
-        private readonly IMapper mapper;
+        protected readonly IMapper mapper;
 
         protected readonly IQuery<TEntity> Query;
 
@@ -25,6 +25,8 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects.Common
         protected abstract IQuery<TEntity> ApplyWhereClause(IQuery<TEntity> query, TFilter filter);
 
         protected abstract IQuery<TEntity> GetAll(IQuery<TEntity> query);
+
+        //protected abstract IQuery<TEntity> GetAll(IQuery<TEntity> query, TFilter filter);
 
         public virtual async Task<QueryResultDTO<TDto, TFilter>> ExecuteQuery(TFilter filter)
         {
@@ -46,7 +48,7 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects.Common
             return queryResultDTO;
         }
 
-        public async Task<QueryResultDTO<TDto, TFilter>> ExecuteEmptyQuery()
+        public virtual async Task<QueryResultDTO<TDto, TFilter>> ExecuteEmptyQuery()
         {
             var query = GetAll(Query);
 

@@ -33,7 +33,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             {
                 var offer = await offerService.GetAsync(userAppliesForOfferDTO.Offer.Id);
 
-                if (userAppliesForOfferDTO.ApplierRole == UserRole.CORPORATION)
+                if (userAppliesForOfferDTO.ApplierRole == UserRole.Corporation)
                 {
                     var corporation = await corporationService.GetAsync(userAppliesForOfferDTO.ApplierId);
                     corporation.Offers.Add(userAppliesForOfferDTO.Offer);

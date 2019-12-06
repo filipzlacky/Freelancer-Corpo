@@ -23,12 +23,8 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
         // GET: FreelancerController
         public async Task<ActionResult> Index(int page = 1)
-        {
-            //var filter = Session[FilterSessionKey] as FreelancerFilterDTO ?? new FreelancerFilterDTO { PageSize = PageSize };
-            //filter.RequestedPageNumber = page;
-
-            var allFreelancers = await UserFacade.GetFreelancersAsync();
-            //var result = await UserFacade.GetFreelancersAsync(filter);
+        {            
+            var allFreelancers = await UserFacade.GetFreelancersAsync();         
 
             var model = InitializeFreelancerListViewModel(new QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> { Items = allFreelancers });
             return View("FreelancerListView", model);

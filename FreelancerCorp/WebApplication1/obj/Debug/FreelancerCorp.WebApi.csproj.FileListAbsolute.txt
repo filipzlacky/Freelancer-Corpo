@@ -204,3 +204,4 @@ C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\obj\Debug\FreelancerCorp.WebApi.csproj.CopyComplete
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\WebApplication1\bin\FreelancerCorp.BusinessLayer.dll.config

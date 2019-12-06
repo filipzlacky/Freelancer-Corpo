@@ -16,5 +16,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs.Filter
         public string[] SearchedFreelancerNames { get; set; }
 
         public string SearchedLocation { get; set; }
+
+        public string UserRole { get; set; } = "Freelancer";
     }
 }
