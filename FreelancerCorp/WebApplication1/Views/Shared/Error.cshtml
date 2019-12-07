@@ -1,0 +1,21 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<hgroup class="title">
+    <h1 class="error text-danger">An error occurred while processing your request.</h1>
+</hgroup>
+
+<h3>
+    Exception thrown at @Model.ControllerName controller, @Model.ActionName action, caused by @Model.Exception.Message
+</h3>
+
+<h4>Stacktrace: </h4>
+
+<p>
+    @Model.Exception.StackTrace
+</p>
+
+@Html.ActionLink("Return to home page", "Index", "Home")
