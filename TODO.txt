@@ -1,4 +1,3 @@
-registracia pre corporation + UI pre volbu ako sa registrovat
 edit offers
 
 vypisanie tvojich offers + prihlasenych offers

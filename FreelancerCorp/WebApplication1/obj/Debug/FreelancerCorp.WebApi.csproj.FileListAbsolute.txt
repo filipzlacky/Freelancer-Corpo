@@ -101,6 +101,7 @@ C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\WebApplication1\obj\
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\WebApplication1\bin\FreelancerCorp.Infrastructure.EntityFramework.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\WebApplication1\bin\FreelancerCorp.Infrastructure.EntityFramework.pdb
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\WebApplication1\bin\FreelancerCorp.Infrastructure.EntityFramework.dll.config
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\WebApplication1\bin\FreelancerCorp.BusinessLayer.dll.config
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\WebApplication1.dll.config
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\WebApplication1.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\WebApplication1.pdb
@@ -169,12 +170,13 @@ C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\System.Web.WebPages.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\System.Web.WebPages.Razor.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\WebGrease.dll
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.Infrastructure.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\AutoMapper.dll
-C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.Infrastructure.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\EntityFramework.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.Infrastructure.EntityFramework.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.BusinessLayer.pdb
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.BusinessLayer.dll.config
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\Castle.Core.xml
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\Castle.Facilities.AspNet.SystemWeb.xml
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\Castle.Windsor.xml
@@ -191,12 +193,12 @@ C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\System.Web.WebPages.Razor.xml
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\Antlr3.Runtime.pdb
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.Infrastructure.pdb
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.Infrastructure.dll.config
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.pdb
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.dll.config
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\AutoMapper.pdb
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\AutoMapper.xml
-C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.Infrastructure.pdb
-C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.Infrastructure.dll.config
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\EntityFramework.xml
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.Infrastructure.EntityFramework.pdb
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\bin\FreelancerCorp.Infrastructure.EntityFramework.dll.config
@@ -204,4 +206,3 @@ C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\obj\Debug\FreelancerCorp.WebApi.csproj.CopyComplete
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\WebApplication1\obj\Debug\WebApplication1.pdb
-C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\WebApplication1\bin\FreelancerCorp.BusinessLayer.dll.config

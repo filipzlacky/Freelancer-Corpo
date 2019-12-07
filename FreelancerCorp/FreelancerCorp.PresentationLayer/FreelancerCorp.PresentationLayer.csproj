@@ -156,8 +156,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Installers\ControllersInstaller.cs" />
+    <Compile Include="Models\Accounts\CorporationProfileModel.cs" />
     <Compile Include="Models\Accounts\FreelancerProfileModel.cs" />
     <Compile Include="Models\Accounts\LoginModel.cs" />
+    <Compile Include="Controllers\RegisterDeciderController.cs" />
+    <Compile Include="Models\Accounts\RegisterDeciderModel.cs" />
     <Compile Include="Models\Corporations\CorporationCreateViewModel.cs" />
     <Compile Include="Models\Corporations\CorporationListViewModel.cs" />
     <Compile Include="Models\Freelancers\FreelancerEditViewModel.cs" />
@@ -223,9 +226,12 @@
     <Content Include="Views\Accounts\RegisterFreelancerView.cshtml" />
     <Content Include="Views\Accounts\Users\FreelancerDetailView.cshtml" />
     <Content Include="Views\Accounts\Users\FreelancerEditView.cshtml" />
+    <Content Include="Views\Accounts\RegisterCorporationView.cshtml" />
+    <Content Include="Views\Accounts\RegisterDeciderView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\RegisterDecider\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

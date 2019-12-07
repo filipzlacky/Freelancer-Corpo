@@ -1,0 +1,15 @@
+﻿@model FreelancerCorp.PresentationLayer.Models.Accounts.RegisterDeciderModel
+
+@{
+    ViewBag.Title = "RegisterDecider";
+}
+
+<h2>CHOOSE YOUR ULTIMATE SIDE</h2>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Freelancer" formaction=@Url.Action("FreelancerChosen") formmethod="post" class="btn btn-primary" />
+        <input type="submit" value="Corporation" formaction=@Url.Action("CorporationChosen") formmethod="post" class="btn btn-primary" />
+    }
+</div>

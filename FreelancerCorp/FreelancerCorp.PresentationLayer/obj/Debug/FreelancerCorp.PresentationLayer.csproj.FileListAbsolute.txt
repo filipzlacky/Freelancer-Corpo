@@ -97,6 +97,9 @@ C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Prese
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.EntityFramework.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.EntityFramework.pdb
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.EntityFramework.dll.config
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\EntityFramework.SqlServer.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\EntityFramework.SqlServer.xml
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.BusinessLayer.dll.config
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.PresentationLayer.dll.config
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.PresentationLayer.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.PresentationLayer.pdb
@@ -151,6 +154,8 @@ C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Facilities.AspNet.SystemWeb.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Windsor.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Windsor.Web.Mvc.dll
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\EntityFramework.dll
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\EntityFramework.SqlServer.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.BusinessLayer.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Microsoft.Web.Infrastructure.dll
@@ -164,15 +169,17 @@ C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\System.Web.WebPages.Razor.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\WebActivatorEx.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\WebGrease.dll
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\AutoMapper.dll
-C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.dll
-C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\EntityFramework.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.EntityFramework.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.BusinessLayer.pdb
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.BusinessLayer.dll.config
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Core.xml
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Facilities.AspNet.SystemWeb.xml
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Castle.Windsor.xml
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\EntityFramework.xml
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\EntityFramework.SqlServer.xml
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\System.Web.Helpers.xml
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\System.Web.Mvc.xml
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\System.Web.Optimization.xml
@@ -183,19 +190,15 @@ C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Newtonsoft.Json.xml
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Antlr3.Runtime.pdb
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.pdb
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.dll.config
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.pdb
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.dll.config
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\AutoMapper.pdb
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\AutoMapper.xml
-C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.pdb
-C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.dll.config
-C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\EntityFramework.xml
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.EntityFramework.pdb
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.Infrastructure.EntityFramework.dll.config
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\obj\Debug\FreelancerCorp.PresentationLayer.csprojAssemblyReference.cache
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\obj\Debug\FreelancerCorp.PresentationLayer.csproj.CopyComplete
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\obj\Debug\FreelancerCorp.PresentationLayer.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\Freelancer-Corpo\FreelancerCorp\FreelancerCorp.PresentationLayer\obj\Debug\FreelancerCorp.PresentationLayer.pdb
-C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\EntityFramework.SqlServer.dll
-C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\EntityFramework.SqlServer.xml
-C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.PresentationLayer\bin\FreelancerCorp.BusinessLayer.dll.config
