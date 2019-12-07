@@ -164,6 +164,7 @@
     <Compile Include="Models\Freelancers\FreelancerCreateViewModel.cs" />
     <Compile Include="Models\Freelancers\FreelancerListViewModel.cs" />
     <Compile Include="Models\Offers\OfferCreateViewModel.cs" />
+    <Compile Include="Models\Offers\OfferDetailViewModel.cs" />
     <Compile Include="Models\Offers\OfferEditViewModel.cs" />
     <Compile Include="Models\Offers\OfferListViewModel.cs" />
     <Compile Include="Plumbing\WindsorControllerFactory.cs" />

@@ -1,4 +1,4 @@
-﻿@model FreelancerCorp.PresentationLayer.Models.Offers.OfferEditViewModel
+﻿@model FreelancerCorp.PresentationLayer.Models.Offers.OfferDetailViewModel
 
 @{
     ViewBag.Title = "OfferDetailView";
@@ -11,39 +11,57 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Offer.Name)
         </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Offer.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Offer.Description)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Offer.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Offer.Category);
+        </dd>
 
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.Offer.Description)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(model => model.Offer.Price)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Price)
+            @Html.DisplayFor(model => model.Offer.Price)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AdditionalInfo)
+            @Html.DisplayNameFor(model => model.Offer.AdditionalInfo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AdditionalInfo)
+            @Html.DisplayFor(model => model.Offer.AdditionalInfo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CreatorId)
+            Creator name
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CreatorId)
+            @Html.DisplayFor(model => model.Creator.name)
         </dd>
-
+        <dt>
+            Applier name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Applier.name)
+        </dd>
     </dl>
 </div>
 <p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Offer.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

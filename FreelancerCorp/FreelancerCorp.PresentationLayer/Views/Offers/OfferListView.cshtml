@@ -8,20 +8,29 @@
 
 <table class="table">
     <tr>
+        <th>Name</th>
         <th>Category</th>
         <th>Price</th>
-        
+        <th>Creator name</th>
     </tr>
 
 @foreach (var offer in Model.Offers) {
 <tr>
     <td>
-        <strong class="text-danger">@offer.Cathegory</strong>
+        <strong class="text-danger">@offer.offer.Name</strong>
     </td>
     <td>
-        <strong class="text-danger">@offer.Price</strong>
+        <strong class="text-danger">@offer.offer.Category</strong>
     </td>
-    
+    <td>
+        <strong class="text-danger">@offer.offer.Price</strong>
+    </td>
+    <td>
+        <strong class="text-danger">@offer.creatorName</strong>
+    </td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = offer.offer.Id})
+    </td>
 </tr>
 }
 

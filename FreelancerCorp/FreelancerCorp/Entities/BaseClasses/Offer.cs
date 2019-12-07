@@ -12,7 +12,9 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
 
         [Required]
         public Category Category { get; set; }
-        
+        [Required]
+        public string Name { get; set; }
+
         [Required]
         public string Description { get; set; }
         
@@ -27,7 +29,7 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
         public string CreatorRole { get; set; }
 
         [ForeignKey(nameof(Applier))]
-        public int ApplierId { get; set; }
+        public int? ApplierId { get; set; }
         public virtual User Applier { get; set; }
 
         public string ApplierRole { get; set; }
@@ -41,8 +43,9 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
 
         }
 
-        public Offer(Category cat, string description, long price, int creatorId, string addInfo) {
+        public Offer(Category cat, string name, string description, long price, int creatorId, string addInfo) {
             Category = cat;
+            Name = name;
             Description = description;
             Price = price;
             CreatorId = creatorId;

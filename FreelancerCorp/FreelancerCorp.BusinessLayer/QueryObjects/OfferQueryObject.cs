@@ -30,6 +30,11 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
                 predicates.Add(new CompositePredicate(predicate));
             }
 
+            if (!string.IsNullOrEmpty(filter.SearchedName))
+            {
+                predicates.Add(new SimplePredicate(nameof(Offer.Name), ValueComparingOperator.Equal, filter.SearchedName));
+            }
+
             if (filter.SearchedCategory.HasValue)
             {
                 predicates.Add(new SimplePredicate(nameof(Offer.Category), ValueComparingOperator.Equal, filter.SearchedCategory));

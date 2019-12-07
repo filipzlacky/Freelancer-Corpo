@@ -27,7 +27,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {
             var allOffers = await OfferFacade.GetAllOffersAsync();            
 
-            var model = InitializeOfferListViewModel(new QueryResultDTO<OfferDTO, OfferFilterDTO> { Items = allOffers });
+            var model = await InitializeOfferListViewModel(new QueryResultDTO<OfferDTO, OfferFilterDTO> { Items = allOffers });
             return View("OfferListView", model);
         }
 
@@ -39,7 +39,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
             var result = await OfferFacade.ListOffersAsync(model.Filter);
 
-            var newModel = InitializeOfferListViewModel(result);
+            var newModel = await InitializeOfferListViewModel(result);
             return View("OfferListView", newModel);
         }
 
@@ -47,7 +47,8 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         public async Task<ActionResult> Details(int id)
         {
             var model = await OfferFacade.GetOfferAsync(id);
-            return View("OfferDetailView", model);
+            var newModel = await InitializeOfferDetailViewModel(model);
+            return View("OfferDetailView", newModel);
         }
 
         // GET: OffersController/Create
@@ -63,36 +64,39 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             try
             {
                 OfferDTO newOffer = new OfferDTO();
-                string title = "", details = "";
+                string name = "", details = "";
 
                 foreach (string key in collection.AllKeys)
                 {
                     switch (key)
                     {
-                        case "Title":
-                            title = collection[key];
+                        case "Name":
+                            name = collection[key];
+                            newOffer.Name = collection[key];
+                            break;
+                        case "AdditionalInfo":
+                            newOffer.AdditionalInfo = collection[key];
                             break;
                         case "Details":
                             details = collection[key];
                             break;
                         case "Price":
-                            if (!Double.TryParse(collection[key], out double value))
+                            if (Double.TryParse(collection[key], out double value))
                             {
-                                // Throw error
+                                newOffer.Price = (long)Math.Truncate(value);
                             }
-                            newOffer.Price = (long)Math.Truncate(value);
+                            
                             break;
                         case "Category":
-                            if (!Enum.TryParse(collection[key], out Category newSex))
+                            if (Enum.TryParse(collection[key], out Category newSex))
                             {
-                                // THROW ERROR
-                            }
-                            newOffer.Cathegory = newSex;
+                                newOffer.Category = newSex;
+                            }                            
                             break;
                     }
                 }
 
-                newOffer.Description = title + ": " + details;
+                newOffer.Description = name + ": " + details;
                 var user = await UserFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
                 newOffer.CreatorId = user.Id;
                 newOffer.CreatorRole = (UserRole)Enum.Parse(typeof(UserRole), user.UserRole);
@@ -101,7 +105,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch
             {
                 
                 return View("~/Views/Home/Index.cshtml");
@@ -109,10 +113,10 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         }
 
         // GET: OffersController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            var model = OfferFacade.GetOfferAsync(id);
-            return View("OfferEditView", model);
+            var model = await OfferFacade.GetOfferAsync(id);
+            return View("OfferEditView", InitializeOfferEditViewModel(model));
         }
 
         // POST: OffersController/Edit/5
@@ -122,42 +126,40 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             try
             {
                 OfferDTO newOffer = new OfferDTO();
-                string title = "", details = "";
 
                 foreach (string key in collection.AllKeys)
                 {
                     switch (key)
                     {
-                        case "Title":
-                            title = collection[key];
+                        case "Name":
+                            newOffer.Name = collection[key];
                             break;
                         case "Details":
-                            details = collection[key];
+                            newOffer.Description = collection[key];
+                            break;
+                        case "AdditionalInfo":
+                            newOffer.AdditionalInfo = collection[key];
                             break;
                         case "Price":
-                            if (!Double.TryParse(collection[key], out double value))
+                            if (Double.TryParse(collection[key], out double value))
                             {
-                                // Throw error
-                            }
-                            newOffer.Price = (long)Math.Truncate(value);
+                                newOffer.Price = (long)Math.Truncate(value);
+                            }                            
                             break;
                         case "Category":
-                            if (!Enum.TryParse(collection[key], out Category newSex))
+                            if (Enum.TryParse(collection[key], out Category newSex))
                             {
-                                // THROW ERROR
-                            }
-                            newOffer.Cathegory = newSex;
+                                newOffer.Category = newSex;
+                            }                            
                             break;
                     }
-                }
-
-                newOffer.Description = title + ": " + details;
+                }                
 
                 bool success = await OfferFacade.EditOfferAsync(newOffer);
                 if (!success) throw new NotImplementedException();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
                 return View("~/Views/Home/Index.cshtml");
             }
@@ -196,12 +198,54 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             }
         }
 
-        private OfferListViewModel InitializeOfferListViewModel(QueryResultDTO<OfferDTO, OfferFilterDTO> result)
-        {            
+        private async Task<string> GetCreatorName(OfferDTO offer)
+        {         
+            if (offer.CreatorRole == UserRole.Freelancer)
+            {
+                var freelancer = await UserFacade.GetFreelancerAsync(offer.CreatorId);
+                return freelancer.Name;
+            }
+            
+            var user = await UserFacade.GetCorporationAsync(offer.CreatorId);
+            return user.Name;
+        }
+
+        private async Task<OfferDetailViewModel> InitializeOfferDetailViewModel(OfferDTO offer)
+        {
+            string creatorName = await GetCreatorName(offer), applierName;
+
+            return new OfferDetailViewModel
+            {
+                Offer = offer,
+                Creator = (creatorName, offer.CreatorId)
+            };
+        }
+
+        private async Task<OfferListViewModel> InitializeOfferListViewModel(QueryResultDTO<OfferDTO, OfferFilterDTO> result)
+        {
+            List<(OfferDTO, string)> offers = new List<(OfferDTO, string)>();
+            string name;
+            foreach(var offer in result.Items)
+            {
+                name = await GetCreatorName(offer);
+                offers.Add((offer,name));
+            }
             return new OfferListViewModel
             {
-                Offers = new List<OfferDTO>(result.Items),
+                Offers = offers,
                 Filter = result.Filter
+            };
+        }
+
+        private OfferEditViewModel InitializeOfferEditViewModel(OfferDTO offer)
+        {
+            return new OfferEditViewModel
+            {
+                Name = offer.Name,
+                Description = offer.Description,
+                Price = offer.Price,
+                Category = offer.Category,
+                AdditionalInfo = offer.AdditionalInfo
             };
         }
     }

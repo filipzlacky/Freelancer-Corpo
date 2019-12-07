@@ -10,11 +10,13 @@ namespace FreelancerCorp.PresentationLayer.Models.Offers
     {
         public Category Category { get; set; }
 
-        public string Title { get; set; }
+        public string Name { get; set; }
 
         public long Price { get; set; }
 
         public string Details { get; set; }
+
+        public string AdditionalInfo { get; set; }
 
         public int CreatorId { get; set; }
     }

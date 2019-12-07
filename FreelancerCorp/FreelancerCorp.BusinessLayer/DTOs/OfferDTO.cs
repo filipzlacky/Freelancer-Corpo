@@ -10,8 +10,8 @@ namespace FreelancerCorp.BusinessLayer.DTOs
 {
     public class OfferDTO : DTOBase
     {
-        public Category Cathegory { get; set; }
-        
+        public Category Category { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
         
         public long Price { get; set; }

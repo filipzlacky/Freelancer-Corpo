@@ -8,7 +8,8 @@ namespace FreelancerCorp.PresentationLayer.Models.Offers
 {
     public class OfferEditViewModel
     {
-        public Category Cathegory { get; set; }
+        public string Name { get; set; }
+        public Category Category { get; set; }
 
         public string Description { get; set; }
 
@@ -16,6 +17,6 @@ namespace FreelancerCorp.PresentationLayer.Models.Offers
 
         public string AdditionalInfo { get; set; }
 
-        public int CreatorId { get; set; }
+        public int ApplierId { get; set; }
     }
 }

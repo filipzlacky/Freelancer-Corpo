@@ -4,7 +4,7 @@ using System.Data.Entity.Migrations;
 using FreelancerCorp.DataAccessLayer.Entities;
 
 namespace FreelancerCorp.DataAccessLayer.Initializers {
-    public class FreelancerCorpInitializer : CreateDatabaseIfNotExists<FreelancerCorpDbContext> {
+    public class FreelancerCorpInitializer : DropCreateDatabaseIfModelChanges<FreelancerCorpDbContext> {
 
         protected override void Seed(FreelancerCorpDbContext context) {
             context.Freelancers.AddOrUpdate(new Freelancer(Enums.Sex.TRANSGENDER, new DateTime(1955, 8, 31), "VajLand", "", "Jozko Vajda", ""));
