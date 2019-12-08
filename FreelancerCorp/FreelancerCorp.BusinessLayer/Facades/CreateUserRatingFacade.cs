@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using FreelancerCorp.BusinessLayer.Services.Ratings;
 using FreelancerCorp.BusinessLayer.Services.Corporations;
 using FreelancerCorp.BusinessLayer.Services.Freelancers;

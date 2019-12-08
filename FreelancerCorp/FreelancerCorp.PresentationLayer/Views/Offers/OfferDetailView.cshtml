@@ -4,7 +4,7 @@
     ViewBag.Title = "OfferDetailView";
 }
 
-<h2>OfferDetailView</h2>
+<h2>ULTIMEATE DETAILED VIEW of this ULtimATe oFfER</h2>
 
 <div>
     <h4>OfferEditViewModel</h4>
@@ -19,37 +19,30 @@
         <dt>
             @Html.DisplayNameFor(model => model.Offer.Description)
         </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Offer.Description)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Offer.Category)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Offer.Category);
         </dd>
-
-        <dd>
-            @Html.DisplayFor(model => model.Offer.Description)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Offer.Price)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Offer.Price)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Offer.AdditionalInfo)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Offer.AdditionalInfo)
         </dd>
-
         <dt>
             Creator name
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Creator.name)
         </dd>

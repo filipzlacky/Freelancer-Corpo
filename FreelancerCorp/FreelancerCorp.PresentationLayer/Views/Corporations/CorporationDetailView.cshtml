@@ -13,15 +13,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
@@ -60,8 +51,48 @@
 
     </dl>
 </div>
+
+<h4> Created Offers: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+    @foreach (var offer in Model.Offers)
+    {
+        <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
+
+        <tr>
+            <td>
+                <strong class="text-danger">@offer.Name</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.Category</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.Price</strong>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = offer.Id })
+            </td>
+        </tr>
+
+    }
+</table>
+
+
+<script>
+function GoToDetail(id) {
+    window.location = "/Offers/Details/" + id;
+}</script>
+
 <p>
-    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

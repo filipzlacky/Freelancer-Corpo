@@ -5,10 +5,6 @@ using FreelancerCorp.BusinessLayer.Services.Corporations;
 using FreelancerCorp.BusinessLayer.Services.Freelancers;
 using FreelancerCorp.BusinessLayer.Services.Offers;
 using FreelancerCorp.Infrastructure.UnitOfWork;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FreelancerCorp.BusinessLayer.Facades
