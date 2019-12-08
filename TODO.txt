@@ -1,3 +1,8 @@
-edit offers
+Offers: tabuľky pre vypisovanie pri useroch nastavené
 
-vypisanie tvojich offers + prihlasenych offers
+Tasks:
+- offers: edit
+- offers: vypísanie pri useroch (filter je pomalý alebo je niečo iné zle)
+
+- general: back tlačítko
+- general: naseediť databázu
