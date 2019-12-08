@@ -20,6 +20,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         private const string FilterSessionKey = "filter";
 
         public UserFacade UserFacade { get; set; }
+        public OfferFacade OfferFacade { get; set; }
 
         // GET: FreelancerController
         public async Task<ActionResult> Index(int page = 1)
@@ -46,6 +47,14 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         public async Task<ActionResult> Details(int id)
         {
             var model = await UserFacade.GetFreelancerAsync(id);
+
+            /** below is filtering that takes infinity **/
+
+            //var idOffers = OfferFacade.ListOffersAsync(new OfferFilterDTO { SearchedAuthorsIds = new int[] { id } });
+            //model.Offers = new List<OfferDTO>(idOffers.Result.Items);
+
+            /** otherwise it should work **/
+
             return View("FreelancerDetailView", model);           
         }
 

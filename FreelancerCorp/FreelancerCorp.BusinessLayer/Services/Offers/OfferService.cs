@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using FreelancerCorp.BusinessLayer.DTOs;
 using FreelancerCorp.BusinessLayer.DTOs.Common;
-using FreelancerCorp.BusinessLayer.DTOs.Enums;
 using FreelancerCorp.BusinessLayer.DTOs.Filter;
 using FreelancerCorp.BusinessLayer.QueryObjects.Common;
 using FreelancerCorp.BusinessLayer.Services.Common;
