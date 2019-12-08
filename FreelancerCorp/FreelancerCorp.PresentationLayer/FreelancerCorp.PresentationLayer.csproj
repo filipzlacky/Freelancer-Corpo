@@ -226,8 +226,10 @@
     <Content Include="Views\Accounts\RegisterFreelancerView.cshtml" />
     <Content Include="Views\Accounts\Users\FreelancerDetailView.cshtml" />
     <Content Include="Views\Accounts\Users\FreelancerEditView.cshtml" />
-    <Content Include="Views\Accounts\RegisterCorporationView.cshtml" />
     <Content Include="Views\Accounts\RegisterDeciderView.cshtml" />
+    <Content Include="Views\Accounts\Users\CorporationDetailView.cshtml" />
+    <Content Include="Views\Accounts\RegisterCorporationView.cshtml" />
+    <Content Include="Views\Accounts\Users\CorporationEditView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

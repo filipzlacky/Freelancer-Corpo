@@ -79,6 +79,7 @@
     <Compile Include="DTOs\FreelancerDTO.cs" />
     <Compile Include="DTOs\OfferDTO.cs" />
     <Compile Include="DTOs\CreateRatingDTO.cs" />
+    <Compile Include="DTOs\UserCreateCorporationDTO.cs" />
     <Compile Include="DTOs\UserCreateFreelancerDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Facades\ApplyForOfferFacade.cs" />

@@ -24,10 +24,15 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             this.userFacade = userFacade;
         }
 
-        public ActionResult RegisterFreelancer()
-        {
-            return View("RegisterFreelancerView");
-        }
+        //public ActionResult RegisterFreelancer()
+        //{
+        //    return View("RegisterFreelancerView");
+        //}
+
+        //public ActionResult RegisterCorporation()
+        //{
+        //    return View("RegisterCorporationView");
+        //}
 
         [HttpPost]
         public async Task<ActionResult> RegisterFreelancer(UserCreateFreelancerDTO userCreateDto)
@@ -43,6 +48,26 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 return RedirectToAction("Index", "Home");
             } catch (ArgumentException)
+            {
+                ModelState.AddModelError("UserName", "Account with that user name already exists!");
+                return View();
+            }
+        }
+
+        public async Task<ActionResult> RegisterCorporation(UserCreateCorporationDTO userCreateDto)
+        {
+            try
+            {
+                await userFacade.RegisterCorporation(userCreateDto);
+                var authTicket = new FormsAuthenticationTicket(1, userCreateDto.Name, DateTime.Now,
+                    DateTime.Now.AddMinutes(30), false, "");
+                string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                HttpContext.Response.Cookies.Add(authCookie);
+
+                return RedirectToAction("Index", "Home");
+            }
+            catch (ArgumentException)
             {
                 ModelState.AddModelError("UserName", "Account with that user name already exists!");
                 return View();
@@ -174,6 +199,47 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             }
         }
 
+        private async Task<ActionResult> EditCorporationProfile(UserDTO user, FormCollection collection)
+        {
+            try
+            {
+                CorporationDTO newCorporation = new CorporationDTO();
+                newCorporation.Id = user.Id;
+
+                foreach (string key in collection.AllKeys)
+                {
+                    switch (key)
+                    {
+                        case "Name":
+                            newCorporation.Name = collection[key];
+                            break;
+                        case "Email":
+                            newCorporation.Email = collection[key];
+                            break;
+                        case "Info":
+                            newCorporation.Info = collection[key];
+                            break;
+                        case "PhoneNumber":
+                            newCorporation.PhoneNumber = collection[key];
+                            break;
+                        case "Address":
+                            newCorporation.Address = collection[key];
+                            break;
+                    }
+                }
+
+                bool success = await userFacade.EditCorporationAsync(newCorporation);
+                if (!success)
+                    // Throw ERROR
+                    throw new NotImplementedException();
+                return RedirectToAction("Profile");
+            }
+            catch
+            {
+                return View("~/Views/Home/Index.cshtml");
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult> EditProfile(FormCollection collection)
         {
@@ -181,6 +247,10 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             if (user.UserRole == "Freelancer")
             {
                 return await EditFreelancerProfile(user, collection);
+            }
+            if (user.UserRole == "Corporation")
+            {
+                return await EditCorporationProfile(user, collection);
             }
             return RedirectToAction("Profile");
         }
@@ -199,5 +269,13 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 UserName = user
             };
         }
+
+        //private CorporationProfileModel ToProfileModel(CorporationDTO corporation)
+        //{
+        //    return new CorporationProfileModel
+        //    {
+        //        CorporationDTO = corporation
+        //    };
+        //}
     }
 }

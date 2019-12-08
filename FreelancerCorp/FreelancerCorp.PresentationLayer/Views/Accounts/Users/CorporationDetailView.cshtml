@@ -1,0 +1,56 @@
+﻿@model FreelancerCorp.PresentationLayer.Models.Accounts.CorporationProfileModel
+
+@{
+    ViewBag.Title = "CorporationDetailView";
+}
+
+    <h2>Get ready for the information about this ULTIMATE corporation:</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CorporationDTO.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorporationDTO.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorporationDTO.Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorporationDTO.Info)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorporationDTO.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorporationDTO.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorporationDTO.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorporationDTO.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorporationDTO.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorporationDTO.Address)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditProfile") |
+    @Html.ActionLink("Back to List", "Index")
+</p>

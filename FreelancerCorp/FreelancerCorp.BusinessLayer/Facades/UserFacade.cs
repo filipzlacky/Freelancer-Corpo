@@ -143,6 +143,24 @@ namespace FreelancerCorp.BusinessLayer.Facades
                 }
             }
         }
+
+        public async Task<int> RegisterCorporation(UserCreateCorporationDTO userDto)
+        {
+            using (var uow = UnitOfWorkProvider.Create())
+            {
+                try
+                {
+                    var id = await userService.RegisterCorporationUserAsync(userDto);
+                    await uow.Commit();
+                    return id;
+                }
+                catch (ArgumentException)
+                {
+                    throw;
+                }
+            }
+        }
+
         public async Task<bool> Login(string username, string password)
         {
             using (UnitOfWorkProvider.Create())

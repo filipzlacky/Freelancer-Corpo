@@ -19,6 +19,8 @@ namespace FreelancerCorp.BusinessLayer.Config
             config.CreateMap<User, UserDTO>().ReverseMap();
             config.CreateMap<User, UserCreateFreelancerDTO>().ReverseMap();
             config.CreateMap<Freelancer, UserCreateFreelancerDTO>().ReverseMap();
+            config.CreateMap<User, UserCreateCorporationDTO>().ReverseMap();
+            config.CreateMap<Corporation, UserCreateCorporationDTO>().ReverseMap();
             config.CreateMap<Freelancer, FreelancerDTO>().ReverseMap();
             config.CreateMap<Offer, OfferDTO>().ReverseMap();
             config.CreateMap<Corporation, CorporationDTO>().ReverseMap();            

@@ -67,6 +67,27 @@ namespace FreelancerCorp.BusinessLayer.Services.Users
             return freelancer.Id;
             
         }
+
+        public async Task<int> RegisterCorporationUserAsync(UserCreateCorporationDTO userDto)
+        {
+            var corporation = Mapper.Map<Corporation>(userDto);
+
+            if (await GetIfUserExistsAsync(corporation.UserName))
+            {
+                throw new ArgumentException();
+            }
+            corporation.UserRole = "Corporation";
+
+            var password = CreateHash(userDto.Password);
+            corporation.PasswordHash = password.Item1;
+            corporation.PasswordSalt = password.Item2;
+
+            corporationRepository.Create(corporation);
+
+            return corporation.Id;
+
+        }
+
         private async Task<bool> GetIfUserExistsAsync(string username)
         {
             var queryResult = await userQueryObject.ExecuteQuery(new UserFilterDTO { UserName = username });

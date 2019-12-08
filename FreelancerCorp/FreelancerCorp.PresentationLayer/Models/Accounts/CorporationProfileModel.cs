@@ -9,6 +9,6 @@ namespace FreelancerCorp.PresentationLayer.Models.Accounts
     public class CorporationProfileModel
     {
         public CorporationDTO CorporationDTO { get; set; }
-        public string UserName { get; set; }
+        //public string UserName { get; set; }
     }
 }
