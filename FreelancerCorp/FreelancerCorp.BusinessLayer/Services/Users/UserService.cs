@@ -72,11 +72,12 @@ namespace FreelancerCorp.BusinessLayer.Services.Users
         {
             var corporation = Mapper.Map<Corporation>(userDto);
 
-            if (await GetIfUserExistsAsync(corporation.UserName))
+            if (await GetIfUserExistsAsync(corporation.Name))
             {
                 throw new ArgumentException();
             }
             corporation.UserRole = "Corporation";
+            corporation.UserName = corporation.Name;
 
             var password = CreateHash(userDto.Password);
             corporation.PasswordHash = password.Item1;

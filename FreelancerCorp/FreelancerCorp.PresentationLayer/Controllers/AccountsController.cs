@@ -121,7 +121,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             {
                 var corporation = await userFacade.GetCorporationAsync(user.Id);
 
-                return View("Users/CorporationDetailView.cshtml", corporation);
+                return View("Users/CorporationDetailView", ToProfileModel(corporation));
             }
 
             return RedirectToAction("Index", "Home");
@@ -140,7 +140,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             {
                 var corporation = await userFacade.GetCorporationAsync(user.Id);
 
-                return View("Users/CorporationEditView.cshtml", corporation);
+                return View("Users/CorporationEditView", corporation);
             }
 
             return RedirectToAction("Index", "Home");
@@ -211,7 +211,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                     switch (key)
                     {
                         case "Name":
-                            newCorporation.Name = collection[key];
+                            newCorporation.Name = user.UserName;
                             break;
                         case "Email":
                             newCorporation.Email = collection[key];
@@ -270,12 +270,12 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             };
         }
 
-        //private CorporationProfileModel ToProfileModel(CorporationDTO corporation)
-        //{
-        //    return new CorporationProfileModel
-        //    {
-        //        CorporationDTO = corporation
-        //    };
-        //}
+        private CorporationProfileModel ToProfileModel(CorporationDTO corporation)
+        {
+            return new CorporationProfileModel
+            {
+                CorporationDTO = corporation
+            };
+        }
     }
 }
