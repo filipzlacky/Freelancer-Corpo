@@ -1,7 +1,7 @@
 ﻿@model FreelancerCorp.PresentationLayer.Models.Accounts.CorporationProfileModel
 
 @{
-    ViewBag.Title = "CorporationDetailView";
+    ViewBag.Title = "Corporation details";
 }
 
 <h2>Get ready for the information about this ULTIMATE corporation:</h2>
@@ -64,7 +64,7 @@
             Price
         </th>
     </tr>
-    @foreach (var offer in Model.CorporationDTO.Offers)
+    @foreach (var offer in Model.CorporationDTO.AppliedToOffers)
     {
         <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
 

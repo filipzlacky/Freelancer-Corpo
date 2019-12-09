@@ -20,6 +20,8 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
         public UserFacade UserFacade { get; set; }
 
+        public OfferFacade OfferFacade { get; set; }
+
         // GET: Corporations
         public async Task<ActionResult> Index(int page = 1)
         {            
@@ -45,6 +47,11 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         public async Task<ActionResult> Details(int id)
         {
             var model = await UserFacade.GetCorporationAsync(id);
+
+            var idOffers = await OfferFacade.ListOffersAsync(new OfferFilterDTO { SearchedAuthorsIds = new int[] { id } });
+            model.Offers = new List<OfferDTO>(idOffers.Items);
+
+
             return View("CorporationDetailView", model);
         }
 

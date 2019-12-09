@@ -50,8 +50,8 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
             /** below is filtering that takes infinity **/
 
-            //var idOffers = OfferFacade.ListOffersAsync(new OfferFilterDTO { SearchedAuthorsIds = new int[] { id } });
-            //model.Offers = new List<OfferDTO>(idOffers.Result.Items);
+            var idOffers = await OfferFacade.ListOffersAsync(new OfferFilterDTO { SearchedAuthorsIds = new int[] { id } });            
+            model.Offers = new List<OfferDTO>(idOffers.Items);
 
             /** otherwise it should work **/
 

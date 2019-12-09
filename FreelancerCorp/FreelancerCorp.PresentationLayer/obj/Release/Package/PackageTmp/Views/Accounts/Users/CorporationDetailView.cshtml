@@ -1,0 +1,134 @@
+﻿@model FreelancerCorp.PresentationLayer.Models.Accounts.CorporationProfileModel
+
+@{
+    ViewBag.Title = "CorporationDetailView";
+}
+
+<h2>Get ready for the information about this ULTIMATE corporation:</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CorporationDTO.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorporationDTO.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorporationDTO.Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorporationDTO.Info)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorporationDTO.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorporationDTO.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorporationDTO.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorporationDTO.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorporationDTO.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorporationDTO.Address)
+        </dd>
+    </dl>
+</div>
+
+<h4> Taken offers: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+    @foreach (var offer in Model.CorporationDTO.Offers)
+    {
+        <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
+
+        <tr>
+            <td>
+                <strong class="text-danger">@offer.Name</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.Category</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.Price</strong>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = offer.Id })
+            </td>
+        </tr>
+
+    }
+</table>
+
+
+<h4> Created Offers: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+    @foreach (var offer in Model.CorporationDTO.Offers)
+    {
+        <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
+
+        <tr>
+            <td>
+                <strong class="text-danger">@offer.Name</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.Category</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.Price</strong>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = offer.Id })
+            </td>
+        </tr>
+
+    }
+</table>
+
+
+<script>
+    function GoToDetail(id) {
+        window.location = "/Offers/Details/" + id;
+    }</script>
+
+<p>
+    @Html.ActionLink("Edit", "EditProfile") |
+    @Html.ActionLink("Back to List", "Index")
+</p>

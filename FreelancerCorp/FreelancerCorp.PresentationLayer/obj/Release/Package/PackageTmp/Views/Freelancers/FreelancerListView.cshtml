@@ -1,0 +1,55 @@
+﻿@model FreelancerCorp.PresentationLayer.Models.Freelancers.FreelancerListViewModel
+
+@{
+    ViewBag.Title = "Freelancers";
+}
+
+<h2>Here is the place to list all ULTIMATE freelancers:</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Age
+        </th>
+        <th>
+            Location
+        </th>
+        <th>
+            Average rating
+        </th>
+    </tr>
+    @foreach (var freelancer in Model.Freelancers)
+    {
+        <div class="card clickable-area" @("onclick=GoToDetail('" + freelancer.Id + "')")></div>
+
+        <tr>
+            <td>
+                <strong class="text-danger">@freelancer.Name</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@freelancer.GetAge()</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@freelancer.Location</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@freelancer.Average</strong>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = freelancer.Id })                
+            </td>
+        </tr>
+
+    }
+</table>
+
+
+<script>
+function GoToDetail(id) {
+    window.location = "/Freelancers/Details/" + id;
+}
+</script>

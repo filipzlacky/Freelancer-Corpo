@@ -1,0 +1,161 @@
+﻿@model FreelancerCorp.PresentationLayer.Models.Accounts.FreelancerProfileModel
+
+
+@{
+    ViewBag.Title = "Freelancer details";
+}
+
+<h2>Here is the place to look at details about the ULTIMATE freelancer:</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.Info)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.Sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.DoB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreelancerDTO.DoB)
+        </dd>
+
+    </dl>
+</div>
+
+
+<h4> Taken Offers: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+    @foreach (var offer in Model.FreelancerDTO.Offers)
+    {
+        <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
+
+        <tr>
+            <td>
+                <strong class="text-danger">@offer.Name</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.Category</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.Price</strong>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = offer.Id })
+            </td>
+        </tr>
+
+    }
+</table>
+
+
+<h4> Created Offers: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+    @foreach (var offer in Model.FreelancerDTO.Offers)
+    {
+        <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
+
+        <tr>
+            <td>
+                <strong class="text-danger">@offer.Name</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.Category</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.Price</strong>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = offer.Id })
+            </td>
+        </tr>
+
+    }
+</table>
+
+
+<script>
+    function GoToDetail(id) {
+        window.location = "/Offers/Details/" + id;
+    }</script>
+
+<p>
+    @Html.ActionLink("Edit", "EditProfile") |
+    @Html.ActionLink("Back", "Index")
+</p>

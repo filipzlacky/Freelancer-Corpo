@@ -1,0 +1,115 @@
+﻿@model FreelancerCorp.BusinessLayer.DTOs.FreelancerDTO
+
+
+@{
+    ViewBag.Title = "Freelancer details";
+}
+
+<h2>Here is the place to look at details about the ULTIMATE freelancer:</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Info)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoB)
+        </dd>
+
+    </dl>
+</div>
+
+<h4> Created Offers: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+    @foreach (var offer in Model.Offers)
+    {
+        <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
+
+        <tr>
+            <td>
+                <strong class="text-danger">@offer.Name</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.Category</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.Price</strong>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = offer.Id })
+            </td>
+        </tr>
+
+    }
+</table>
+
+
+<script>function GoToDetail(id) {
+    window.location = "/Offers/Details/" + id;
+}</script>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

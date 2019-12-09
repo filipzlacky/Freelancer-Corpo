@@ -22,6 +22,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public double Average { get; set; }
 
         public List<OfferDTO> Offers { get; set; } = new List<OfferDTO>();
+        public List<OfferDTO> AppliedToOffers { get; set; } = new List<OfferDTO>();
 
         public List<RatingDTO> Ratings { get; set; } = new List<RatingDTO>();
 

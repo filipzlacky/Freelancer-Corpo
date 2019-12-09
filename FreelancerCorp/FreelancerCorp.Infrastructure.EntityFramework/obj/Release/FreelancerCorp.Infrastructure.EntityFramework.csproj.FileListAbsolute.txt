@@ -1,0 +1,16 @@
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Release\FreelancerCorp.Infrastructure.EntityFramework.dll.config
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Release\FreelancerCorp.Infrastructure.EntityFramework.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Release\FreelancerCorp.Infrastructure.EntityFramework.pdb
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Release\EFProviderWrapperToolkit.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Release\EntityFramework.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Release\EntityFramework.SqlServer.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Release\FreelancerCorp.Infrastructure.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Release\FreelancerCorp.Infrastructure.pdb
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Release\FreelancerCorp.Infrastructure.dll.config
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Release\EFProviderWrapperToolkit.xml
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Release\EntityFramework.xml
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\bin\Release\EntityFramework.SqlServer.xml
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\obj\Release\FreelancerCorp.Infrastructure.EntityFramework.csprojAssemblyReference.cache
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\obj\Release\FreelancerCorp.Infrastructure.EntityFramework.csproj.CopyComplete
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\obj\Release\FreelancerCorp.Infrastructure.EntityFramework.dll
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure.EntityFramework\obj\Release\FreelancerCorp.Infrastructure.EntityFramework.pdb

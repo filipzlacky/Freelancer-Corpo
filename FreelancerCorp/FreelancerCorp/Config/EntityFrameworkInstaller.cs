@@ -18,7 +18,7 @@ namespace FreelancerCorp.Config
 {
     public class EntityFrameworkInstaller : IWindsorInstaller
     {
-        internal const string ConnectionString = "Data source=(localdb)\\mssqllocaldb;Database=DemoEshopDatabaseSample;Trusted_Connection=True;MultipleActiveResultSets=true";
+        internal const string ConnectionString = "Data source=(localdb)\\mssqllocaldb;Database=FreelancerCorp;Trusted_Connection=True;MultipleActiveResultSets=true";
 
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {

@@ -1,5 +1,6 @@
 ﻿using FreelancerCorp.BusinessLayer.DTOs;
 using FreelancerCorp.BusinessLayer.DTOs.Enums;
+using FreelancerCorp.BusinessLayer.DTOs.Filter;
 using FreelancerCorp.BusinessLayer.Facades;
 using FreelancerCorp.PresentationLayer.Models.Accounts;
 using System;
@@ -18,10 +19,12 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
         private const string FilterSessionKey = "filter";
         private readonly UserFacade userFacade;
+        private readonly OfferFacade offerFacade;
 
-        public AccountsController(UserFacade userFacade)
+        public AccountsController(UserFacade userFacade, OfferFacade offerFacade)
         {
             this.userFacade = userFacade;
+            this.offerFacade = offerFacade;
         }
 
         //public ActionResult RegisterFreelancer()
@@ -111,15 +114,25 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         public async Task<ActionResult> Profile()
         {
             var user = await userFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
+
+            var idOffers = await offerFacade.ListOffersAsync(new OfferFilterDTO { SearchedAuthorsIds = new int[] { user.Id } });
+            var idAppliedOffers = await offerFacade.ListOffersAsync(new OfferFilterDTO { SearchedAppliersIds = new int[] { user.Id } });
+
             if (user.UserRole == "Freelancer")
             {
                 var freelancer = await userFacade.GetFreelancerAsync(user.Id);
+               
+                freelancer.Offers = new List<OfferDTO>(idOffers.Items);
+                freelancer.AppliedToOffers = new List<OfferDTO>(idAppliedOffers.Items);
 
                 return View("Users/FreelancerDetailView", ToProfileModel(freelancer, user.UserName));
             } 
             else if (user.UserRole == "Corporation")
             {
                 var corporation = await userFacade.GetCorporationAsync(user.Id);
+
+                corporation.Offers = new List<OfferDTO>(idOffers.Items);
+                corporation.AppliedToOffers = new List<OfferDTO>(idAppliedOffers.Items);
 
                 return View("Users/CorporationDetailView", ToProfileModel(corporation));
             }

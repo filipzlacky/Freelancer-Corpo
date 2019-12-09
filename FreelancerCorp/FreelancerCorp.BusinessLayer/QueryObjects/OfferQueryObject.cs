@@ -30,6 +30,17 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
                 predicates.Add(new CompositePredicate(predicate));
             }
 
+            if (filter.SearchedAppliersIds != null && filter.SearchedAppliersIds.Length != 0)
+            {
+                var predicate = new List<IPredicate>(filter.SearchedAppliersIds
+                    .Select(authorId => new SimplePredicate(
+                        nameof(Offer.ApplierId),
+                        ValueComparingOperator.Equal,
+                        authorId)));
+
+                predicates.Add(new CompositePredicate(predicate));
+            }
+
             if (!string.IsNullOrEmpty(filter.SearchedName))
             {
                 predicates.Add(new SimplePredicate(nameof(Offer.Name), ValueComparingOperator.Equal, filter.SearchedName));

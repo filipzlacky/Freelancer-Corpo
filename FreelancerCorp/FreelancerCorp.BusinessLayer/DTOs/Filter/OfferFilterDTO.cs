@@ -11,6 +11,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs.Filter
     public class OfferFilterDTO : FilterDTOBase
     {
         public int[] SearchedAuthorsIds { get; set; }
+        public int[] SearchedAppliersIds { get; set; }
         public string SearchedName { get; set; }
         public Category? SearchedCategory { get; set; }
 
