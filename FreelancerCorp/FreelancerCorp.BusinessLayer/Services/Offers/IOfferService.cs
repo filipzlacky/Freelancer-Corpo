@@ -20,6 +20,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Offers
 
         int Create(OfferDTO entityDto);
 
+        Task Update(OfferDTO entityDto);
         Task Update(OfferDTO entityDto, int applierId);
 
         void Delete(int entityId);

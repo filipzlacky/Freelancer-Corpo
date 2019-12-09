@@ -7,6 +7,7 @@ using FreelancerCorp.BusinessLayer.DTOs;
 using FreelancerCorp.BusinessLayer.DTOs.Filter;
 using FreelancerCorp.BusinessLayer.DTOs.Enums;
 using FreelancerCorp.BusinessLayer.DTOs.Common;
+using System;
 
 namespace FreelancerCorp.BusinessLayer.Facades
 {
@@ -36,7 +37,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
                 {
                     return false;
                 }
-                await offerService.Update(offer, 0);    //need to rewrite
+                await offerService.Update(offer);
                 await uow.Commit();
                 return true;
             }

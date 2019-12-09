@@ -15,8 +15,8 @@ namespace FreelancerCorp.DataAccessLayer {
         public DbSet<Offer> Offers { get; set; }
 
 
-        private const string ConnectionString = "Data source=(localdb)\\mssqllocaldb;Database=FreelanceCorpDatabase;Trusted_Connection=True;MultipleActiveResultSets=true";
-
+        //private const string ConnectionString = "Data source=(localdb)\\mssqllocaldb;Database=FreelanceCorpDatabase;Trusted_Connection=True;MultipleActiveResultSets=true";
+        private const string ConnectionString = "Server=tcp:ultimatefreelancercorpdbserver.database.windows.net,1433;Initial Catalog=FreelancerCorpDB;Persist Security Info=True;User ID=FreelancerCorpAdmin;Password=Fr33lanc3rC0rp;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
         public FreelancerCorpDbContext() : base (ConnectionString) {
             Database.SetInitializer(new FreelancerCorpInitializer());
         }

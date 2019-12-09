@@ -96,25 +96,25 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                     }
                 }
 
-                newOffer.Description = details;
+                newOffer.Description = name + ": " + details;
                 var user = await UserFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
                 newOffer.CreatorId = user.Id;
                 newOffer.CreatorRole = (UserRole)Enum.Parse(typeof(UserRole), user.UserRole);
 
                 int newId = await OfferFacade.CreateOfferAsync(newOffer);
 
-                if (user.UserRole == "Freelancer")
-                {
-                    var freelancer = await UserFacade.GetFreelancerAsync(user.Id);
-                    freelancer.Offers.Add(newOffer);
-                    await UserFacade.EditFreelancerAsync(freelancer);
-                }
-                else if (user.UserRole == "Corporation")
-                {
-                    var corporation = await UserFacade.GetCorporationAsync(user.Id);
-                    corporation.Offers.Add(newOffer);
-                    await UserFacade.EditCorporationAsync(corporation);
-                }
+                //if (user.UserRole == "Freelancer")
+                //{
+                //    var freelancer = await UserFacade.GetFreelancerAsync(user.Id);
+                //    freelancer.Offers.Add(newOffer);
+                //    await UserFacade.EditFreelancerAsync(freelancer);
+                //}
+                //else if (user.UserRole == "Corporation")
+                //{
+                //    var corporation = await UserFacade.GetCorporationAsync(user.Id);
+                //    corporation.Offers.Add(newOffer);
+                //    await UserFacade.EditCorporationAsync(corporation);
+                //}
 
                 return RedirectToAction("Index");
             }
@@ -139,6 +139,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             try
             {
                 OfferDTO newOffer = new OfferDTO();
+                newOffer.Id = id;
 
                 foreach (string key in collection.AllKeys)
                 {

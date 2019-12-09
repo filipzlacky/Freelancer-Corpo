@@ -115,6 +115,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             try
             {
                 CorporationDTO newCorporation = new CorporationDTO();
+                newCorporation.Id = id;
 
                 foreach (string key in collection.AllKeys)
                 {
