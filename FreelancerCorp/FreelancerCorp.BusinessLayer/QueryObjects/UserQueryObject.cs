@@ -20,20 +20,26 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
         {
         }
 
-        protected override IQuery<User> ApplyWhereClause(Infrastructure.Query.IQuery<User> query, UserFilterDTO filter)
+        protected override IQuery<User> ApplyWhereClause(IQuery<User> query, UserFilterDTO filter)
         {
-            return query.Where(new SimplePredicate(nameof(User.UserName), ValueComparingOperator.Equal, filter.UserName));
+            var predicates = new List<IPredicate>();
+
+            if (!string.IsNullOrEmpty(filter.UserName))
+            {
+                predicates.Add(new SimplePredicate(nameof(User.UserName), ValueComparingOperator.Equal, filter.UserName));
+            }
+
+            if (filter.UserId.HasValue)
+            {
+                predicates.Add(new SimplePredicate(nameof(User.Id), ValueComparingOperator.Equal, filter.UserId));
+            }
+
+            return query.Where(new CompositePredicate(predicates));
         }
-        
 
         protected override IQuery<User> GetAll(IQuery<User> query)
         {
             return query;
         }
-
-        //protected override IQuery<User> GetAll(IQuery<User> query, UserFilterDTO filter)
-        //{
-        //    return query;
-        //}
     }
 }

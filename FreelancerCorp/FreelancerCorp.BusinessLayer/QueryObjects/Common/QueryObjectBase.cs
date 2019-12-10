@@ -26,8 +26,6 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects.Common
 
         protected abstract IQuery<TEntity> GetAll(IQuery<TEntity> query);
 
-        //protected abstract IQuery<TEntity> GetAll(IQuery<TEntity> query, TFilter filter);
-
         public virtual async Task<QueryResultDTO<TDto, TFilter>> ExecuteQuery(TFilter filter)
         {
             var query = ApplyWhereClause(Query, filter);

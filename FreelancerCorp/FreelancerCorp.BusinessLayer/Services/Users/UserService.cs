@@ -48,6 +48,12 @@ namespace FreelancerCorp.BusinessLayer.Services.Users
             return queryResult.Items.SingleOrDefault();
         }
 
+        public async Task<UserDTO> GetUserAccordingToIdAsync(int id)
+        {
+            var queryResult = await userQueryObject.ExecuteQuery(new UserFilterDTO() { UserId = id });
+            return queryResult.Items.SingleOrDefault();
+        }
+
         public async Task<int> RegisterFreelancerUserAsync(UserCreateFreelancerDTO userDto)
         {
             var freelancer = Mapper.Map<Freelancer>(userDto);
@@ -64,8 +70,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Users
 
             freelancerRepository.Create(freelancer);
 
-            return freelancer.Id;
-            
+            return freelancer.Id;            
         }
 
         public async Task<int> RegisterCorporationUserAsync(UserCreateCorporationDTO userDto)
@@ -116,6 +121,6 @@ namespace FreelancerCorp.BusinessLayer.Services.Users
 
                 return Tuple.Create(Convert.ToBase64String(subkey), Convert.ToBase64String(salt));
             }
-        }
+        }        
     }
 }

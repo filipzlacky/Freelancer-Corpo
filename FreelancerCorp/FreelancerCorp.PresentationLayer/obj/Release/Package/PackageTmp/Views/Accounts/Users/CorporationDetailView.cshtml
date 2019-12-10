@@ -30,7 +30,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CorporationDTO.PhoneNumber)
+            @if (!string.IsNullOrEmpty(@Model.CorporationDTO.PhoneNumber))
+            {
+                <a href="tel:@Model.CorporationDTO.PhoneNumber">@Model.CorporationDTO.PhoneNumber</a>
+            } else
+            {
+               <p>
+                   No phone number given.
+               </p>
+            }
         </dd>
 
         <dt>
@@ -38,7 +46,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CorporationDTO.Email)
+            <a href="mailto:@Model.CorporationDTO.Email">@Model.CorporationDTO.Email</a>
         </dd>
 
         <dt>
@@ -66,7 +74,6 @@
     </tr>
     @foreach (var offer in Model.CorporationDTO.AppliedToOffers)
     {
-        <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
 
         <tr>
             <td>
@@ -79,7 +86,7 @@
                 <strong class="text-danger">@offer.Price</strong>
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = offer.Id })
+                @Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })
             </td>
         </tr>
 
@@ -102,7 +109,6 @@
     </tr>
     @foreach (var offer in Model.CorporationDTO.Offers)
     {
-        <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
 
         <tr>
             <td>
@@ -115,18 +121,12 @@
                 <strong class="text-danger">@offer.Price</strong>
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = offer.Id })
+                @Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })
             </td>
         </tr>
 
     }
 </table>
-
-
-<script>
-    function GoToDetail(id) {
-        window.location = "/Offers/Details/" + id;
-    }</script>
 
 <p>
     @Html.ActionLink("Edit", "EditProfile") |

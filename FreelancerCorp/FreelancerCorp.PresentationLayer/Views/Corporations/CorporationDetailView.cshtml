@@ -30,7 +30,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            <a href="mailto:@Model.Email">@Model.Email</a>
         </dd>
 
         <dt>
@@ -38,7 +38,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
+            @if (!string.IsNullOrEmpty(@Model.PhoneNumber))
+            {
+                <a href="tel:@Model.PhoneNumber">@Model.PhoneNumber</a>
+            }
+            else
+            {
+                <p>
+                    No phone number given.
+                </p>
+            }
         </dd>
 
         <dt>

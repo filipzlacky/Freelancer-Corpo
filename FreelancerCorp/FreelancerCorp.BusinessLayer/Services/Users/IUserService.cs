@@ -13,5 +13,6 @@ namespace FreelancerCorp.BusinessLayer.Services.Users
         Task<int> RegisterCorporationUserAsync(UserCreateCorporationDTO user);
         Task<bool> AuthorizeUserAsync(string username, string password);
         Task<UserDTO> GetUserAccordingToUsernameAsync(string username);
+        Task<UserDTO> GetUserAccordingToIdAsync(int id);
     }
 }

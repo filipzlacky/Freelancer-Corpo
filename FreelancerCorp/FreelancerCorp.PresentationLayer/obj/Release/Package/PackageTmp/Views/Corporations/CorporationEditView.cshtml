@@ -1,4 +1,4 @@
-﻿@model FreelancerCorp.PresentationLayer.Models.Corporations.CorporationCreateViewModel
+﻿@model FreelancerCorp.BusinessLayer.DTOs.CorporationDTO
 
 @{
     ViewBag.Title = "Edit corporation";
@@ -58,6 +58,7 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Save" class="btn btn-default" />
+            @Html.ActionLink("Cancel", "Details", new { id = Model.Id})
         </div>
     </div>
 </div>

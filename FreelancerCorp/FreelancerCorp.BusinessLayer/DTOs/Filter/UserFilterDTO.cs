@@ -10,5 +10,6 @@ namespace FreelancerCorp.BusinessLayer.DTOs.Filter
     public class UserFilterDTO : FilterDTOBase
     {
         public string UserName { get; set; }
+        public int? UserId { get; set; }
     }
 }

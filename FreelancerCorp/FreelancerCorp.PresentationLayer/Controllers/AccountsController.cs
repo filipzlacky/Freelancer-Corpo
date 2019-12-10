@@ -70,7 +70,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-            catch (ArgumentException)
+            catch (ArgumentException ex)
             {
                 ModelState.AddModelError("UserName", "Account with that user name already exists!");
                 return View();

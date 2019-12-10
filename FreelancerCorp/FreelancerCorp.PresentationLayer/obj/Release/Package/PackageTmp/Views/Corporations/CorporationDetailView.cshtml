@@ -30,7 +30,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            <a href="mailto:@Model.Email">@Model.Email</a>
         </dd>
 
         <dt>
@@ -38,7 +38,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
+            @if (!string.IsNullOrEmpty(@Model.PhoneNumber))
+            {
+                <a href="tel:@Model.PhoneNumber">@Model.PhoneNumber</a>
+            }
+            else
+            {
+                <p>
+                    No phone number given.
+                </p>
+            }
         </dd>
 
         <dt>
@@ -79,8 +88,8 @@
             <td>
                 <strong class="text-danger">@offer.Price</strong>
             </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = offer.Id })
+            <td>                
+                @Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })
             </td>
         </tr>
 

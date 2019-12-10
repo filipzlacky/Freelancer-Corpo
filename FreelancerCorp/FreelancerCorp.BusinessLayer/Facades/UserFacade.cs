@@ -109,6 +109,14 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }        
 
+        public async Task<UserDTO> GetUserAsync(int id)
+        {
+            using (UnitOfWorkProvider.Create())
+            {
+                return await userService.GetUserAccordingToIdAsync(id);
+            }
+        }
+
         public async Task<FreelancerDTO> GetFreelancerAsync(int id)
         {
             using (UnitOfWorkProvider.Create())
@@ -167,8 +175,8 @@ namespace FreelancerCorp.BusinessLayer.Facades
             {
                 return await userService.AuthorizeUserAsync(username, password);
             }
-        }        
-
+        }
+        
         public async Task<UserDTO> GetUserAccordingToUsernameAsync(string username)
         {
             using (UnitOfWorkProvider.Create())

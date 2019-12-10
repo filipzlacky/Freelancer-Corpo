@@ -4,10 +4,9 @@
     ViewBag.Title = "OfferDetailView";
 }
 
-<h2>ULTIMEATE DETAILED VIEW of this ULtimATe oFfER</h2>
+<h2>ULTIMEATE DETAILED VIEW of this ULTIMATE offer</h2>
 
 <div>
-    <h4>OfferEditViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -55,6 +54,9 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Offer.Id }) |
+    @if (Request.IsAuthenticated && User.Identity.Name == Model.Creator.name)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Offer.Id }) 
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>

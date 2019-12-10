@@ -213,15 +213,9 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         }
 
         private async Task<string> GetCreatorName(OfferDTO offer)
-        {         
-            if (offer.CreatorRole == UserRole.Freelancer)
-            {
-                var freelancer = await UserFacade.GetFreelancerAsync(offer.CreatorId);
-                return freelancer.Name;
-            }
-            
-            var user = await UserFacade.GetCorporationAsync(offer.CreatorId);
-            return user.Name;
+        {
+            var creator = await UserFacade.GetUserAsync(offer.CreatorId);            
+            return creator.UserName;
         }
 
         private async Task<OfferDetailViewModel> InitializeOfferDetailViewModel(OfferDTO offer)

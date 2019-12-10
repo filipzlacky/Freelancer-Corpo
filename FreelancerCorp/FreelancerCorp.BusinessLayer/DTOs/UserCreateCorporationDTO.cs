@@ -15,7 +15,10 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public string Info { get; set; }
 
         [Required(ErrorMessage = "Email is required!")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Wrong email format, you idiot!")]
         public string Email { get; set; }
+        
+        [RegularExpression(@"[+]?[\d]+", ErrorMessage = "Wrong phone number format, you idiot!")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Address is required!")]

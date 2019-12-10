@@ -106,7 +106,7 @@
                 <strong class="text-danger">@offer.Price</strong>
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = offer.Id })
+                @Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })
             </td>
         </tr>
 
@@ -129,7 +129,6 @@
     </tr>
     @foreach (var offer in Model.FreelancerDTO.Offers)
     {
-        <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
 
         <tr>
             <td>
@@ -142,18 +141,12 @@
                 <strong class="text-danger">@offer.Price</strong>
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = offer.Id })
+                @Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })
             </td>
         </tr>
 
     }
 </table>
-
-
-<script>
-    function GoToDetail(id) {
-        window.location = "/Offers/Details/" + id;
-    }</script>
 
 <p>
     @Html.ActionLink("Edit", "EditProfile") |

@@ -28,11 +28,6 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
                 predicates.Add(new SimplePredicate(nameof(Freelancer.Location), ValueComparingOperator.Equal, filter.SearchedLocation));
             }
 
-            //if (filter.SearchedAverage != 0)
-            //{
-            //    predicates.Add(new SimplePredicate(nameof(Freelancer.Average), ValueComparingOperator.Equal, filter.SearchedLocation));
-            //}
-
             if (filter.SearchedFreelancerNames != null && filter.SearchedFreelancerNames.Length != 0)
             {
                 var predicate = new List<IPredicate>(filter.SearchedFreelancerNames
