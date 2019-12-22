@@ -5,7 +5,6 @@ C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infra
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\bin\Release\EntityFramework.SqlServer.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\bin\Release\EntityFramework.xml
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\bin\Release\EntityFramework.SqlServer.xml
-C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Release\FreelancerCorp.Infrastructure.csprojAssemblyReference.cache
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Release\FreelancerCorp.Infrastructure.csproj.CopyComplete
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Release\FreelancerCorp.Infrastructure.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Release\FreelancerCorp.Infrastructure.pdb

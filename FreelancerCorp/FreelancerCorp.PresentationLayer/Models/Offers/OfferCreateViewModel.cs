@@ -14,7 +14,7 @@ namespace FreelancerCorp.PresentationLayer.Models.Offers
 
         public long Price { get; set; }
 
-        public string Details { get; set; }
+        public string Description { get; set; }
 
         public string AdditionalInfo { get; set; }
 

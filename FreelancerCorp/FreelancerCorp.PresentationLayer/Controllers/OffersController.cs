@@ -125,6 +125,12 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             }
         }
 
+        private async Task<(int, string)> GetUserIdRole()
+        {
+            var user = await UserFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
+            return (user.Id, user.UserRole);
+        }
+
         // GET: OffersController/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
@@ -138,8 +144,18 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {
             try
             {
+                UserRole userRole;
                 OfferDTO newOffer = new OfferDTO();
                 newOffer.Id = id;
+                var idRoleTuple = await GetUserIdRole();
+
+                if (!Enum.TryParse<UserRole>(idRoleTuple.Item2, out userRole))
+                {
+                    return View("~/Views/Home/Index.cshtml");
+                }
+
+                newOffer.CreatorId = idRoleTuple.Item1;
+                newOffer.CreatorRole = userRole;
 
                 foreach (string key in collection.AllKeys)
                 {
@@ -148,7 +164,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                         case "Name":
                             newOffer.Name = collection[key];
                             break;
-                        case "Details":
+                        case "Description":
                             newOffer.Description = collection[key];
                             break;
                         case "AdditionalInfo":
@@ -171,7 +187,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 bool success = await OfferFacade.EditOfferAsync(newOffer);
                 if (!success) throw new NotImplementedException();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = newOffer.Id });
             }
             catch (Exception ex)
             {
