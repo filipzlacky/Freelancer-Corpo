@@ -150,6 +150,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\CorporationsController.cs" />
     <Compile Include="Controllers\FreelancersController.cs" />
+    <Compile Include="Controllers\Helpers\RatingCreator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OffersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -162,14 +163,16 @@
     <Compile Include="Controllers\RegisterDeciderController.cs" />
     <Compile Include="Models\Accounts\RegisterDeciderModel.cs" />
     <Compile Include="Models\Corporations\CorporationCreateViewModel.cs" />
+    <Compile Include="Models\Corporations\CorporationDetailViewModel.cs" />
     <Compile Include="Models\Corporations\CorporationListViewModel.cs" />
-    <Compile Include="Models\Freelancers\FreelancerEditViewModel.cs" />
+    <Compile Include="Models\Freelancers\FreelancerDetailViewModel.cs" />
     <Compile Include="Models\Freelancers\FreelancerCreateViewModel.cs" />
     <Compile Include="Models\Freelancers\FreelancerListViewModel.cs" />
     <Compile Include="Models\Offers\OfferCreateViewModel.cs" />
     <Compile Include="Models\Offers\OfferDetailViewModel.cs" />
     <Compile Include="Models\Offers\OfferEditViewModel.cs" />
     <Compile Include="Models\Offers\OfferListViewModel.cs" />
+    <Compile Include="Models\Ratings\RatingCreateViewModel.cs" />
     <Compile Include="Plumbing\WindsorControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -231,6 +234,7 @@
     <Content Include="Views\Accounts\Users\CorporationDetailView.cshtml" />
     <Content Include="Views\Accounts\RegisterCorporationView.cshtml" />
     <Content Include="Views\Accounts\Users\CorporationEditView.cshtml" />
+    <Content Include="Views\Accounts\Users\CreateRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

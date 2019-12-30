@@ -24,8 +24,6 @@
     </tr>
     @foreach (var freelancer in Model.Freelancers)
     {
-        <div class="card clickable-area" @("onclick=GoToDetail('" + freelancer.Id + "')")></div>
-
         <tr>
             <td>
                 <strong class="text-danger">@freelancer.Name</strong>
@@ -37,7 +35,13 @@
                 <strong class="text-danger">@freelancer.Location</strong>
             </td>
             <td>
-                <strong class="text-danger">@freelancer.Average</strong>
+                @if (freelancer.AverageRating.HasValue)
+                {
+                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @freelancer.AverageRating)</strong>
+                } else
+                {
+                    <strong class="text-danger">No rated yet</strong>
+                }
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = freelancer.Id })                
@@ -46,10 +50,3 @@
 
     }
 </table>
-
-
-<script>
-function GoToDetail(id) {
-    window.location = "/Freelancers/Details/" + id;
-}
-</script>

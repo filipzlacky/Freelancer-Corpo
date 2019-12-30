@@ -1,8 +1,11 @@
 ﻿using FreelancerCorp.BusinessLayer.DTOs;
 using FreelancerCorp.BusinessLayer.DTOs.Common;
+using FreelancerCorp.BusinessLayer.DTOs.Enums;
 using FreelancerCorp.BusinessLayer.DTOs.Filter;
 using FreelancerCorp.BusinessLayer.Facades;
+using FreelancerCorp.PresentationLayer.Controllers.Helpers;
 using FreelancerCorp.PresentationLayer.Models.Corporations;
+using FreelancerCorp.PresentationLayer.Models.Ratings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +22,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         private const string FilterSessionKey = "filter";
 
         public UserFacade UserFacade { get; set; }
-
+        public RatingFacade RatingFacade { get; set; }
         public OfferFacade OfferFacade { get; set; }
 
         // GET: Corporations
@@ -28,6 +31,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             var allCorporations = await UserFacade.GetCorporationsAsync();            
 
             var model = InitializeCorporationListViewModel(new QueryResultDTO<CorporationDTO, CorporationFilterDTO> { Items = allCorporations });
+
             return View("CorporationListView", model);
         }
 
@@ -47,12 +51,41 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         public async Task<ActionResult> Details(int id)
         {
             var model = await UserFacade.GetCorporationAsync(id);
+            var user = await UserFacade.GetUserAsync(id);
 
             var idOffers = await OfferFacade.ListOffersAsync(new OfferFilterDTO { SearchedAuthorsIds = new int[] { id } });
             model.Offers = new List<OfferDTO>(idOffers.Items);
+            
+            return View("CorporationDetailView", InitializeCorporationDetailViewModel(model, user.UserName));
+        }
 
+        public ActionResult AddRating(int id, string ratedUserName)
+        {
+            return View("~/Views/Accounts/Users/CreateRAting.cshtml", new RatingCreateViewModel { RatedUserName = ratedUserName, Rating = new RatingDTO() });
+        }        
 
-            return View("CorporationDetailView", model);
+        [HttpPost]
+        public async Task<ActionResult> AddRating(int id, FormCollection collection)
+        {
+            try
+            {
+                var creator = await UserFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
+                UserRole creatorUserRole;
+
+                if (!Enum.TryParse<UserRole>(creator.UserRole, out creatorUserRole))
+                {
+                    return View("~/Views/Home/Index.cshtml");
+                }
+
+                int ratingId = await RatingFacade.CreateRatingAsync(RatingCreator.CreateRating(id, creator.Id, creatorUserRole, UserRole.Corporation, collection));
+
+                return RedirectToAction("Details", new { id = id });
+            } 
+            catch
+            {
+                return View("~/Views/Home/Index.cshtml");
+            }
+            
         }
 
         // GET: Corporations/Create
@@ -188,6 +221,16 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 return View();
             }
         }
+
+        private CorporationDetailViewModel InitializeCorporationDetailViewModel(CorporationDTO corporation, string corporationUserName)
+        {
+            return new CorporationDetailViewModel
+            {
+                Corporation = corporation,
+                CorporationUserName = corporationUserName
+            };
+        }
+
         private CorporationListViewModel InitializeCorporationListViewModel(QueryResultDTO<CorporationDTO, CorporationFilterDTO> result)
         {
             return new CorporationListViewModel

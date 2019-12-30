@@ -9,7 +9,7 @@ namespace FreelancerCorp.DataAccessLayer.Initializers {
         protected override void Seed(FreelancerCorpDbContext context) {
             context.Freelancers.AddOrUpdate(new Freelancer(Enums.Sex.TRANSGENDER, new DateTime(1955, 8, 31), "VajLand", "", "Jozko Vajda", ""));
             //context.Users.AddOrUpdate(new Freelancer(Enums.Sex.TRANSGENDER, new DateTime(1955, 8, 31), "VajLand", "", "Jozko Vajda", ""));
-            context.Corporations.AddOrUpdate(new Corporation("Vajdovo namestie 47", "vajdajozko@vajdo.sk", "VajdaCorp", ""));
+            //context.Corporations.AddOrUpdate(new Corporation("Vajdovo namestie 47", "vajdajozko@vajdo.sk", "VajdaCorp", ""));
             //context.Users.AddOrUpdate(new Corporation("Vajdovo namestie 47", "vajdajozko@vajdo.sk", "VajdaCorp", ""));
             context.SaveChanges();
 

@@ -26,7 +26,8 @@ namespace FreelancerCorp.BusinessLayer.Services.ApplyForOffer
             var offer = await offerRepository.GetAsync(uafoDTO.Offer.Id);
             Mapper.Map(uafoDTO, offer);
             offer.ApplierId = uafoDTO.ApplierId;
-            
+            offer.ApplierRole = uafoDTO.ApplierRole.ToString();
+
             offerRepository.Update(offer);
 
             return offer.Id;

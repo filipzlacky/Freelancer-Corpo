@@ -20,6 +20,21 @@
         <dt>
             @Html.DisplayNameFor(model => model.CorporationDTO.Info)
         </dt>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.CorporationDTO.AverageRating)
+        </dt>
+
+        <dd>
+            @if (Model.CorporationDTO.AverageRating.HasValue)
+            {
+            <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.CorporationDTO.AverageRating)</strong>
+            }
+            else
+            {
+                <strong class="text-danger">No rated yet</strong>
+            }
+        </dd>
 
         <dd>
             @Html.DisplayFor(model => model.CorporationDTO.Info)
@@ -33,11 +48,12 @@
             @if (!string.IsNullOrEmpty(@Model.CorporationDTO.PhoneNumber))
             {
                 <a href="tel:@Model.CorporationDTO.PhoneNumber">@Model.CorporationDTO.PhoneNumber</a>
-            } else
+            }
+            else
             {
-               <p>
-                   No phone number given.
-               </p>
+                <p>
+                    No phone number given.
+                </p>
             }
         </dd>
 

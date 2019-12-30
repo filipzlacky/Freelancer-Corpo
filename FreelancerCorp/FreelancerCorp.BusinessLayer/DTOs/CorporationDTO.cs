@@ -16,7 +16,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
 
-        public double Average { get; set; }
+        public double? AverageRating { get; set; }
 
         public List<OfferDTO> Offers { get; set; } = new List<OfferDTO>();
         public List<OfferDTO> AppliedToOffers { get; set; } = new List<OfferDTO>();

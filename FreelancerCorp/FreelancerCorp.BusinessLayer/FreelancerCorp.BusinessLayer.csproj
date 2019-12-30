@@ -71,6 +71,7 @@
     <Compile Include="DTOs\CorporationDTO.cs" />
     <Compile Include="DTOs\Enums\Category.cs" />
     <Compile Include="DTOs\Enums\Sex.cs" />
+    <Compile Include="DTOs\Enums\State.cs" />
     <Compile Include="DTOs\Enums\UserRole.cs" />
     <Compile Include="DTOs\Filter\CorporationFilterDTO.cs" />
     <Compile Include="DTOs\Filter\FreelancerFilterDTO.cs" />

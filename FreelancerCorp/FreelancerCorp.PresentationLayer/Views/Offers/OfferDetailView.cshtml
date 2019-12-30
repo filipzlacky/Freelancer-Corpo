@@ -54,9 +54,16 @@
     </dl>
 </div>
 <p>
-    @if (Request.IsAuthenticated && User.Identity.Name == Model.Creator.name)
+    @if (Request.IsAuthenticated)
     {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Offer.Id }) 
+        if (User.Identity.Name == Model.Creator.name)
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Offer.Id })
+        } else
+        {
+            @Html.ActionLink("Enrol", "Enrol", new { id = Model.Offer.Id})
+        }
+
     }
     @Html.ActionLink("Back to List", "Index")
 </p>

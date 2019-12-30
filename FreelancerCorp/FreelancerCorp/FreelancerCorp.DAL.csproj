@@ -69,6 +69,7 @@
     <Compile Include="Entities\BaseClasses\User.cs" />
     <Compile Include="Enums\Category.cs" />
     <Compile Include="Enums\Sex.cs" />
+    <Compile Include="Enums\State.cs" />
     <Compile Include="FreelancerCorpDbContext.cs" />
     <Compile Include="Initializers\FreelancerCorpInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

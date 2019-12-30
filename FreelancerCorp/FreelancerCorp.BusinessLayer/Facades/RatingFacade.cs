@@ -6,37 +6,73 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using FreelancerCorp.BusinessLayer.DTOs.Common;
 using FreelancerCorp.BusinessLayer.DTOs.Filter;
+using FreelancerCorp.BusinessLayer.Services.Corporations;
+using FreelancerCorp.BusinessLayer.Services.Freelancers;
+using FreelancerCorp.BusinessLayer.DTOs.Enums;
 
 namespace FreelancerCorp.BusinessLayer.Facades
 {
     public class RatingFacade : FacadeBase
     {
         private readonly IRatingService ratingService;
-        public RatingFacade(IUnitOfWorkProvider unitOfWorkProvider, IRatingService rating) 
+        private readonly ICorporationService corporationService;
+        private readonly IFreelancerService freelancerService;
+
+        public RatingFacade(IUnitOfWorkProvider unitOfWorkProvider, IRatingService rating, ICorporationService corporation, IFreelancerService freelancer) 
             : base (unitOfWorkProvider)
         {
             ratingService = rating;
+            corporationService = corporation;
+            freelancerService = freelancer;
         }
 
-        public async Task<int> CreateRatingAsync(CreateRatingDTO rating)
+        public async Task<int> CreateRatingAsync(RatingDTO rating)
         {
             using(var uow = UnitOfWorkProvider.Create())
-            {
-                var ratingId = ratingService.Create(rating.Rating, rating.RatedUserId);
+            {                
+                var allRratingsOfUser = await ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsers = new int[] { rating.RatedUserId } });
+                long divider = allRratingsOfUser.TotalItemsCount + 1;
+                if (rating.RatedUserRole == UserRole.Corporation)
+                {
+                    var corporation = await corporationService.GetAsync(rating.RatedUserId);
+                    
+                    if (!corporation.AverageRating.HasValue)
+                    {
+                        corporation.AverageRating = 0;
+                    }
+                    corporation.AverageRating += rating.Score;
+                    corporation.AverageRating /= divider;
+
+                    await corporationService.Update(corporation);
+                }
+                else
+                {
+                    var freelancer = await freelancerService.GetAsync(rating.RatedUserId);
+
+                    if (!freelancer.AverageRating.HasValue)
+                    {
+                        freelancer.AverageRating = 0;
+                    }
+                    freelancer.AverageRating += rating.Score;
+                    freelancer.AverageRating /= divider;
+
+                    await freelancerService.Update(freelancer);
+                }
+                var ratingId = ratingService.Create(rating);
                 await uow.Commit();
                 return ratingId;
             }
         }
 
-        public async Task<bool> EditRatingAsync(CreateRatingDTO rating)
+        public async Task<bool> EditRatingAsync(RatingDTO rating)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
-                if ((await ratingService.GetAsync(rating.Rating.Id, false)) == null)
+                if ((await ratingService.GetAsync(rating.Id, false)) == null)
                 {
                     return false;
                 }
-                await ratingService.Update(rating.Rating, rating.RatedUserId);
+                await ratingService.Update(rating);
                 await uow.Commit();
                 return true;
             }

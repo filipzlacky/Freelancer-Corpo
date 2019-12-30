@@ -25,17 +25,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {
             this.userFacade = userFacade;
             this.offerFacade = offerFacade;
-        }
-
-        //public ActionResult RegisterFreelancer()
-        //{
-        //    return View("RegisterFreelancerView");
-        //}
-
-        //public ActionResult RegisterCorporation()
-        //{
-        //    return View("RegisterCorporationView");
-        //}
+        }        
 
         [HttpPost]
         public async Task<ActionResult> RegisterFreelancer(UserCreateFreelancerDTO userCreateDto)

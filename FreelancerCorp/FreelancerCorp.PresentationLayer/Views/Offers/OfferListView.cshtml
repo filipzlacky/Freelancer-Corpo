@@ -1,4 +1,5 @@
 ﻿@model FreelancerCorp.PresentationLayer.Models.Offers.OfferListViewModel
+@using FreelancerCorp.BusinessLayer.DTOs.Enums
 
 @{
     ViewBag.Title = "OfferListView";
@@ -27,6 +28,20 @@
     </td>
     <td>
         <strong class="text-danger">@offer.creatorName</strong>
+    </td>
+    <td>
+        @if (offer.offer.State == State.Finished)
+        {
+            <strong class="text-danger" style="color:forestgreen">Finished</strong>
+        }
+        else if (offer.offer.State == State.InProgress)
+        {
+            <strong class="text-danger" style="color:darkorange">In progress</strong>
+        }
+        else
+        {
+            <strong class="text-danger" style="color:darkred">Not assigned</strong>
+        }
     </td>
     <td>
         @Html.ActionLink("Details", "Details", new { id = offer.offer.Id})

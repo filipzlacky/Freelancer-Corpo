@@ -3,7 +3,9 @@ using FreelancerCorp.BusinessLayer.DTOs.Common;
 using FreelancerCorp.BusinessLayer.DTOs.Enums;
 using FreelancerCorp.BusinessLayer.DTOs.Filter;
 using FreelancerCorp.BusinessLayer.Facades;
+using FreelancerCorp.PresentationLayer.Controllers.Helpers;
 using FreelancerCorp.PresentationLayer.Models.Freelancers;
+using FreelancerCorp.PresentationLayer.Models.Ratings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         private const string FilterSessionKey = "filter";
 
         public UserFacade UserFacade { get; set; }
+        public RatingFacade RatingFacade { get; set; }
         public OfferFacade OfferFacade { get; set; }
 
         // GET: FreelancerController
@@ -47,15 +50,41 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         public async Task<ActionResult> Details(int id)
         {
             var model = await UserFacade.GetFreelancerAsync(id);
-
-            /** below is filtering that takes infinity **/
+            var user = await UserFacade.GetUserAsync(id);
 
             var idOffers = await OfferFacade.ListOffersAsync(new OfferFilterDTO { SearchedAuthorsIds = new int[] { id } });            
             model.Offers = new List<OfferDTO>(idOffers.Items);
 
-            /** otherwise it should work **/
+            return View("FreelancerDetailView", InitializeFreelancerDetailViewModel(model, user.UserName));           
+        }
 
-            return View("FreelancerDetailView", model);           
+        public ActionResult AddRating(int id, string ratedUserName)
+        {
+            return View("~/Views/Accounts/Users/CreateRAting.cshtml", new RatingCreateViewModel { RatedUserName = ratedUserName, Rating = new RatingDTO() });
+        }
+        
+        [HttpPost]
+        public async Task<ActionResult> AddRating(int id, FormCollection collection)
+        {
+            try
+            {
+                var creator = await UserFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
+                UserRole creatorUserRole;
+
+                if (!Enum.TryParse<UserRole>(creator.UserRole, out creatorUserRole))
+                {
+                    return View("~/Views/Home/Index.cshtml");
+                }               
+
+                int ratingId = await RatingFacade.CreateRatingAsync(RatingCreator.CreateRating(id, creator.Id, creatorUserRole, UserRole.Freelancer, collection));
+
+                return RedirectToAction("Details", new { id = id });
+            }
+            catch
+            {
+                return View("~/Views/Home/Index.cshtml");
+            }
+
         }
 
         // GET: FreelancerController/Create
@@ -227,6 +256,14 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             {
                 return View("~/Views/Home/Index.cshtml");
             }
+        }
+        private FreelancerDetailViewModel InitializeFreelancerDetailViewModel(FreelancerDTO freelancer, string freelancerUserName)
+        {
+            return new FreelancerDetailViewModel
+            {
+                Freelancer = freelancer,
+                FreelancerUserName = freelancerUserName
+            };
         }
 
         private FreelancerListViewModel InitializeFreelancerListViewModel(QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> result)

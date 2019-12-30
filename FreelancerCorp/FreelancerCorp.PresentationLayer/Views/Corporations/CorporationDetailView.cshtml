@@ -1,4 +1,4 @@
-﻿@model FreelancerCorp.BusinessLayer.DTOs.CorporationDTO
+﻿@model FreelancerCorp.PresentationLayer.Models.Corporations.CorporationDetailViewModel
 
 @{
     ViewBag.Title = "Corporation details";
@@ -6,41 +6,55 @@
 
 <h2>Here is the place to look at details about the ULTIMATE corporation:</h2>
 
-<div>
-    <h4>CorporationDTO</h4>
+<div>    
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Corporation.Name)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Corporation.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Info)
+            @Html.DisplayNameFor(model => model.Corporation.Info)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Info)
+            @Html.DisplayFor(model => model.Corporation.Info)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Corporation.AverageRating)
         </dt>
 
         <dd>
-            <a href="mailto:@Model.Email">@Model.Email</a>
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-
-        <dd>
-            @if (!string.IsNullOrEmpty(@Model.PhoneNumber))
+            @if (Model.Corporation.AverageRating.HasValue)
             {
-                <a href="tel:@Model.PhoneNumber">@Model.PhoneNumber</a>
+                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.Corporation.AverageRating)</strong>
+            }
+            else
+            {
+                <strong class="text-danger">No rated yet</strong>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Corporation.Email)
+        </dt>
+
+        <dd>
+            <a href="mailto:@Model.Corporation.Email">@Model.Corporation.Email</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Corporation.PhoneNumber)
+        </dt>
+
+        <dd>
+            @if (!string.IsNullOrEmpty(@Model.Corporation.PhoneNumber))
+            {
+                <a href="tel:@Model.Corporation.PhoneNumber">@Model.Corporation.PhoneNumber</a>
             }
             else
             {
@@ -51,11 +65,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => model.Corporation.Address)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Address)
+            @Html.DisplayFor(model => model.Corporation.Address)
         </dd>
 
     </dl>
@@ -74,9 +88,8 @@
             Price
         </th>
     </tr>
-    @foreach (var offer in Model.Offers)
-    {
-        <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
+    @foreach (var offer in Model.Corporation.Offers)
+    {        
 
         <tr>
             <td>
@@ -96,12 +109,13 @@
     }
 </table>
 
-
-<script>
-function GoToDetail(id) {
-    window.location = "/Offers/Details/" + id;
-}</script>
-
 <p>
     @Html.ActionLink("Back to List", "Index")
+    @if (Request.IsAuthenticated)
+    {
+        if (User.Identity.Name != Model.CorporationUserName)
+        {
+            @Html.ActionLink("Add rating", "AddRating", new { id = Model.Corporation.Id, ratedUserName = Model.CorporationUserName })
+        }
+    }
 </p>

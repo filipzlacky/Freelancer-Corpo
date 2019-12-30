@@ -27,6 +27,22 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.FreelancerDTO.AverageRating)
+        </dt>
+
+        <dd>
+            @if (Model.FreelancerDTO.AverageRating.HasValue)
+            {
+                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.FreelancerDTO.AverageRating)</strong>
+            }
+            else
+            {
+                <strong class="text-danger">No rated yet</strong>
+            }
+        </dd>
+
+
+        <dt>
             @Html.DisplayNameFor(model => model.FreelancerDTO.Email)
         </dt>
 

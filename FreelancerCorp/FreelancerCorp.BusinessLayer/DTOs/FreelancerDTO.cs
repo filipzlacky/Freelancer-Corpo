@@ -19,7 +19,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public DateTime DoB { get; set; }
         public string Info { get; set; }
 
-        public double Average { get; set; }
+        public double? AverageRating { get; set; }
 
         public List<OfferDTO> Offers { get; set; } = new List<OfferDTO>();
         public List<OfferDTO> AppliedToOffers { get; set; } = new List<OfferDTO>();

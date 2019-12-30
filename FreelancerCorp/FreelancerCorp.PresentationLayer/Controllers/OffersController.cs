@@ -101,20 +101,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 newOffer.CreatorId = user.Id;
                 newOffer.CreatorRole = (UserRole)Enum.Parse(typeof(UserRole), user.UserRole);
 
-                int newId = await OfferFacade.CreateOfferAsync(newOffer);
-
-                //if (user.UserRole == "Freelancer")
-                //{
-                //    var freelancer = await UserFacade.GetFreelancerAsync(user.Id);
-                //    freelancer.Offers.Add(newOffer);
-                //    await UserFacade.EditFreelancerAsync(freelancer);
-                //}
-                //else if (user.UserRole == "Corporation")
-                //{
-                //    var corporation = await UserFacade.GetCorporationAsync(user.Id);
-                //    corporation.Offers.Add(newOffer);
-                //    await UserFacade.EditCorporationAsync(corporation);
-                //}
+                int newId = await OfferFacade.CreateOfferAsync(newOffer);            
 
                 return RedirectToAction("Index");
             }
@@ -131,12 +118,17 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             return (user.Id, user.UserRole);
         }
 
+        public async Task<ActionResult> Enrol(int id)
+        {
+            throw new NotImplementedException("Caka sa na dohodnutie sa");
+        }
+
         // GET: OffersController/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
             var model = await OfferFacade.GetOfferAsync(id);
             return View("OfferEditView", model);
-        }
+        }      
 
         // POST: OffersController/Edit/5
         [HttpPost]

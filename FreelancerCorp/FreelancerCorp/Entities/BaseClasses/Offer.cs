@@ -2,6 +2,7 @@
 using FreelancerCorp.DataAccessLayer.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using FreelancerCorp.Enums;
 
 namespace FreelancerCorp.DataAccessLayer.Entities {
     public class Offer : IEntity {
@@ -17,7 +18,9 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
 
         [Required]
         public string Description { get; set; }
-        
+
+        public State State { get; set; } = State.NotAssigned;
+
         [Required]
         public long Price { get; set; }
         

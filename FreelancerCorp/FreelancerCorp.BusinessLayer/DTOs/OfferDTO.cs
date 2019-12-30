@@ -16,6 +16,8 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         
         public long Price { get; set; }
 
+        public State State { get; set; } = State.NotAssigned;
+
         public string AdditionalInfo { get; set; }
         
         public int CreatorId { get; set; }

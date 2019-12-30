@@ -1,4 +1,4 @@
-﻿@model FreelancerCorp.BusinessLayer.DTOs.FreelancerDTO
+﻿@model FreelancerCorp.PresentationLayer.Models.Freelancers.FreelancerDetailViewModel
 
 
 @{
@@ -12,29 +12,29 @@
     <dl class="dl-horizontal">
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Freelancer.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Freelancer.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Freelancer.Email)
         </dt>
 
         <dd>
-            <a href="mailto:@Model.Email">@Model.Email</a>
+            <a href="mailto:@Model.Freelancer.Email">@Model.Freelancer.Email</a>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            @Html.DisplayNameFor(model => model.Freelancer.PhoneNumber)
         </dt>
 
         <dd>
-            @if (!string.IsNullOrEmpty(@Model.PhoneNumber))
+            @if (!string.IsNullOrEmpty(@Model.Freelancer.PhoneNumber))
             {
-                <a href="tel:@Model.PhoneNumber">@Model.PhoneNumber</a>
+                <a href="tel:@Model.Freelancer.PhoneNumber">@Model.Freelancer.PhoneNumber</a>
             }
             else
             {
@@ -45,35 +45,50 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Location)
+            @Html.DisplayNameFor(model => model.Freelancer.AverageRating)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Location)
+            @if (Model.Freelancer.AverageRating.HasValue)
+            {
+                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.Freelancer.AverageRating)</strong>
+            }
+            else
+            {
+                <strong class="text-danger">No rated yet</strong>
+            }
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Info)
+            @Html.DisplayNameFor(model => model.Freelancer.Location)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Info)
+            @Html.DisplayFor(model => model.Freelancer.Location)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sex)
+            @Html.DisplayNameFor(model => model.Freelancer.Info)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Sex)
+            @Html.DisplayFor(model => model.Freelancer.Info)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DoB)
+            @Html.DisplayNameFor(model => model.Freelancer.Sex)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DoB)
+            @Html.DisplayFor(model => model.Freelancer.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Freelancer.DoB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Freelancer.DoB)
         </dd>
 
     </dl>
@@ -92,7 +107,7 @@
             Price
         </th>
     </tr>
-    @foreach (var offer in Model.Offers)
+    @foreach (var offer in Model.Freelancer.Offers)
     {
         <tr>
             <td>
@@ -114,4 +129,11 @@
 
 <p>
     @Html.ActionLink("Back to List", "Index")
+    @if (Request.IsAuthenticated)
+    {
+        if (User.Identity.Name != Model.FreelancerUserName)
+        {
+            @Html.ActionLink("Add rating", "AddRating", new { id = Model.Freelancer.Id, ratedUserName = Model.FreelancerUserName })
+        }
+    }
 </p>

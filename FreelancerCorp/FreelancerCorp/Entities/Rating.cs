@@ -7,7 +7,7 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
         [Key]
         public int Id { get; set; }
 
-        public string TableName { get; }
+        public string TableName { get; } = "Ratings";
 
         [Required]
         public int Score { get; set; }

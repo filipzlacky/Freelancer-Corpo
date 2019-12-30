@@ -26,19 +26,22 @@ namespace FreelancerCorp.BusinessLayer.Facades
         public async Task<int> BindUserToRating(CreateRatingDTO createRatingDTO)
         {
             using (var uow = UnitOfWorkProvider.Create())
-            {
-                var rating = await ratingService.GetAsync(createRatingDTO.Rating.Id);
+            {                
                 if (createRatingDTO.RatedUserRole == UserRole.Corporation)
                 {
                     var corporation = await corporationService.GetAsync(createRatingDTO.RatedUserId);
-                    corporation.Ratings.Add(createRatingDTO.Rating);
-                    corporation.Average += createRatingDTO.Rating.Score / corporation.Ratings.Count;
+                    //corporation.Ratings.Add(createRatingDTO.Rating);
+                    corporation.AverageRating += createRatingDTO.Rating.Score / corporation.Ratings.Count;
+
+                    await corporationService.Update(corporation);
                 }
                 else
                 {
                     var freelancer = await freelancerService.GetAsync(createRatingDTO.RatedUserId);
-                    freelancer.Ratings.Add(createRatingDTO.Rating);
-                    freelancer.Average += createRatingDTO.Rating.Score / freelancer.Ratings.Count;
+                    //freelancer.Ratings.Add(createRatingDTO.Rating);
+                    freelancer.AverageRating += createRatingDTO.Rating.Score / freelancer.Ratings.Count;
+
+                    await freelancerService.Update(freelancer);
                 }
                 return createRatingDTO.Rating.Id;
             }

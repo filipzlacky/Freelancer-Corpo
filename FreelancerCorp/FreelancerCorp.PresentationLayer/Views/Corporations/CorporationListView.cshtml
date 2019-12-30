@@ -20,28 +20,25 @@
     </tr>
     @foreach (var corporation in Model.Corporations)
     {
-        <div class="card clickable-area" @("onclick=GoToDetail('" + corporation.Id + "')")>
-            <tr>
-                <td>
-                    <strong class="text-danger">@corporation.Name</strong>
-                </td>
-                <td>
-                    <strong class="text-danger">@corporation.Address</strong>
-                </td>
-                <td>
-                    <strong class="text-danger">@corporation.Average</strong>
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = corporation.Id })
-                </td>
-            </tr>
-        </div>
+        <tr>
+            <td>
+                <strong class="text-danger">@corporation.Name</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@corporation.Address</strong>
+            </td>
+            <td>
+                @if (corporation.AverageRating.HasValue)
+                {
+                    <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}",@corporation.AverageRating)</strong>
+                } else
+                {
+                    <strong class="text-danger">No rated yet</strong>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = corporation.Id })
+            </td>
+        </tr>
     }
 </table>
-
-
-<script>
-function GoToDetail(id) {
-    window.location = "/Corporations/Details/" + id;
-}
-</script>

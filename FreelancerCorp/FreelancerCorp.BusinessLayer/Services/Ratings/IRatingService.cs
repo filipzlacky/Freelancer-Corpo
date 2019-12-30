@@ -17,9 +17,9 @@ namespace FreelancerCorp.BusinessLayer.Services.Ratings
 
         Task<RatingDTO> GetAsync(int entityId, bool withIncludes = true);
 
-        int Create(RatingDTO entityDto, int ratedUserId);
+        int Create(RatingDTO entityDto);
 
-        Task Update(RatingDTO entityDto, int ratedUserId);
+        Task Update(RatingDTO entityDto);
 
         void Delete(int entityId);
 
