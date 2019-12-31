@@ -14,7 +14,5 @@ namespace FreelancerCorp.PresentationLayer.Models.Corporations
         public List<CorporationDTO> Corporations { get; set; }
 
         public CorporationFilterDTO Filter { get; set; }
-
-        public int AverageRating { get; set; }
     }
 }

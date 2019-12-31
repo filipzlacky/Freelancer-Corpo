@@ -30,7 +30,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
         {
             using(var uow = UnitOfWorkProvider.Create())
             {                
-                var allRratingsOfUser = await ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsers = new int[] { rating.RatedUserId } });
+                var allRratingsOfUser = await ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsersId = new int[] { rating.RatedUserId } });
                 long divider = allRratingsOfUser.TotalItemsCount + 1;
                 if (rating.RatedUserRole == UserRole.Corporation)
                 {

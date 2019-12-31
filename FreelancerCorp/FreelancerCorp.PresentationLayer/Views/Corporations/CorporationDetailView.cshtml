@@ -6,7 +6,7 @@
 
 <h2>Here is the place to look at details about the ULTIMATE corporation:</h2>
 
-<div>    
+<div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -72,6 +72,13 @@
             @Html.DisplayFor(model => model.Corporation.Address)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Corporation.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Corporation.Location)
+        </dd>
     </dl>
 </div>
 
@@ -89,7 +96,7 @@
         </th>
     </tr>
     @foreach (var offer in Model.Corporation.Offers)
-    {        
+    {
 
         <tr>
             <td>
@@ -101,8 +108,37 @@
             <td>
                 <strong class="text-danger">@offer.Price</strong>
             </td>
-            <td>                
+            <td>
                 @Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })
+            </td>
+        </tr>
+
+    }
+</table>
+
+<h4> Ratings for this user: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Creator
+        </th>
+        <th>
+            Score
+        </th>
+    </tr>
+    @foreach (var rating in Model.Corporation.Ratings)
+    {
+        <tr>
+            <td>
+                <strong class="text-danger">@rating.creator</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@rating.rating.Score</strong>
+            </td>
+            <td>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id }, new { @class = "navbar-brand" })
             </td>
         </tr>
 
@@ -115,7 +151,7 @@
     {
         if (User.Identity.Name != Model.CorporationUserName)
         {
-            @Html.ActionLink("Add rating", "AddRating", new { id = Model.Corporation.Id, ratedUserName = Model.CorporationUserName })
+            @Html.ActionLink("Add rating", "Create", "Ratings", new { id = Model.Corporation.Id, ratedUserName = Model.CorporationUserName }, null)
         }
     }
 </p>

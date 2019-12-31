@@ -8,8 +8,7 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
         public Sex Sex { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime DoB { get; set; }
-        public string Location { get; set; }             
+        public DateTime DoB { get; set; }                     
 
         public Freelancer() : base ("", "Users", "", "", "Freelancer")
         {

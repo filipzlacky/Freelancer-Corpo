@@ -150,9 +150,10 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\CorporationsController.cs" />
     <Compile Include="Controllers\FreelancersController.cs" />
-    <Compile Include="Controllers\Helpers\RatingCreator.cs" />
+    <Compile Include="Controllers\Helpers\RatingHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OffersController.cs" />
+    <Compile Include="Controllers\RatingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,7 +235,7 @@
     <Content Include="Views\Accounts\Users\CorporationDetailView.cshtml" />
     <Content Include="Views\Accounts\RegisterCorporationView.cshtml" />
     <Content Include="Views\Accounts\Users\CorporationEditView.cshtml" />
-    <Content Include="Views\Accounts\Users\CreateRating.cshtml" />
+    <Content Include="Views\Ratings\CreateRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

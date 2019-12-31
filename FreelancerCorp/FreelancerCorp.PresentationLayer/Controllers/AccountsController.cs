@@ -228,6 +228,9 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                         case "Address":
                             newCorporation.Address = collection[key];
                             break;
+                        case "Location":
+                            newCorporation.Location = collection[key];
+                            break;
                     }
                 }
 

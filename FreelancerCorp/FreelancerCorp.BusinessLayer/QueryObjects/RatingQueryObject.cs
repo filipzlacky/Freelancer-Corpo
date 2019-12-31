@@ -20,9 +20,9 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
         {
             var predicates = new List<IPredicate>();
 
-            if (filter.SearchedRatedUsers != null && filter.SearchedRatedUsers.Length != 0)
+            if (filter.SearchedRatedUsersId != null && filter.SearchedRatedUsersId.Length != 0)
             {
-                var predicate = new List<IPredicate>(filter.SearchedRatedUsers
+                var predicate = new List<IPredicate>(filter.SearchedRatedUsersId
                     .Select(searchedUserId => new SimplePredicate(nameof(Rating.RatedUserId), ValueComparingOperator.Equal, searchedUserId)));
 
                 predicates.Add(new CompositePredicate(predicate));

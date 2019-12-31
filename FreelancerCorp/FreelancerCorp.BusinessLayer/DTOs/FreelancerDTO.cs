@@ -24,7 +24,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public List<OfferDTO> Offers { get; set; } = new List<OfferDTO>();
         public List<OfferDTO> AppliedToOffers { get; set; } = new List<OfferDTO>();
 
-        public List<RatingDTO> Ratings { get; set; } = new List<RatingDTO>();
+        public List<(RatingDTO rating, string creator)> Ratings { get; set; } = new List<(RatingDTO rating, string creator)>();
 
         public int GetAge()
         {

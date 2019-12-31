@@ -20,7 +20,7 @@
         <dt>
             @Html.DisplayNameFor(model => model.CorporationDTO.Info)
         </dt>
-        
+
         <dt>
             @Html.DisplayNameFor(model => model.CorporationDTO.AverageRating)
         </dt>
@@ -28,7 +28,7 @@
         <dd>
             @if (Model.CorporationDTO.AverageRating.HasValue)
             {
-            <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.CorporationDTO.AverageRating)</strong>
+                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.CorporationDTO.AverageRating)</strong>
             }
             else
             {
@@ -71,6 +71,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.CorporationDTO.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorporationDTO.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorporationDTO.Location)
         </dd>
     </dl>
 </div>
@@ -138,6 +146,35 @@
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })
+            </td>
+        </tr>
+
+    }
+</table>
+
+<h4> Ratings for you: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Creator
+        </th>
+        <th>
+            Score
+        </th>
+    </tr>
+    @foreach (var rating in Model.CorporationDTO.Ratings)
+    {
+        <tr>
+            <td>
+                <strong class="text-danger">@rating.creator</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@rating.rating.Score</strong>
+            </td>
+            <td>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id }, new { @class = "navbar-brand" })
             </td>
         </tr>
 

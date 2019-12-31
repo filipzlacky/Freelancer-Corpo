@@ -24,6 +24,9 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         [Required(ErrorMessage = "Address is required!")]
         public string Address { get; set; }
 
+        [Required(ErrorMessage = "Location is required!")]
+        public string Location { get; set; }
+
         [Required(ErrorMessage = "Password is required!")]
         [StringLength(30, MinimumLength = 6, ErrorMessage = "Password length must be between 6 and 30")]
         public string Password { get; set; }

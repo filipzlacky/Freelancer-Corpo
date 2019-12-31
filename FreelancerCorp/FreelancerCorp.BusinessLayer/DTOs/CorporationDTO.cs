@@ -15,12 +15,11 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
-
+        public string Location { get; set; }
         public double? AverageRating { get; set; }
 
         public List<OfferDTO> Offers { get; set; } = new List<OfferDTO>();
         public List<OfferDTO> AppliedToOffers { get; set; } = new List<OfferDTO>();
-
-        public List<RatingDTO> Ratings { get; set; } = new List<RatingDTO>();
+        public List<(RatingDTO rating, string creator)> Ratings { get; set; } = new List<(RatingDTO rating, string creator)>();
     }
 }

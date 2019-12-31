@@ -55,37 +55,11 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
             var idOffers = await OfferFacade.ListOffersAsync(new OfferFilterDTO { SearchedAuthorsIds = new int[] { id } });
             model.Offers = new List<OfferDTO>(idOffers.Items);
-            
+
+            var ratings = await RatingFacade.ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsersId = new int[] { id } });
+            model.Ratings = await RatingHelper.MergeRatingsCreators(UserFacade, ratings.Items.ToList());
+
             return View("CorporationDetailView", InitializeCorporationDetailViewModel(model, user.UserName));
-        }
-
-        public ActionResult AddRating(int id, string ratedUserName)
-        {
-            return View("~/Views/Accounts/Users/CreateRAting.cshtml", new RatingCreateViewModel { RatedUserName = ratedUserName, Rating = new RatingDTO() });
-        }        
-
-        [HttpPost]
-        public async Task<ActionResult> AddRating(int id, FormCollection collection)
-        {
-            try
-            {
-                var creator = await UserFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
-                UserRole creatorUserRole;
-
-                if (!Enum.TryParse<UserRole>(creator.UserRole, out creatorUserRole))
-                {
-                    return View("~/Views/Home/Index.cshtml");
-                }
-
-                int ratingId = await RatingFacade.CreateRatingAsync(RatingCreator.CreateRating(id, creator.Id, creatorUserRole, UserRole.Corporation, collection));
-
-                return RedirectToAction("Details", new { id = id });
-            } 
-            catch
-            {
-                return View("~/Views/Home/Index.cshtml");
-            }
-            
         }
 
         // GET: Corporations/Create
@@ -120,7 +94,10 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                             break;
                         case "Address":
                             newCorporation.Address = collection[key];
-                            break;                        
+                            break;
+                        case "Location":
+                            newCorporation.Location = collection[key];
+                            break;
                     }
                 }
 
@@ -168,6 +145,9 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                             break;
                         case "Address":
                             newCorporation.Address = collection[key];
+                            break;
+                        case "Location":
+                            newCorporation.Location = collection[key];
                             break;
                     }
                 }

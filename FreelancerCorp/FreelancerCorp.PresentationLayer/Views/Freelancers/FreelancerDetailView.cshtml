@@ -8,9 +8,8 @@
 <h2>Here is the place to look at details about the ULTIMATE freelancer:</h2>
 
 <div>
-    <hr />
-    <dl class="dl-horizontal">
 
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Freelancer.Name)
         </dt>
@@ -92,6 +91,9 @@
         </dd>
 
     </dl>
+    <d1 class="dl-horizontal">
+
+    </d1>
 </div>
 
 <h4> Created Offers: </h4>
@@ -127,13 +129,42 @@
     }
 </table>
 
+<h4> Ratings for this user: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Creator
+        </th>
+        <th>
+            Score
+        </th>
+    </tr>
+    @foreach (var rating in Model.Freelancer.Ratings)
+    {
+        <tr>
+            <td>
+                <strong class="text-danger">@rating.creator</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@rating.rating.Score</strong>
+            </td>
+            <td>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id }, new { @class = "navbar-brand" })
+            </td>
+        </tr>
+
+    }
+</table>
+
 <p>
     @Html.ActionLink("Back to List", "Index")
     @if (Request.IsAuthenticated)
     {
         if (User.Identity.Name != Model.FreelancerUserName)
         {
-            @Html.ActionLink("Add rating", "AddRating", new { id = Model.Freelancer.Id, ratedUserName = Model.FreelancerUserName })
+            @Html.ActionLink("Add rating", "Create", "Ratings", new { id = Model.Freelancer.Id, ratedUserName = Model.FreelancerUserName }, null)
         }
     }
 </p>

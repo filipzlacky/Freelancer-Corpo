@@ -52,40 +52,14 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             var model = await UserFacade.GetFreelancerAsync(id);
             var user = await UserFacade.GetUserAsync(id);
 
-            var idOffers = await OfferFacade.ListOffersAsync(new OfferFilterDTO { SearchedAuthorsIds = new int[] { id } });            
-            model.Offers = new List<OfferDTO>(idOffers.Items);
+            var offers = await OfferFacade.ListOffersAsync(new OfferFilterDTO { SearchedAuthorsIds = new int[] { id } });            
+            model.Offers = new List<OfferDTO>(offers.Items);
+
+            var ratings = await RatingFacade.ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsersId = new int[] { id } });
+            model.Ratings = await RatingHelper.MergeRatingsCreators(UserFacade, ratings.Items.ToList());
 
             return View("FreelancerDetailView", InitializeFreelancerDetailViewModel(model, user.UserName));           
-        }
-
-        public ActionResult AddRating(int id, string ratedUserName)
-        {
-            return View("~/Views/Accounts/Users/CreateRAting.cshtml", new RatingCreateViewModel { RatedUserName = ratedUserName, Rating = new RatingDTO() });
-        }
-        
-        [HttpPost]
-        public async Task<ActionResult> AddRating(int id, FormCollection collection)
-        {
-            try
-            {
-                var creator = await UserFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
-                UserRole creatorUserRole;
-
-                if (!Enum.TryParse<UserRole>(creator.UserRole, out creatorUserRole))
-                {
-                    return View("~/Views/Home/Index.cshtml");
-                }               
-
-                int ratingId = await RatingFacade.CreateRatingAsync(RatingCreator.CreateRating(id, creator.Id, creatorUserRole, UserRole.Freelancer, collection));
-
-                return RedirectToAction("Details", new { id = id });
-            }
-            catch
-            {
-                return View("~/Views/Home/Index.cshtml");
-            }
-
-        }
+        }      
 
         // GET: FreelancerController/Create
         public ActionResult Create()

@@ -164,6 +164,35 @@
     }
 </table>
 
+<h4> Ratings for you: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Creator
+        </th>
+        <th>
+            Score
+        </th>
+    </tr>
+    @foreach (var rating in Model.FreelancerDTO.Ratings)
+    {
+        <tr>
+            <td>
+                <strong class="text-danger">@rating.creator</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@rating.rating.Score</strong>
+            </td>
+            <td>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id }, new { @class = "navbar-brand" })
+            </td>
+        </tr>
+
+    }
+</table>
+
 <p>
     @Html.ActionLink("Edit", "EditProfile") |
     @Html.ActionLink("Back", "Index")

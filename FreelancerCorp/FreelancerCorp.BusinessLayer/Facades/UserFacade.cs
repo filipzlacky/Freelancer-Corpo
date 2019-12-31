@@ -219,11 +219,11 @@ namespace FreelancerCorp.BusinessLayer.Facades
 
         public double GetFreelancerAverageRating(FreelancerDTO freelancer)
         {
-            return freelancer.Ratings.Average(rating => rating.Score);
+            return freelancer.Ratings.Average(rating => rating.rating.Score);
         }
         public double GetCorporationAverageRating(CorporationDTO corporation)
         {
-            return corporation.Ratings.Average(rating => rating.Score);
+            return corporation.Ratings.Average(rating => rating.rating.Score);
         }
 
         public int GetAge(FreelancerDTO freelancer)
