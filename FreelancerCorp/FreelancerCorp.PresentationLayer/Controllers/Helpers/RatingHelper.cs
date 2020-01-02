@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 namespace FreelancerCorp.PresentationLayer.Controllers.Helpers
 {
     public class RatingHelper
-    {        
+    {       
+        public static double? CountAverageRating(List<RatingDTO> ratings, double? sumRating)
+        {
+            if (sumRating.HasValue)
+            {
+                return sumRating.Value / ratings.Count;
+            }
+
+            return null;
+        }
+
         public static async Task<List<(RatingDTO rating, string creator)>> MergeRatingsCreators(UserFacade userFacade, List<RatingDTO> ratings)
         {
             var result = new List<(RatingDTO rating, string creator)>();

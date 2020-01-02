@@ -35,9 +35,9 @@
                 <strong class="text-danger">@freelancer.Location</strong>
             </td>
             <td>
-                @if (freelancer.AverageRating.HasValue)
+                @if (freelancer.SumRating.HasValue)
                 {
-                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @freelancer.AverageRating)</strong>
+                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @freelancer.SumRating)</strong>
                 } else
                 {
                     <strong class="text-danger">No rated yet</strong>

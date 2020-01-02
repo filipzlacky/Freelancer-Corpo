@@ -51,7 +51,6 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         public async Task<ActionResult> Details(int id)
         {
             var model = await UserFacade.GetCorporationAsync(id);
-            var user = await UserFacade.GetUserAsync(id);
 
             var idOffers = await OfferFacade.ListOffersAsync(new OfferFilterDTO { SearchedAuthorsIds = new int[] { id } });
             model.Offers = new List<OfferDTO>(idOffers.Items);
@@ -59,7 +58,9 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             var ratings = await RatingFacade.ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsersId = new int[] { id } });
             model.Ratings = await RatingHelper.MergeRatingsCreators(UserFacade, ratings.Items.ToList());
 
-            return View("CorporationDetailView", InitializeCorporationDetailViewModel(model, user.UserName));
+            model.SumRating = RatingHelper.CountAverageRating(ratings.Items.ToList(), model.SumRating);
+
+            return View("CorporationDetailView", model);
         }
 
         // GET: Corporations/Create
@@ -200,15 +201,6 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             {
                 return View();
             }
-        }
-
-        private CorporationDetailViewModel InitializeCorporationDetailViewModel(CorporationDTO corporation, string corporationUserName)
-        {
-            return new CorporationDetailViewModel
-            {
-                Corporation = corporation,
-                CorporationUserName = corporationUserName
-            };
         }
 
         private CorporationListViewModel InitializeCorporationListViewModel(QueryResultDTO<CorporationDTO, CorporationFilterDTO> result)

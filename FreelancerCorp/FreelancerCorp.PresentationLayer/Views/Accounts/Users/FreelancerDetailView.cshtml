@@ -1,4 +1,4 @@
-﻿@model FreelancerCorp.PresentationLayer.Models.Accounts.FreelancerProfileModel
+﻿@model FreelancerCorp.PresentationLayer.Models.Freelancers.FreelancerDetailViewModel
 
 
 @{
@@ -19,21 +19,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FreelancerDTO.Name)
+            @Html.DisplayNameFor(model => model.Freelancer.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FreelancerDTO.Name)
+            @Html.DisplayFor(model => model.Freelancer.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FreelancerDTO.AverageRating)
+            Average rating
         </dt>
 
         <dd>
-            @if (Model.FreelancerDTO.AverageRating.HasValue)
+            @if (Model.Freelancer.SumRating.HasValue)
             {
-                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.FreelancerDTO.AverageRating)</strong>
+                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.Freelancer.SumRating)</strong>
             }
             else
             {
@@ -43,51 +43,51 @@
 
 
         <dt>
-            @Html.DisplayNameFor(model => model.FreelancerDTO.Email)
+            @Html.DisplayNameFor(model => model.Freelancer.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FreelancerDTO.Email)
+            @Html.DisplayFor(model => model.Freelancer.Email)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FreelancerDTO.PhoneNumber)
+            @Html.DisplayNameFor(model => model.Freelancer.PhoneNumber)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FreelancerDTO.PhoneNumber)
+            @Html.DisplayFor(model => model.Freelancer.PhoneNumber)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FreelancerDTO.Location)
+            @Html.DisplayNameFor(model => model.Freelancer.Location)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FreelancerDTO.Location)
+            @Html.DisplayFor(model => model.Freelancer.Location)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FreelancerDTO.Info)
+            @Html.DisplayNameFor(model => model.Freelancer.Info)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FreelancerDTO.Info)
+            @Html.DisplayFor(model => model.Freelancer.Info)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FreelancerDTO.Sex)
+            @Html.DisplayNameFor(model => model.Freelancer.Sex)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FreelancerDTO.Sex)
+            @Html.DisplayFor(model => model.Freelancer.Sex)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FreelancerDTO.DoB)
+            @Html.DisplayNameFor(model => model.Freelancer.DoB)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FreelancerDTO.DoB)
+            @Html.DisplayFor(model => model.Freelancer.DoB)
         </dd>
 
     </dl>
@@ -107,7 +107,7 @@
             Price
         </th>
     </tr>
-    @foreach (var offer in Model.FreelancerDTO.AppliedToOffers)
+    @foreach (var offer in Model.Freelancer.AppliedToOffers)
     {
         <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
 
@@ -143,7 +143,7 @@
             Price
         </th>
     </tr>
-    @foreach (var offer in Model.FreelancerDTO.Offers)
+    @foreach (var offer in Model.Freelancer.Offers)
     {
 
         <tr>
@@ -174,7 +174,7 @@
             Score
         </th>
     </tr>
-    @foreach (var rating in Model.FreelancerDTO.Ratings)
+    @foreach (var rating in Model.Freelancer.Ratings)
     {
         <tr>
             <td>
@@ -186,7 +186,7 @@
             <td>
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id, ratedUserName = User.Identity.Name }, new { @class = "navbar-brand" })
             </td>
         </tr>
 

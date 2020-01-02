@@ -30,7 +30,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {            
             var allFreelancers = await UserFacade.GetFreelancersAsync();         
 
-            var model = InitializeFreelancerListViewModel(new QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> { Items = allFreelancers });
+            var model = await InitializeFreelancerListViewModel(new QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> { Items = allFreelancers });
             return View("FreelancerListView", model);
         }
 
@@ -42,7 +42,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
             var result = await UserFacade.GetFreelancersAsync(model.Filter);
 
-            var newModel = InitializeFreelancerListViewModel(result);
+            var newModel = await InitializeFreelancerListViewModel(result);
             return View("FreelancerListView", newModel);
         }
 
@@ -57,6 +57,8 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
             var ratings = await RatingFacade.ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsersId = new int[] { id } });
             model.Ratings = await RatingHelper.MergeRatingsCreators(UserFacade, ratings.Items.ToList());
+
+            model.SumRating = RatingHelper.CountAverageRating(ratings.Items.ToList(), model.SumRating);
 
             return View("FreelancerDetailView", InitializeFreelancerDetailViewModel(model, user.UserName));           
         }      
@@ -236,12 +238,18 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             return new FreelancerDetailViewModel
             {
                 Freelancer = freelancer,
-                FreelancerUserName = freelancerUserName
+                UserName = freelancerUserName
             };
         }
 
-        private FreelancerListViewModel InitializeFreelancerListViewModel(QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> result)
+        private async Task<FreelancerListViewModel> InitializeFreelancerListViewModel(QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> result)
         {
+            foreach (FreelancerDTO freelancer in result.Items)
+            {
+                var ratings = await RatingFacade.ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsersId = new int[] { freelancer.Id } });
+                freelancer.SumRating = RatingHelper.CountAverageRating(ratings.Items.ToList(), freelancer.SumRating);
+            }
+
             return new FreelancerListViewModel
             {
                 Freelancers = new List<FreelancerDTO>(result.Items),

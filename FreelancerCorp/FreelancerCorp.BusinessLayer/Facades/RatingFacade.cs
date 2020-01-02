@@ -29,19 +29,16 @@ namespace FreelancerCorp.BusinessLayer.Facades
         public async Task<int> CreateRatingAsync(RatingDTO rating)
         {
             using(var uow = UnitOfWorkProvider.Create())
-            {                
-                var allRratingsOfUser = await ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsersId = new int[] { rating.RatedUserId } });
-                long divider = allRratingsOfUser.TotalItemsCount + 1;
+            {                                
                 if (rating.RatedUserRole == UserRole.Corporation)
                 {
                     var corporation = await corporationService.GetAsync(rating.RatedUserId);
                     
-                    if (!corporation.AverageRating.HasValue)
+                    if (!corporation.SumRating.HasValue)
                     {
-                        corporation.AverageRating = 0;
+                        corporation.SumRating = 0;
                     }
-                    corporation.AverageRating += rating.Score;
-                    corporation.AverageRating /= divider;
+                    corporation.SumRating += rating.Score;
 
                     await corporationService.Update(corporation);
                 }
@@ -49,12 +46,11 @@ namespace FreelancerCorp.BusinessLayer.Facades
                 {
                     var freelancer = await freelancerService.GetAsync(rating.RatedUserId);
 
-                    if (!freelancer.AverageRating.HasValue)
+                    if (!freelancer.SumRating.HasValue)
                     {
-                        freelancer.AverageRating = 0;
+                        freelancer.SumRating = 0;
                     }
-                    freelancer.AverageRating += rating.Score;
-                    freelancer.AverageRating /= divider;
+                    freelancer.SumRating += rating.Score;
 
                     await freelancerService.Update(freelancer);
                 }

@@ -1,4 +1,4 @@
-﻿@model FreelancerCorp.PresentationLayer.Models.Corporations.CorporationDetailViewModel
+﻿@model FreelancerCorp.BusinessLayer.DTOs.CorporationDTO
 
 @{
     ViewBag.Title = "Corporation details";
@@ -10,28 +10,29 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Corporation.Name)
+            User name/ Name
         </dt>
+        
         <dd>
-            @Html.DisplayFor(model => model.Corporation.Name)
+            @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Corporation.Info)
+            @Html.DisplayNameFor(model => model.Info)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Corporation.Info)
+            @Html.DisplayFor(model => model.Info)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Corporation.AverageRating)
+            Average rating
         </dt>
 
         <dd>
-            @if (Model.Corporation.AverageRating.HasValue)
+            @if (Model.SumRating.HasValue)
             {
-                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.Corporation.AverageRating)</strong>
+                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.SumRating)</strong>
             }
             else
             {
@@ -40,21 +41,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Corporation.Email)
+            @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>
-            <a href="mailto:@Model.Corporation.Email">@Model.Corporation.Email</a>
+            <a href="mailto:@Model.Email">@Model.Email</a>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Corporation.PhoneNumber)
+            @Html.DisplayNameFor(model => model.PhoneNumber)
         </dt>
 
         <dd>
-            @if (!string.IsNullOrEmpty(@Model.Corporation.PhoneNumber))
+            @if (!string.IsNullOrEmpty(@Model.PhoneNumber))
             {
-                <a href="tel:@Model.Corporation.PhoneNumber">@Model.Corporation.PhoneNumber</a>
+                <a href="tel:@Model.PhoneNumber">@Model.PhoneNumber</a>
             }
             else
             {
@@ -65,19 +66,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Corporation.Address)
+            @Html.DisplayNameFor(model => model.Address)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Corporation.Address)
+            @Html.DisplayFor(model => model.Address)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Corporation.Location)
+            @Html.DisplayNameFor(model => model.Location)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Corporation.Location)
+            @Html.DisplayFor(model => model.Location)
         </dd>
     </dl>
 </div>
@@ -95,7 +96,7 @@
             Price
         </th>
     </tr>
-    @foreach (var offer in Model.Corporation.Offers)
+    @foreach (var offer in Model.Offers)
     {
 
         <tr>
@@ -126,7 +127,7 @@
             Score
         </th>
     </tr>
-    @foreach (var rating in Model.Corporation.Ratings)
+    @foreach (var rating in Model.Ratings)
     {
         <tr>
             <td>
@@ -138,7 +139,7 @@
             <td>
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id, ratedUserName = Model.Name }, new { @class = "navbar-brand" })
             </td>
         </tr>
 
@@ -149,9 +150,9 @@
     @Html.ActionLink("Back to List", "Index")
     @if (Request.IsAuthenticated)
     {
-        if (User.Identity.Name != Model.CorporationUserName)
+        if (User.Identity.Name != Model.Name)
         {
-            @Html.ActionLink("Add rating", "Create", "Ratings", new { id = Model.Corporation.Id, ratedUserName = Model.CorporationUserName }, null)
+            @Html.ActionLink("Add rating", "Create", "Ratings", new { id = Model.Id, ratedUserName = Model.Name }, null)
         }
     }
 </p>

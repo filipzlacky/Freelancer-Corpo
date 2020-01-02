@@ -11,6 +11,14 @@
 
     <dl class="dl-horizontal">
         <dt>
+            User name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Freelancer.Name)
         </dt>
 
@@ -44,13 +52,13 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Freelancer.AverageRating)
+            Average rating
         </dt>
 
         <dd>
-            @if (Model.Freelancer.AverageRating.HasValue)
+            @if (Model.Freelancer.SumRating.HasValue)
             {
-                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.Freelancer.AverageRating)</strong>
+                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.Freelancer.SumRating)</strong>
             }
             else
             {
@@ -151,7 +159,7 @@
             <td>
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id, ratedUserName = Model.UserName }, new { @class = "navbar-brand" })
             </td>
         </tr>
 
@@ -162,9 +170,9 @@
     @Html.ActionLink("Back to List", "Index")
     @if (Request.IsAuthenticated)
     {
-        if (User.Identity.Name != Model.FreelancerUserName)
+        if (User.Identity.Name != Model.UserName)
         {
-            @Html.ActionLink("Add rating", "Create", "Ratings", new { id = Model.Freelancer.Id, ratedUserName = Model.FreelancerUserName }, null)
+            @Html.ActionLink("Add rating", "Create", "Ratings", new { id = Model.Freelancer.Id, ratedUserName = Model.UserName }, null)
         }
     }
 </p>

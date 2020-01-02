@@ -11,6 +11,6 @@ namespace FreelancerCorp.PresentationLayer.Models.Freelancers
     public class FreelancerDetailViewModel
     {
         public FreelancerDTO Freelancer { get; set; }
-        public string FreelancerUserName { get; set; }
+        public string UserName { get; set; }
     }
 }

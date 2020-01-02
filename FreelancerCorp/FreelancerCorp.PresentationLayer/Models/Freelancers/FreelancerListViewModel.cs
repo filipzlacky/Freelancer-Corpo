@@ -9,7 +9,7 @@ namespace FreelancerCorp.PresentationLayer.Models.Freelancers
 {
     public class FreelancerListViewModel
     {
-        public List<string> FreelancerCriteria => new List<string> { nameof(FreelancerDTO.Name), nameof(FreelancerDTO.AverageRating), nameof(FreelancerDTO.Location) };
+        public List<string> FreelancerCriteria => new List<string> { nameof(FreelancerDTO.Name), nameof(FreelancerDTO.SumRating), nameof(FreelancerDTO.Location) };
 
         public List<FreelancerDTO> Freelancers { get; set; }
 

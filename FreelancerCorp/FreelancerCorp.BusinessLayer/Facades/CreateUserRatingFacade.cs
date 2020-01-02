@@ -31,7 +31,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
                 {
                     var corporation = await corporationService.GetAsync(createRatingDTO.RatedUserId);
                     //corporation.Ratings.Add(createRatingDTO.Rating);
-                    corporation.AverageRating += createRatingDTO.Rating.Score / corporation.Ratings.Count;
+                    corporation.SumRating += createRatingDTO.Rating.Score / corporation.Ratings.Count;
 
                     await corporationService.Update(corporation);
                 }
@@ -39,7 +39,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
                 {
                     var freelancer = await freelancerService.GetAsync(createRatingDTO.RatedUserId);
                     //freelancer.Ratings.Add(createRatingDTO.Rating);
-                    freelancer.AverageRating += createRatingDTO.Rating.Score / freelancer.Ratings.Count;
+                    freelancer.SumRating += createRatingDTO.Rating.Score / freelancer.Ratings.Count;
 
                     await freelancerService.Update(freelancer);
                 }

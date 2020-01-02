@@ -16,10 +16,12 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
         [ForeignKey(nameof(Creator))]
         public int CreatorId { get; set; }
         public virtual User Creator { get; set; }
+        public string CreatorRole { get; set; }
 
         [ForeignKey(nameof(RatedUser))]
         public int RatedUserId { get; set; }
         public virtual User RatedUser { get; set; }
+        public string RatedUserRole { get; set; }
 
         [Required]
         public string Comment { get; set; }

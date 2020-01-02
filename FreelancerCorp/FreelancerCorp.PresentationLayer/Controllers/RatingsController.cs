@@ -1,5 +1,6 @@
 ﻿using FreelancerCorp.BusinessLayer.DTOs;
 using FreelancerCorp.BusinessLayer.DTOs.Enums;
+using FreelancerCorp.BusinessLayer.DTOs.Filter;
 using FreelancerCorp.BusinessLayer.Facades;
 using FreelancerCorp.PresentationLayer.Models.Ratings;
 using System;
@@ -17,15 +18,19 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         public UserFacade UserFacade { get; set; }
 
         // GET: Ratings/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id, string ratedUserName)
         {
-            return View();
+            var rating = await RatingFacade.GetRatingsAsync(id);
+
+            var creator = await UserFacade.GetUserAsync(rating.CreatorId);            
+
+            return View("RatingDetailView", InitializeRatingViewModel(rating, creator.UserName, ratedUserName));
         }
 
         // GET: Ratings/Create
         public ActionResult Create(int id, string ratedUserName)
         {
-            return View("CreateRAting", new RatingCreateViewModel { RatedUserName = ratedUserName, Rating = new RatingDTO() });
+            return View("RatingCreateView", InitializeRatingViewModel(new RatingDTO(), null, ratedUserName));
         }
 
         private RatingDTO CreateRating(int ratedId, int creatorId, UserRole creatorUserRole, UserRole ratedUserRole, FormCollection collection)
@@ -80,7 +85,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 int ratingId = await RatingFacade.CreateRatingAsync(CreateRating(id, creator.Id, creatorUserRole, ratedUserRole, collection));                
 
-                return RedirectToAction("Details", creatorUserRole.ToString() + "s", new { id = id });
+                return RedirectToAction("Details", ratedUserRole + "s", new { id = id });
             }
             catch
             {
@@ -89,47 +94,127 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         }        
 
         // GET: Ratings/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var rating = await RatingFacade.GetRatingsAsync(id);
+
+            return View("RatingEditView", rating);
         }
 
         // POST: Ratings/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                var newRating = await RatingFacade.GetRatingsAsync(id);
 
-                return RedirectToAction("Index");
+                foreach(string key in collection.Keys)
+                {
+                    switch(key)
+                    {
+                        case "Score":
+                            int newScore;
+                            if (Int32.TryParse(collection[key], out newScore))
+                            {
+                                newRating.Score = newScore;
+                            }                            
+                            break;
+                        case "Comment": 
+                            newRating.Comment = collection[key];
+                            break;
+                    }
+                }
+
+                bool success = await RatingFacade.EditRatingAsync(newRating);
+                if (!success)
+                {
+                    // THROW ERROR
+                }
+
+                return RedirectToAction("Details", new { id = id });
             }
             catch
             {
                 return View();
+            }
+        }
+
+        private double? DecreaseRating(double userScore, int ratingsCount, int score)
+        {
+            if (ratingsCount == 1)
+            {
+                 return null;
+            }
+            else
+            {
+                if (userScore < score)
+                {
+                    return 0;
+                }
+                return userScore - score;
+            }
+        }
+
+        private async void RemoveUserRating(RatingDTO rating)
+        {
+            var ratings = await RatingFacade.ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsersId = new[] { rating.RatedUserId } });
+            int ratingsCount = ratings.Items.Count();
+
+            if (rating.RatedUserRole == UserRole.Corporation)
+            {
+                var corporation = await UserFacade.GetCorporationAsync(rating.RatedUserId);
+                corporation.SumRating = DecreaseRating(corporation.SumRating.Value, ratingsCount, rating.Score);
+
+                UserFacade.EditCorporationAsync(corporation);
+            }
+            else
+            {
+                var freelancer= await UserFacade.GetFreelancerAsync(rating.RatedUserId);
+                freelancer.SumRating = DecreaseRating(freelancer.SumRating.Value, ratingsCount, rating.Score);
+
+                UserFacade.EditFreelancerAsync(freelancer);
             }
         }
 
         // GET: Ratings/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var rating = await RatingFacade.GetRatingsAsync(id);
+
+            RemoveUserRating(rating);
+
+            await RatingFacade.DeleteRatingAsync(id);
+
+            string userRoleListRoute = "~/Views/" + rating.RatedUserRole + "s/" + rating.RatedUserRole + "DetailView.cshtml";
+
+            return RedirectToAction("Details", rating.RatedUserRole + "s", new { id = rating.RatedUserId });
         }
 
         // POST: Ratings/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public async Task<ActionResult> Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                var rating = await RatingFacade.GetRatingsAsync(id);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "", null);
             }
             catch
             {
                 return View();
             }
+        }
+
+        public RatingViewModel InitializeRatingViewModel(RatingDTO rating, string creatorUserName, string ratedUserName)
+        {
+            return new RatingViewModel
+            {
+                Rating = rating,
+                CreatorUserName = creatorUserName,
+                RatedUserName = ratedUserName
+            };
         }
     }
 }
