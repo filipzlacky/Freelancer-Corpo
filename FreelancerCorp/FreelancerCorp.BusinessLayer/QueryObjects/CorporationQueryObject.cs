@@ -27,16 +27,12 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
                 predicates.Add(new SimplePredicate(nameof(Corporation.Address), ValueComparingOperator.Equal, filter.SearchedLocation));
             }
 
-            if (filter.CorporationNames != null && filter.CorporationNames.Length != 0)
+            if (!string.IsNullOrEmpty(filter.SearchedCorporationName))
             {
-                var predicate = new List<IPredicate>(filter.CorporationNames
-                .Select(name => new SimplePredicate(
-                    nameof(Corporation.Name),
-                    ValueComparingOperator.Equal,
-                    name)));
-
-                predicates.Add(new CompositePredicate(predicate));
+                predicates.Add(new SimplePredicate(nameof(Corporation.Name), ValueComparingOperator.Equal, filter.SearchedCorporationName));
             }
+
+            predicates.Add(new SimplePredicate(nameof(Corporation.UserRole), ValueComparingOperator.Equal, filter.UserRole));
 
             return query.Where(new CompositePredicate(predicates));
         }

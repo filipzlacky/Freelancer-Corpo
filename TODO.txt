@@ -1,8 +1,5 @@
-Offers: tabuľky pre vypisovanie pri useroch nastavené
+Apply to offer
 
-Tasks:
-- offers: edit
-- offers: vypísanie pri useroch (filter je pomalý alebo je niečo iné zle)
+Tlacitka trochu zmastrovat
 
-- general: back tlačítko
-- general: naseediť databázu
+Pageing ak je cas

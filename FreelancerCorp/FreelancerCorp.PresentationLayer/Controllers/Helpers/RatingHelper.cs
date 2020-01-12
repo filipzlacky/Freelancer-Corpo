@@ -7,11 +7,11 @@ namespace FreelancerCorp.PresentationLayer.Controllers.Helpers
 {
     public class RatingHelper
     {       
-        public static double? CountAverageRating(List<RatingDTO> ratings, double? sumRating)
+        public static double? CountAverageRating(int ratingsCount, double? sumRating)
         {
             if (sumRating.HasValue)
             {
-                return sumRating.Value / ratings.Count;
+                return sumRating.Value / ratingsCount;
             }
 
             return null;

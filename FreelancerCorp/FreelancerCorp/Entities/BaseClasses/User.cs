@@ -15,6 +15,8 @@ namespace FreelancerCorp.DataAccessLayer.Entities {
 
         public double? SumRating { get; set; }
 
+        public int RatingCount { get; set; } = 0;
+
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Location { get; set; }

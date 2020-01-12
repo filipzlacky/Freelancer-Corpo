@@ -19,24 +19,29 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
         public FreelancerQueryObject(IMapper mapper, IQuery<Freelancer> offer) : base(mapper, offer) { }
 
         protected override IQuery<Freelancer> ApplyWhereClause(IQuery<Freelancer> query, FreelancerFilterDTO filter)
-        {            
-
+        {
             List<IPredicate> predicates = new List<IPredicate>();
+
+            predicates.Add(new SimplePredicate(nameof(Freelancer.UserRole), ValueComparingOperator.Equal, filter.UserRole));
 
             if (!string.IsNullOrEmpty(filter.SearchedLocation))
             {
                 predicates.Add(new SimplePredicate(nameof(Freelancer.Location), ValueComparingOperator.Equal, filter.SearchedLocation));
             }
 
-            if (filter.SearchedFreelancerNames != null && filter.SearchedFreelancerNames.Length != 0)
+            if (!string.IsNullOrEmpty(filter.SearchedSex))
             {
-                var predicate = new List<IPredicate>(filter.SearchedFreelancerNames
-                .Select(name => new SimplePredicate(
-                    nameof(Freelancer.Name),
-                    ValueComparingOperator.Equal,
-                    name)));
+                predicates.Add(new SimplePredicate(nameof(Freelancer.Sex), ValueComparingOperator.Equal, filter.SearchedSex));
+            }
 
-                predicates.Add(new CompositePredicate(predicate));
+            if (!string.IsNullOrEmpty(filter.SearchedUserName))
+            {
+                predicates.Add(new SimplePredicate(nameof(Freelancer.UserName), ValueComparingOperator.Equal, filter.SearchedUserName));
+            }
+
+            if (!string.IsNullOrEmpty(filter.SearchedFreelancerName))
+            {
+                predicates.Add(new SimplePredicate(nameof(Freelancer.Name), ValueComparingOperator.Equal, filter.SearchedFreelancerName));
             }
 
             return query.Where(new CompositePredicate(predicates));

@@ -27,12 +27,28 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
         // GET: FreelancerController
         public async Task<ActionResult> Index(int page = 1)
-        {            
-            var allFreelancers = await UserFacade.GetFreelancersAsync();         
+        {
+            var allFreelancers = await UserFacade.GetFreelancersAsync();
 
-            var model = await InitializeFreelancerListViewModel(new QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> { Items = allFreelancers });
+            var model = InitializeFreelancerListViewModel(new QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> { Items = allFreelancers, Filter = new FreelancerFilterDTO() });
             return View("FreelancerListView", model);
         }
+
+        private List<FreelancerDTO> FilterFreelancersByRating(List<FreelancerDTO> freelancers, double wantedRating)
+        {
+            var filteredFreelancers = new List<FreelancerDTO>();
+
+            foreach (var freelancer in freelancers)
+            {
+                var avgRating = RatingHelper.CountAverageRating(freelancer.RatingCount, freelancer.SumRating);
+                if (avgRating.HasValue && avgRating >= wantedRating)
+                {
+                    filteredFreelancers.Add(freelancer);
+                }
+            }
+
+            return filteredFreelancers;
+        } 
 
         [HttpPost]
         public async Task<ActionResult> Index(FreelancerListViewModel model)
@@ -42,7 +58,12 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
             var result = await UserFacade.GetFreelancersAsync(model.Filter);
 
-            var newModel = await InitializeFreelancerListViewModel(result);
+            if (model.Filter.SearchedAverage.HasValue)
+            {
+                result.Items = FilterFreelancersByRating(result.Items.ToList(), model.Filter.SearchedAverage.Value);
+            }
+
+            var newModel = InitializeFreelancerListViewModel(result);
             return View("FreelancerListView", newModel);
         }
 
@@ -58,10 +79,64 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             var ratings = await RatingFacade.ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsersId = new int[] { id } });
             model.Ratings = await RatingHelper.MergeRatingsCreators(UserFacade, ratings.Items.ToList());
 
-            model.SumRating = RatingHelper.CountAverageRating(ratings.Items.ToList(), model.SumRating);
+            model.SumRating = RatingHelper.CountAverageRating(model.RatingCount, model.SumRating);
 
             return View("FreelancerDetailView", InitializeFreelancerDetailViewModel(model, user.UserName));           
         }      
+
+        private FreelancerDTO ParseCollection(FormCollection collection, FreelancerDTO freelancer)
+        {
+            string name = "", lastName = "";
+
+            foreach (string key in collection.AllKeys)
+            {
+                switch (key)
+                {
+                    case "Name":
+                        name = collection[key];
+                        break;
+                    case "LastName":
+                        lastName = collection[key];
+                        break;
+                    case "Email":
+                        freelancer.Email = collection[key];
+                        break;
+                    case "PhoneNumber":
+                        freelancer.PhoneNumber = collection[key];
+                        break;
+                    case "Info":
+                        freelancer.Info = collection[key];
+                        break;
+                    case "Location":
+                        freelancer.Location = collection[key];
+                        break;
+                    case "Sex":
+                        if (!Enum.TryParse(collection[key], out Sex newSex))
+                        {
+                            // THROW ERROR
+                        }
+                        else
+                        {
+                            freelancer.Sex = newSex;
+                        }
+                        break;
+                    case "DoB":
+                        if (!DateTime.TryParse(collection[key], out DateTime newDate))
+                        {
+                            // THROW ERROR
+                        }
+                        else
+                        {
+                            freelancer.DoB = newDate;
+                        }
+                        break;
+                }
+            }
+
+            freelancer.Name = string.IsNullOrEmpty(lastName) ? name : name + " " + lastName;
+
+            return freelancer;
+        }
 
         // GET: FreelancerController/Create
         public ActionResult Create()
@@ -75,52 +150,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {
             try
             {
-                FreelancerDTO newFreelancer = new FreelancerDTO();
-                string name = "", lastName = "";
-
-                foreach (string key in collection.AllKeys)
-                {
-                    switch (key)
-                    {
-                        case "Name": name = collection[key];                            
-                            break;
-                        case "LastName":
-                            lastName = collection[key];
-                            break;
-                        case "Email":
-                            newFreelancer.Email = collection[key];
-                            break;
-                        case "PhoneNumber":
-                            newFreelancer.PhoneNumber = collection[key];
-                            break;
-                        case "Info":
-                            newFreelancer.Info = collection[key];
-                            break;
-                        case "Location":
-                            newFreelancer.Location = collection[key];
-                            break;
-                        case "Sex": 
-                            if (!Enum.TryParse(collection[key], out Sex newSex))
-                            {
-                                // THROW ERROR
-                            } else
-                            {
-                                newFreelancer.Sex = newSex;
-                            }
-                            break;
-                        case "DoB":
-                            if (!DateTime.TryParse(collection[key], out DateTime newDate))
-                            {
-                                // THROW ERROR
-                            } else
-                            {
-                                newFreelancer.DoB = newDate;
-                            }
-                            break;
-                    }
-                }
-
-                newFreelancer.Name = name + " " + lastName;
+                FreelancerDTO newFreelancer = ParseCollection(collection, new FreelancerDTO());
 
                 int newId = await UserFacade.CreateFreelancerAsync(newFreelancer);
 
@@ -145,52 +175,12 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {
             try
             {
-                FreelancerDTO newFreelancer = new FreelancerDTO();
-                newFreelancer.Id = id;
+                FreelancerDTO editedFreelancer = new FreelancerDTO();
+                editedFreelancer.Id = id;
 
-                foreach (string key in collection.AllKeys)
-                {
-                    switch (key)
-                    {
-                        case "Name":
-                            newFreelancer.Name = collection[key];
-                            break;                        
-                        case "Email":
-                            newFreelancer.Email = collection[key];
-                            break;
-                        case "Info":
-                            newFreelancer.Info = collection[key];
-                            break;
-                        case "PhoneNumber":
-                            newFreelancer.PhoneNumber = collection[key];
-                            break;
-                        case "Location":
-                            newFreelancer.Location = collection[key];
-                            break;
-                        case "Sex":
-                            if (!Enum.TryParse(collection[key], out Sex newSex))
-                            {
-                                // THROW ERROR
-                            }
-                            else
-                            {
-                                newFreelancer.Sex = newSex;
-                            }
-                            break;
-                        case "DoB":
-                            if (!DateTime.TryParse(collection[key], out DateTime newDate))
-                            {
-                                // THROW ERROR
-                            }
-                            else
-                            {
-                                newFreelancer.DoB = newDate;
-                            }
-                            break;
-                    }
-                }
+                editedFreelancer = ParseCollection(collection, editedFreelancer);
 
-                bool success = await UserFacade.EditFreelancerAsync(newFreelancer);
+                bool success = await UserFacade.EditFreelancerAsync(editedFreelancer);
                 if (!success)
                     // Throw ERROR
                     throw new NotImplementedException();
@@ -242,12 +232,11 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             };
         }
 
-        private async Task<FreelancerListViewModel> InitializeFreelancerListViewModel(QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> result)
+        private FreelancerListViewModel InitializeFreelancerListViewModel(QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> result)
         {
             foreach (FreelancerDTO freelancer in result.Items)
             {
-                var ratings = await RatingFacade.ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsersId = new int[] { freelancer.Id } });
-                freelancer.SumRating = RatingHelper.CountAverageRating(ratings.Items.ToList(), freelancer.SumRating);
+                freelancer.SumRating = RatingHelper.CountAverageRating(freelancer.RatingCount, freelancer.SumRating);                
             }
 
             return new FreelancerListViewModel

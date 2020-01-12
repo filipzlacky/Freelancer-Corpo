@@ -165,13 +165,15 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             {
                 var corporation = await UserFacade.GetCorporationAsync(rating.RatedUserId);
                 corporation.SumRating = DecreaseRating(corporation.SumRating.Value, ratingsCount, rating.Score);
-
+                corporation.RatingCount -= 1;
+                
                 UserFacade.EditCorporationAsync(corporation);
             }
             else
             {
                 var freelancer= await UserFacade.GetFreelancerAsync(rating.RatedUserId);
                 freelancer.SumRating = DecreaseRating(freelancer.SumRating.Value, ratingsCount, rating.Score);
+                freelancer.RatingCount -= 1;
 
                 UserFacade.EditFreelancerAsync(freelancer);
             }

@@ -30,9 +30,25 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {            
             var allCorporations = await UserFacade.GetCorporationsAsync();            
 
-            var model = InitializeCorporationListViewModel(new QueryResultDTO<CorporationDTO, CorporationFilterDTO> { Items = allCorporations });
+            var model = InitializeCorporationListViewModel(new QueryResultDTO<CorporationDTO, CorporationFilterDTO> { Items = allCorporations, Filter = new CorporationFilterDTO() });
 
             return View("CorporationListView", model);
+        }
+
+        private List<CorporationDTO> FilterCorporationsByRating(List<CorporationDTO> corporations, double wantedRating)
+        {
+            var filteredCorporations = new List<CorporationDTO>();
+
+            foreach (var corporation in corporations)
+            {
+                var avgRating = RatingHelper.CountAverageRating(corporation.RatingCount, corporation.SumRating);
+                if (avgRating.HasValue && avgRating >= wantedRating)
+                {
+                    filteredCorporations.Add(corporation);
+                }
+            }
+
+            return filteredCorporations;
         }
 
         [HttpPost]
@@ -42,6 +58,11 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             Session[FilterSessionKey] = model.Filter;
 
             var result = await UserFacade.GetCorporationsAsync(model.Filter);
+
+            if (model.Filter.SearchedAverage.HasValue)
+            {
+                result.Items = FilterCorporationsByRating(result.Items.ToList(), model.Filter.SearchedAverage.Value);
+            }
 
             var newModel = InitializeCorporationListViewModel(result);
             return View("CorporationListView", newModel);
@@ -58,7 +79,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             var ratings = await RatingFacade.ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsersId = new int[] { id } });
             model.Ratings = await RatingHelper.MergeRatingsCreators(UserFacade, ratings.Items.ToList());
 
-            model.SumRating = RatingHelper.CountAverageRating(ratings.Items.ToList(), model.SumRating);
+            model.SumRating = RatingHelper.CountAverageRating(model.RatingCount, model.SumRating);
 
             return View("CorporationDetailView", model);
         }
@@ -69,38 +90,43 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             return View("CorporationCreateView");
         }
 
+        private CorporationDTO ParseCollection(FormCollection collection, CorporationDTO corporation)
+        {
+            foreach (string key in collection.AllKeys)
+            {
+                switch (key)
+                {
+                    case "Name":
+                        corporation.Name = collection[key];
+                        break;
+                    case "Email":
+                        corporation.Email = collection[key];
+                        break;
+                    case "PhoneNumber":
+                        corporation.PhoneNumber = collection[key];
+                        break;
+                    case "Info":
+                        corporation.Info = collection[key];
+                        break;
+                    case "Address":
+                        corporation.Address = collection[key];
+                        break;
+                    case "Location":
+                        corporation.Location = collection[key];
+                        break;
+                }
+            }
+
+            return corporation;
+        }
+
         // POST: Corporations/Create
         [HttpPost]
         public async Task<ActionResult> Create(FormCollection collection)
         {
             try
             {
-                CorporationDTO newCorporation = new CorporationDTO();
-
-                foreach (string key in collection.AllKeys)
-                {
-                    switch (key)
-                    {
-                        case "Name":
-                            newCorporation.Name = collection[key];
-                            break;                        
-                        case "Email":
-                            newCorporation.Email = collection[key];
-                            break;
-                        case "PhoneNumber":
-                            newCorporation.PhoneNumber = collection[key];
-                            break;
-                        case "Info":
-                            newCorporation.Info = collection[key];
-                            break;
-                        case "Address":
-                            newCorporation.Address = collection[key];
-                            break;
-                        case "Location":
-                            newCorporation.Location = collection[key];
-                            break;
-                    }
-                }
+                CorporationDTO newCorporation = ParseCollection(collection, new CorporationDTO());                
 
                 int newId = await UserFacade.CreateCorporationAsync(newCorporation);
 
@@ -125,35 +151,12 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {
             try
             {
-                CorporationDTO newCorporation = new CorporationDTO();
-                newCorporation.Id = id;
+                CorporationDTO editedCorporation = new CorporationDTO();
+                editedCorporation.Id = id;
 
-                foreach (string key in collection.AllKeys)
-                {
-                    switch (key)
-                    {
-                        case "Name":
-                            newCorporation.Name = collection[key];
-                            break;                        
-                        case "Email":
-                            newCorporation.Email = collection[key];
-                            break;
-                        case "PhoneNumber":
-                            newCorporation.PhoneNumber = collection[key];
-                            break;
-                        case "Info":
-                            newCorporation.Info = collection[key];
-                            break;
-                        case "Address":
-                            newCorporation.Address = collection[key];
-                            break;
-                        case "Location":
-                            newCorporation.Location = collection[key];
-                            break;
-                    }
-                }
+                editedCorporation = ParseCollection(collection, editedCorporation);
 
-                bool success = await UserFacade.EditCorporationAsync(newCorporation);
+                bool success = await UserFacade.EditCorporationAsync(editedCorporation);
 
                 if (!success)
                 {
@@ -205,6 +208,11 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
         private CorporationListViewModel InitializeCorporationListViewModel(QueryResultDTO<CorporationDTO, CorporationFilterDTO> result)
         {
+            foreach (CorporationDTO corporation in result.Items)
+            {
+                corporation.SumRating = RatingHelper.CountAverageRating(corporation.RatingCount, corporation.SumRating);
+            }
+
             return new CorporationListViewModel
             {
                 Corporations = new List<CorporationDTO>(result.Items),

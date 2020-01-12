@@ -31,6 +31,8 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             return View("OfferListView", model);
         }
 
+        //private List<OfferDTO>
+
         [HttpPost]
         public async Task<ActionResult> Index(OfferListViewModel model)
         {
@@ -239,7 +241,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
         private async Task<OfferListViewModel> InitializeOfferListViewModel(QueryResultDTO<OfferDTO, OfferFilterDTO> result)
         {
-            List<(OfferDTO, string)> offers = new List<(OfferDTO, string)>();
+            var offers = new List<(OfferDTO, string)>();
             string name;
             foreach(var offer in result.Items)
             {
@@ -249,7 +251,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             return new OfferListViewModel
             {
                 Offers = offers,
-                Filter = result.Filter
+                Filter = result.Filter == null ? new OfferFilterDTO() : result.Filter
             };
         }
 

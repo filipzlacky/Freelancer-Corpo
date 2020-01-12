@@ -20,6 +20,8 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public string Info { get; set; }
 
         public double? SumRating { get; set; }
+        
+        public int RatingCount { get; set; }
 
         public List<OfferDTO> Offers { get; set; } = new List<OfferDTO>();
         public List<OfferDTO> AppliedToOffers { get; set; } = new List<OfferDTO>();

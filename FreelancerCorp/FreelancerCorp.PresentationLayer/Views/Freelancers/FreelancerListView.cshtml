@@ -1,4 +1,5 @@
 ﻿@model FreelancerCorp.PresentationLayer.Models.Freelancers.FreelancerListViewModel
+@using FreelancerCorp.BusinessLayer.DTOs.Enums;
 
 @{
     ViewBag.Title = "Freelancers";
@@ -6,6 +7,62 @@
 
 <h2>Here is the place to list all ULTIMATE freelancers:</h2>
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>Filter fields:</h4>
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.Label("UserName", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedUserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SearchedUserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedFreelancerName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SearchedFreelancerName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Sex", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedSex, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SearchedSex, "", new { @class = "text-danger" })
+                @*@Html.DropDownList("Sex", new SelectList(Enum.GetValues(typeof(Sex))), "", new { @class = "form-control" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Location", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedLocation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SearchedLocation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Average", htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedAverage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SearchedAverage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Filter" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
 
 <table class="table">
     <tr>
@@ -37,14 +94,15 @@
             <td>
                 @if (freelancer.SumRating.HasValue)
                 {
-                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @freelancer.SumRating)</strong>
-                } else
+                    <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @freelancer.SumRating)</strong>
+                }
+                else
                 {
                     <strong class="text-danger">No rated yet</strong>
                 }
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = freelancer.Id })                
+                @Html.ActionLink("Details", "Details", new { id = freelancer.Id })
             </td>
         </tr>
 

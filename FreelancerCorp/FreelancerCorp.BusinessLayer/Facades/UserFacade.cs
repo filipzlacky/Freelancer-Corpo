@@ -193,6 +193,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
                 return (await freelancerService.ListAllAsync()).Items;
             }
         }
+
         public async Task<IEnumerable<CorporationDTO>> GetCorporationsAsync()
         {
             using (UnitOfWorkProvider.Create())
@@ -217,18 +218,19 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public double GetFreelancerAverageRating(FreelancerDTO freelancer)
-        {
-            return freelancer.Ratings.Average(rating => rating.rating.Score);
-        }
+        //public double GetFreelancerAverageRating(FreelancerDTO freelancer)
+        //{
+        //    return freelancer.Ratings.Average(rating => rating.rating.Score);
+        //}
+
         public double GetCorporationAverageRating(CorporationDTO corporation)
         {
             return corporation.Ratings.Average(rating => rating.rating.Score);
         }
 
-        public int GetAge(FreelancerDTO freelancer)
-        {
-            return (DateTime.Now - freelancer.DoB).Days/365;
-        }
+        //public int GetAge(FreelancerDTO freelancer)
+        //{
+        //    return (DateTime.Now - freelancer.DoB).Days/365;
+        //}
     }
 }

@@ -121,7 +121,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 freelancer.AppliedToOffers = new List<OfferDTO>(idAppliedOffers.Items);
                 freelancer.Ratings = await RatingHelper.MergeRatingsCreators(userFacade, idRatings.Items.ToList());
 
-                freelancer.SumRating = RatingHelper.CountAverageRating(idRatings.Items.ToList(), freelancer.SumRating);
+                freelancer.SumRating = RatingHelper.CountAverageRating(freelancer.RatingCount, freelancer.SumRating);
 
                 return View("Users/FreelancerDetailView", ToProfileModel(freelancer, user.UserName));
             } 
@@ -133,7 +133,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 corporation.AppliedToOffers = new List<OfferDTO>(idAppliedOffers.Items);
                 corporation.Ratings = await RatingHelper.MergeRatingsCreators(userFacade, idRatings.Items.ToList());
 
-                corporation.SumRating = RatingHelper.CountAverageRating(idRatings.Items.ToList(), corporation.SumRating);
+                corporation.SumRating = RatingHelper.CountAverageRating(corporation.RatingCount, corporation.SumRating);
 
                 return View("Users/CorporationDetailView", corporation);
             }

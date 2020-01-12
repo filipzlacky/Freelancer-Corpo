@@ -53,7 +53,12 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
 
             if (filter.SearchedPrice.HasValue)
             {
-                predicates.Add(new SimplePredicate(nameof(Offer.Price), ValueComparingOperator.Equal, filter.SearchedPrice));
+                predicates.Add(new SimplePredicate(nameof(Offer.Price), ValueComparingOperator.LessThanOrEqual, filter.SearchedPrice));
+            }
+
+            if (predicates.Count == 0)
+            {
+                return query;
             }
 
             return query.Where(new CompositePredicate(predicates));

@@ -39,7 +39,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
                         corporation.SumRating = 0;
                     }
                     corporation.SumRating += rating.Score;
-
+                    corporation.RatingCount += 1;
                     await corporationService.Update(corporation);
                 }
                 else
@@ -51,6 +51,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
                         freelancer.SumRating = 0;
                     }
                     freelancer.SumRating += rating.Score;
+                    freelancer.RatingCount += 1;
 
                     await freelancerService.Update(freelancer);
                 }

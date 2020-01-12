@@ -2,10 +2,48 @@
 @using FreelancerCorp.BusinessLayer.DTOs.Enums
 
 @{
-    ViewBag.Title = "OfferListView";
+    ViewBag.Title = "Offers list";
 }
 
-<h2>OfferListView</h2>
+<h2>Here you can see all ULTIMATE offers</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>Filter fields:</h4>
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.Label("Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SearchedName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Category", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedCategory, new { htmlAttributes = new { @class = "form-control" } })                
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Price", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SearchedPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Filter" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
 
 <table class="table">
     <tr>
@@ -15,38 +53,39 @@
         <th>Creator name</th>
     </tr>
 
-@foreach (var offer in Model.Offers) {
-<tr>
-    <td>
-        <strong class="text-danger">@offer.offer.Name</strong>
-    </td>
-    <td>
-        <strong class="text-danger">@offer.offer.Category</strong>
-    </td>
-    <td>
-        <strong class="text-danger">@offer.offer.Price</strong>
-    </td>
-    <td>
-        <strong class="text-danger">@offer.creatorName</strong>
-    </td>
-    <td>
-        @if (offer.offer.State == State.Finished)
-        {
-            <strong class="text-danger" style="color:forestgreen">Finished</strong>
-        }
-        else if (offer.offer.State == State.InProgress)
-        {
-            <strong class="text-danger" style="color:darkorange">In progress</strong>
-        }
-        else
-        {
-            <strong class="text-danger" style="color:darkred">Not assigned</strong>
-        }
-    </td>
-    <td>
-        @Html.ActionLink("Details", "Details", new { id = offer.offer.Id})
-    </td>
-</tr>
-}
+    @foreach (var offer in Model.Offers)
+    {
+        <tr>
+            <td>
+                <strong class="text-danger">@offer.offer.Name</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.offer.Category</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.offer.Price</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@offer.creatorName</strong>
+            </td>
+            <td>
+                @if (offer.offer.State == State.Finished)
+                {
+                    <strong class="text-danger" style="color:forestgreen">Finished</strong>
+                }
+                else if (offer.offer.State == State.InProgress)
+                {
+                    <strong class="text-danger" style="color:darkorange">In progress</strong>
+                }
+                else
+                {
+                    <strong class="text-danger" style="color:darkred">Not assigned</strong>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = offer.offer.Id })
+            </td>
+        </tr>
+    }
 
 </table>
