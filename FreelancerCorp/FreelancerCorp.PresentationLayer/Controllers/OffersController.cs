@@ -15,7 +15,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 {
     public class OffersController : Controller
     {
-        public const int PageSize = 9;
+        public const int PageSize = 8;
 
         private const string FilterSessionKey = "filter";
 

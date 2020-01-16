@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.Label("Category", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Filter.SearchedCategory, new { htmlAttributes = new { @class = "form-control" } })                
+                @Html.EditorFor(model => model.Filter.SearchedCategory, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
@@ -45,52 +45,59 @@
     </div>
 }
 
-<table class="table">
-    <tr>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Price</th>
-        <th>Creator name</th>
-        <th>Applier name</th>
-        <th>Details</th>
-    </tr>
+@section Styles {
+    <style>
+        .grid {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
 
-    @foreach (var offer in Model.Offers)
+            .grid:after {
+                content: "";
+                flex: auto;
+            }
+
+        .grid-child {
+            padding: 15px;
+            width: 25%;
+            box-sizing: border-box;
+        }
+    </style>
+}
+
+<div class="grid row">
+    @foreach (var item in Model.Offers)
     {
-        <tr>
-            <td>
-                <strong class="text-danger">@offer.offer.Name</strong>
-            </td>
-            <td>
-                <strong class="text-danger">@offer.offer.Category</strong>
-            </td>
-            <td>
-                <strong class="text-danger">@offer.offer.Price</strong>
-            </td>
-            <td>
-                <strong class="text-danger">@offer.creatorName</strong>
-            </td>
-            <td>
-                @if (offer.offer.State == State.Finished)
-                {
-                    <strong class="text-danger" style="color:forestgreen">Finished</strong>
-                }
-                else if (offer.offer.State == State.InProgress)
-                {
-                    <strong class="text-danger" style="color:darkorange">In progress</strong>
-                }
-                else
-                {
-                    <strong class="text-danger" style="color:darkred">Not assigned</strong>
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = offer.offer.Id })
-            </td>
-        </tr>
-    }
+        <div class="grid-child">
 
-</table>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style="color:aliceblue">@item.offer.Name</h4>
+                    <p class="card-text">Category: @item.offer.Category</p>
+                    <p class="card-text">Price: €@item.offer.Price</p>
+                    <p class="card-text">Author: @item.creatorName</p>
+                    <p class="card-text">
+                        State:
+                        @if (item.offer.State == State.Finished)
+                        {
+                            <strong class="text-danger" style="color:red">Finished</strong>
+                        }
+                        else if (item.offer.State == State.InProgress)
+                        {
+                            <strong class="text-danger" style="color:orange">In progress</strong>
+                        }
+                        else
+                        {
+                            <strong class="text-danger" style="color:green">Not assigned</strong>
+                        }
+                    </p>
+                    <p>@Html.ActionLink("Details", "Details", new { id = item.offer.Id })</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
 <div>
     <ul class="pagination justify-content-center">
@@ -102,3 +109,4 @@
         }
     </ul>
 </div>
+

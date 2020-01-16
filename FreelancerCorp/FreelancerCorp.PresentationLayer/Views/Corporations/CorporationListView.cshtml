@@ -46,6 +46,17 @@
     </div>
 }
 
+<style>
+    .table th {
+        background-image: linear-gradient(to bottom, black, black) !important;
+        text-shadow: none !important;
+    }
+
+        .table th a {
+            color: white !important;
+        }
+</style>
+
 <table class="table">
     <tr>
         <th>
@@ -68,22 +79,22 @@
     {
         <tr>
             <td>
-                <strong class="text-danger">@corporation.Name</strong>
+                <strong class="text-danger" style="color:aliceblue">@corporation.Name</strong>
             </td>
             <td>
-                <strong class="text-danger">@corporation.Address</strong>
+                <strong class="text-danger" style="color:silver">@corporation.Address</strong>
             </td>
             <td>
-                <strong class="text-danger">@corporation.Location</strong>
+                <strong class="text-danger" style="color:silver">@corporation.Location</strong>
             </td>
             <td>
                 @if (corporation.SumRating.HasValue)
                 {
-                    <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @corporation.SumRating)</strong>
+                    <strong class="text-danger" style="color:darkorange">@string.Format("{0:N2}", @corporation.SumRating)</strong>
                 }
                 else
                 {
-                    <strong class="text-danger">No rated yet</strong>
+                    <strong class="text-danger" style="color:silver">No rated yet</strong>
                 }
             </td>
             <td>
