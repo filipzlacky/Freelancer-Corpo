@@ -17,7 +17,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 {
     public class FreelancersController : Controller
     {
-        public const int PageSize = 9;
+        public const int PageSize = 8;
 
         private const string FilterSessionKey = "filter";
 
@@ -30,25 +30,9 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {
             var allFreelancers = await UserFacade.GetFreelancersAsync();
 
-            var model = InitializeFreelancerListViewModel(new QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> { Items = allFreelancers, Filter = new FreelancerFilterDTO() });
+            var model = InitializeFreelancerListViewModel(new QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> { Items = allFreelancers, Filter = new FreelancerFilterDTO(), RequestedPageNumber = page, PageSize = PageSize, TotalItemsCount = allFreelancers.Count() });
             return View("FreelancerListView", model);
         }
-
-        private List<FreelancerDTO> FilterFreelancersByRating(List<FreelancerDTO> freelancers, double wantedRating)
-        {
-            var filteredFreelancers = new List<FreelancerDTO>();
-
-            foreach (var freelancer in freelancers)
-            {
-                var avgRating = RatingHelper.CountAverageRating(freelancer.RatingCount, freelancer.SumRating);
-                if (avgRating.HasValue && avgRating >= wantedRating)
-                {
-                    filteredFreelancers.Add(freelancer);
-                }
-            }
-
-            return filteredFreelancers;
-        } 
 
         [HttpPost]
         public async Task<ActionResult> Index(FreelancerListViewModel model)
@@ -65,6 +49,22 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
             var newModel = InitializeFreelancerListViewModel(result);
             return View("FreelancerListView", newModel);
+        }
+
+        private List<FreelancerDTO> FilterFreelancersByRating(List<FreelancerDTO> freelancers, double wantedRating)
+        {
+            var filteredFreelancers = new List<FreelancerDTO>();
+
+            foreach (var freelancer in freelancers)
+            {
+                var avgRating = RatingHelper.CountAverageRating(freelancer.RatingCount, freelancer.SumRating);
+                if (avgRating.HasValue && avgRating >= wantedRating)
+                {
+                    filteredFreelancers.Add(freelancer);
+                }
+            }
+
+            return filteredFreelancers;
         }
 
         // GET: FreelancerController/Details/5
@@ -234,15 +234,19 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
         private FreelancerListViewModel InitializeFreelancerListViewModel(QueryResultDTO<FreelancerDTO, FreelancerFilterDTO> result)
         {
-            foreach (FreelancerDTO freelancer in result.Items)
+            var finalList = result.PagedResult();
+
+            foreach (FreelancerDTO freelancer in finalList)
             {
                 freelancer.SumRating = RatingHelper.CountAverageRating(freelancer.RatingCount, freelancer.SumRating);                
             }
 
             return new FreelancerListViewModel
             {
-                Freelancers = new List<FreelancerDTO>(result.Items),
-                Filter = result.Filter
+                Freelancers = new List<FreelancerDTO>(finalList),
+                Filter = result.Filter,
+                CurrentPageIndex = result.RequestedPageNumber.HasValue ? (int)result.RequestedPageNumber : 1,
+                PageCount = (int)Math.Ceiling(result.TotalItemsCount / (double)result.PageSize)
             };
         }
     }

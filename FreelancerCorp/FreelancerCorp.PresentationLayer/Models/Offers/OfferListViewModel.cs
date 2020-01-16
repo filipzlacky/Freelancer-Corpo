@@ -14,5 +14,9 @@ namespace FreelancerCorp.PresentationLayer.Models.Offers
         public List<(OfferDTO offer, string creatorName)> Offers { get; set; }
 
         public OfferFilterDTO Filter { get; set; }
+
+        public int CurrentPageIndex { get; set; }
+
+        public int PageCount { get; set; }
     }
 }

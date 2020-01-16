@@ -17,7 +17,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 {
     public class CorporationsController : Controller
     {
-        public const int PageSize = 9;
+        public const int PageSize = 6;
 
         private const string FilterSessionKey = "filter";
 
@@ -30,7 +30,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {            
             var allCorporations = await UserFacade.GetCorporationsAsync();            
 
-            var model = InitializeCorporationListViewModel(new QueryResultDTO<CorporationDTO, CorporationFilterDTO> { Items = allCorporations, Filter = new CorporationFilterDTO() });
+            var model = InitializeCorporationListViewModel(new QueryResultDTO<CorporationDTO, CorporationFilterDTO> { Items = allCorporations, Filter = new CorporationFilterDTO(), RequestedPageNumber = page, PageSize = PageSize, TotalItemsCount = allCorporations.Count() });
 
             return View("CorporationListView", model);
         }
@@ -208,15 +208,19 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
         private CorporationListViewModel InitializeCorporationListViewModel(QueryResultDTO<CorporationDTO, CorporationFilterDTO> result)
         {
-            foreach (CorporationDTO corporation in result.Items)
+            var finalList = result.PagedResult();
+
+            foreach (CorporationDTO corporation in finalList)
             {
                 corporation.SumRating = RatingHelper.CountAverageRating(corporation.RatingCount, corporation.SumRating);
             }
 
             return new CorporationListViewModel
             {
-                Corporations = new List<CorporationDTO>(result.Items),
-                Filter = result.Filter
+                Corporations = new List<CorporationDTO>(finalList),
+                Filter = result.Filter,
+                CurrentPageIndex = result.RequestedPageNumber.HasValue ? (int)result.RequestedPageNumber : 1,
+                PageCount = (int)Math.Ceiling(result.TotalItemsCount / (double)result.PageSize)
             };
         }
     }

@@ -37,6 +37,7 @@ C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\FreelancerCorp\FreelancerCorp.Infrastructure\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\FreelancerCorp\FreelancerCorp.Infrastructure\bin\Debug\EntityFramework.xml
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\FreelancerCorp\FreelancerCorp.Infrastructure\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Debug\FreelancerCorp.Infrastructure.csprojAssemblyReference.cache
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Debug\FreelancerCorp.Infrastructure.csproj.CopyComplete
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Debug\FreelancerCorp.Infrastructure.dll
 C:\Users\ALEX\AlexDawn\FI MUNI\05 semester\PV179 Vývoj systémov v C#\Workcopy_git\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Debug\FreelancerCorp.Infrastructure.pdb

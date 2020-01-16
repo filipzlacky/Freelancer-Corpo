@@ -51,6 +51,8 @@
         <th>Category</th>
         <th>Price</th>
         <th>Creator name</th>
+        <th>Applier name</th>
+        <th>Details</th>
     </tr>
 
     @foreach (var offer in Model.Offers)
@@ -89,3 +91,14 @@
     }
 
 </table>
+
+<div>
+    <ul class="pagination justify-content-center">
+        @for (var i = 1; i <= Model.PageCount; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPageIndex ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+            </li>
+        }
+    </ul>
+</div>

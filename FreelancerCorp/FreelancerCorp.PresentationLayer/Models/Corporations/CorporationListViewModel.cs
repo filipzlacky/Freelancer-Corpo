@@ -14,5 +14,9 @@ namespace FreelancerCorp.PresentationLayer.Models.Corporations
         public List<CorporationDTO> Corporations { get; set; }
 
         public CorporationFilterDTO Filter { get; set; }
+
+        public int CurrentPageIndex { get; set; }
+
+        public int PageCount { get; set; }
     }
 }

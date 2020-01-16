@@ -27,7 +27,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {
             var allOffers = await OfferFacade.GetAllOffersAsync();            
 
-            var model = await InitializeOfferListViewModel(new QueryResultDTO<OfferDTO, OfferFilterDTO> { Items = allOffers });
+            var model = await InitializeOfferListViewModel(new QueryResultDTO<OfferDTO, OfferFilterDTO> { Items = allOffers, Filter = new OfferFilterDTO(), RequestedPageNumber = page, PageSize = PageSize, TotalItemsCount = allOffers.Count() });
             return View("OfferListView", model);
         }
 
@@ -241,9 +241,11 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
         private async Task<OfferListViewModel> InitializeOfferListViewModel(QueryResultDTO<OfferDTO, OfferFilterDTO> result)
         {
+            var finalList = result.PagedResult();
+
             var offers = new List<(OfferDTO, string)>();
             string name;
-            foreach(var offer in result.Items)
+            foreach(var offer in finalList)
             {
                 name = await GetCreatorName(offer);
                 offers.Add((offer,name));
@@ -251,7 +253,9 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             return new OfferListViewModel
             {
                 Offers = offers,
-                Filter = result.Filter == null ? new OfferFilterDTO() : result.Filter
+                Filter = result.Filter,
+                CurrentPageIndex = result.RequestedPageNumber.HasValue ? (int)result.RequestedPageNumber : 1,
+                PageCount = (int)Math.Ceiling(result.TotalItemsCount / (double)result.PageSize)
             };
         }
 

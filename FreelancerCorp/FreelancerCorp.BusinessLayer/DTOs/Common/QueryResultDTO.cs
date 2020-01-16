@@ -38,5 +38,23 @@ namespace FreelancerCorp.BusinessLayer.DTOs.Common
             return $"{TotalItemsCount} {typeof(TDto).Name}(s)" +
                    $"{(RequestedPageNumber != null ? $", page {RequestedPageNumber}/{Math.Ceiling(TotalItemsCount / (double)PageSize)}." : ".")}";
         }
+
+        public IEnumerable<TDto> PagedResult()
+        {
+            if (RequestedPageNumber.HasValue)
+            {
+                var index = (int)(RequestedPageNumber - 1) * PageSize;
+                int itemsNum = 0;
+                if (index + PageSize >= Items.Count())
+                {
+                    itemsNum = Items.Count() - index;
+                } else
+                {
+                    itemsNum = PageSize;
+                }
+                return Items.ToList().GetRange((int)(RequestedPageNumber - 1) * PageSize, itemsNum);
+            }
+            return Items;
+        }
     }
 }

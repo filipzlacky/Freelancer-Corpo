@@ -14,5 +14,9 @@ namespace FreelancerCorp.PresentationLayer.Models.Freelancers
         public List<FreelancerDTO> Freelancers { get; set; }
 
         public FreelancerFilterDTO Filter { get; set; }
+
+        public int CurrentPageIndex { get; set; }
+
+        public int PageCount { get; set; }
     }
 }
