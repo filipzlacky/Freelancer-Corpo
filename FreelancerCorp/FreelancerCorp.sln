@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.DAL.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.BusinessLayer", "FreelancerCorp.BusinessLayer\FreelancerCorp.BusinessLayer.csproj", "{F4C80260-EE75-49B0-8AB1-22CA82B585DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.WebApi", "WebApplication1\FreelancerCorp.WebApi.csproj", "{D01660A3-26D7-467E-BD8D-8224596BA728}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.WebApi", "FreelancerCorp.WebApi\FreelancerCorp.WebApi.csproj", "{D01660A3-26D7-467E-BD8D-8224596BA728}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreelancerCorp.PresentationLayer", "FreelancerCorp.PresentationLayer\FreelancerCorp.PresentationLayer.csproj", "{A262F8B9-60CA-44C2-B01B-555BA3FAB365}"
 EndProject

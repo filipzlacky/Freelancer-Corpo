@@ -37,13 +37,13 @@ namespace WebApplication1.Controllers
         }
 
         // POST: api/Offer
-        public async Task<string> Post([FromBody]RatingCreateModel model)
+        public async Task<string> Post([FromBody]RatingDTO model)
         {
             if (!ModelState.IsValid)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            int ratingId = await RatingFacade.CreateRatingAsync(model.RatingDTO);
+            int ratingId = await RatingFacade.CreateRatingAsync(model);
             if (ratingId != -1)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -52,7 +52,7 @@ namespace WebApplication1.Controllers
         }
 
         // PUT: api/Offer/5
-        public async Task<string> Put(int id, [FromBody]CreateRatingDTO rating)
+        public async Task<string> Put(int id, [FromBody]RatingDTO rating)
         {
             if (!ModelState.IsValid)
             {

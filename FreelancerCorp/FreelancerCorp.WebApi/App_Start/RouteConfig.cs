@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace FreelancerCorp.WebApi.App_Start
+namespace WebApplication1
 {
     public class RouteConfig
     {
@@ -15,7 +15,7 @@ namespace FreelancerCorp.WebApi.App_Start
 
             routes.MapRoute(
                 name: "Default",
-                url: "api/{controller}/{action}/{id}",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
