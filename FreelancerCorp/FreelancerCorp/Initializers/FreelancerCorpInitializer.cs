@@ -54,6 +54,7 @@ namespace FreelancerCorp.DataAccessLayer.Initializers {
 
             Offer newOffer = new Offer(Enums.Category.MANAGEMENT, "CEO", "Are you a great manager? Come to us :3", 7500, 5, "");
             newOffer.Creator = generalFreelancer;
+            newOffer.CreatorRole = "Freelancer";
             context.Offers.AddOrUpdate(newOffer);
 
             //--- OFFERS ---
@@ -76,10 +77,12 @@ namespace FreelancerCorp.DataAccessLayer.Initializers {
 
             newOffer = new Offer(Enums.Category.GRAPHICS, "Butterfly", "3D model of a beautiful butterfly", 100, 7, "Can be freely used by everyone.");
             newOffer.Creator = generalFreelancer;
+            newOffer.CreatorRole = "Freelancer";
             context.Offers.AddOrUpdate(newOffer);
 
             newOffer = new Offer(Enums.Category.GRAPHICS, "BloodyMary", "3D model of a horror character", 250, 7, "Author should be credited after purchase.");
             newOffer.Creator = generalFreelancer;
+            newOffer.CreatorRole = "Freelancer";
             context.Offers.AddOrUpdate(newOffer);
 
             //--- OFFERS ---
@@ -101,6 +104,7 @@ namespace FreelancerCorp.DataAccessLayer.Initializers {
 
             newOffer = new Offer(Enums.Category.IT, "This Website", "Please take it from me!!!", 0, 9, "I just want to get rid of it!!!");
             newOffer.Creator = generalFreelancer;
+            newOffer.CreatorRole = "Freelancer";
             context.Offers.AddOrUpdate(newOffer);
 
             //--- OFFERS ---
@@ -223,15 +227,18 @@ namespace FreelancerCorp.DataAccessLayer.Initializers {
             //--- OFFERS ---
 
             newOffer = new Offer(Enums.Category.IT, "Programmer", "You know what to do", 10000, 27, "Advised: be the very best you can be.");
-            newOffer.Creator = generalFreelancer;
+            newOffer.Creator = generalCorporation;
+            newOffer.CreatorRole = "Corporation";
             context.Offers.AddOrUpdate(newOffer);
 
             newOffer = new Offer(Enums.Category.IT, "Tester", "You know what to do", 8000, 27, "Advised: be the very best you can be.");
-            newOffer.Creator = generalFreelancer;
+            newOffer.Creator = generalCorporation;
+            newOffer.CreatorRole = "Corporation";
             context.Offers.AddOrUpdate(newOffer);
 
             newOffer = new Offer(Enums.Category.IT, "Developer", "You know what to do", 12000, 27, "Advised: be the very best you can be.");
-            newOffer.Creator = generalFreelancer;
+            newOffer.Creator = generalCorporation;
+            newOffer.CreatorRole = "Corporation";
             context.Offers.AddOrUpdate(newOffer);
 
 

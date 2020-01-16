@@ -51,7 +51,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
                 {
                     return false;
                 }
-                await offerService.Update(offer.Offer, offer.ApplierId);
+                await offerService.Update(offer.Offer, (int)offer.ApplierId);
                 await uow.Commit();
                 return true;
             }
@@ -78,30 +78,6 @@ namespace FreelancerCorp.BusinessLayer.Facades
                 return (await offerService.GetAsync(id));
             }
         }
-
-        //public async Task<IEnumerable<int>> GetOffersAsync(Category category)
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        return (await offerService.GetOfferIdsByCategoryAsync(category));
-        //    }
-        //}
-
-        //public async Task<IEnumerable<int>> GetOffersAsync(int price)
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        return (await offerService.GetOfferIdsByPriceAsync(price));
-        //    }
-        //}
-
-        //public async Task<IEnumerable<int>> GetOffersAsync(int price, Category category)
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        return (await offerService.GetOfferIdsByAllAsync(price, category));
-        //    }
-        //}
 
         public async Task<QueryResultDTO<OfferDTO, OfferFilterDTO>> ListOffersAsync(OfferFilterDTO filter)
         {

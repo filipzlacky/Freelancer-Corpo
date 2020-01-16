@@ -9,6 +9,7 @@ namespace FreelancerCorp.BusinessLayer.DTOs.Enums
     public enum UserRole
     {
         Corporation,
-        Freelancer
+        Freelancer,
+        Unregistered
     }
 }

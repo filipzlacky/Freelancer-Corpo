@@ -9,7 +9,9 @@ namespace FreelancerCorp.BusinessLayer.DTOs
 {
     public class UserAppliesForOfferDTO
     {
-        public int ApplierId { get; set; }
+        public string ApplierName { get; set; }
+
+        public int? ApplierId { get; set; }
         
         public UserRole ApplierRole { get; set; }
 

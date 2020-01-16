@@ -20,6 +20,9 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         private const string FilterSessionKey = "filter";
 
         public OfferFacade OfferFacade { get; set; }
+
+        public ApplyForOfferFacade ApplyOfferFacade { get; set; }
+
         public UserFacade UserFacade { get; set; }
 
         // GET: OffersController
@@ -120,9 +123,46 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             return (user.Id, user.UserRole);
         }
 
-        public async Task<ActionResult> Enrol(int id)
+        public async Task<ActionResult> Enroll(int id)
         {
-            throw new NotImplementedException("Caka sa na dohodnutie sa");
+            var offer = await OfferFacade.GetOfferAsync(id);
+            string name = "";
+            if (offer.CreatorRole == UserRole.Corporation)
+            {
+                var corporation = await UserFacade.GetCorporationAsync(offer.CreatorId);
+                name = corporation.Name;
+            }
+            if (offer.CreatorRole == UserRole.Freelancer)
+            {
+                var freelancer = await UserFacade.GetFreelancerAsync(offer.CreatorId);
+                name = freelancer.Name;
+            }
+            var offerEnrolModel = new OfferEnrollViewModel { Offer = offer, CreatorId = offer.CreatorId, Creator = name, OfferId = offer.Id};
+            return View("OfferEnrollView", offerEnrolModel);
+
+        }
+
+        public async Task<ActionResult> FinishEnrollment(OfferEnrollViewModel model, FormCollection collection)
+        {
+            string role = "";
+            if (collection != null)
+            {
+                model.Applier = collection["Applier"];
+                role = collection["UserRole"];
+            }
+            model.Offer.State = State.InProgress;
+
+            var offer = await OfferFacade.GetOfferAsync(model.OfferId);
+
+            if (role.Equals("Unregistered"))
+            {
+                await ApplyOfferFacade.ApplyUserForOffer(new UserAppliesForOfferDTO { Offer = offer, ApplierId = null, ApplierName = model.Applier, ApplierRole = UserRole.Unregistered});
+            } else
+            {
+                await ApplyOfferFacade.ApplyUserForOffer(new UserAppliesForOfferDTO { Offer = offer, ApplierId = null, ApplierRole = UserRole.Unregistered });
+            }
+
+            return View("Home");
         }
 
         // GET: OffersController/Edit/5
@@ -230,7 +270,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
         private async Task<OfferDetailViewModel> InitializeOfferDetailViewModel(OfferDTO offer)
         {
-            string creatorName = await GetCreatorName(offer), applierName;
+            string creatorName = await GetCreatorName(offer);
 
             return new OfferDetailViewModel
             {

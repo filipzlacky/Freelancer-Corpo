@@ -31,13 +31,24 @@ namespace FreelancerCorp.BusinessLayer.Facades
 
                 if (userAppliesForOfferDTO.ApplierRole == UserRole.Corporation)
                 {
-                    var corporation = await corporationService.GetAsync(userAppliesForOfferDTO.ApplierId);
+                    var corporation = await corporationService.GetAsync((int)userAppliesForOfferDTO.ApplierId);
+                    userAppliesForOfferDTO.ApplierName = corporation.Name;
+                    userAppliesForOfferDTO.ApplierRole = UserRole.Corporation;
                     corporation.Offers.Add(userAppliesForOfferDTO.Offer);
+                    await offerService.Update(userAppliesForOfferDTO.Offer, corporation.Id);
+                    await uow.Commit();
                 }
-                else
+                else if (userAppliesForOfferDTO.ApplierRole == UserRole.Freelancer)
                 {
-                    var freelancer = await freelancerService.GetAsync(userAppliesForOfferDTO.ApplierId);
+                    var freelancer = await freelancerService.GetAsync((int)userAppliesForOfferDTO.ApplierId);
+                    userAppliesForOfferDTO.ApplierName = freelancer.Name;
+                    userAppliesForOfferDTO.ApplierRole = UserRole.Freelancer;
                     freelancer.Offers.Add(userAppliesForOfferDTO.Offer);
+                    await offerService.Update(userAppliesForOfferDTO.Offer, freelancer.Id);
+                    await uow.Commit();
+                } else
+                {
+
                 }
 
                 return offer.Id;
