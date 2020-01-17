@@ -1,0 +1,105 @@
+﻿@model FreelancerCorp.PresentationLayer.Models.Offers.OfferEnrollUnregisteredViewModel
+
+@{
+    ViewBag.Title = "OfferEnrollUnregisteredView";
+}
+
+<h2>ULTIMEATE ENROLLEMENT for this ULTIMATE offer</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Offer.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Offer.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Offer.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Offer.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Offer.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Offer.Category);
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Offer.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Offer.Price)
+        </dd>
+        <dt>
+            Creator name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Creator)
+        </dd>
+    </dl>
+</div>
+
+
+@using (Html.BeginForm("EnrollUnregistered", "Offers", new { id = Model.Offer.Id }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Please fill in the information to enroll for this offer</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Info, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Info, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Info, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

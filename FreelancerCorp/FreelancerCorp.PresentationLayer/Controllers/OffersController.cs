@@ -21,8 +21,6 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
         public OfferFacade OfferFacade { get; set; }
 
-        public ApplyForOfferFacade ApplyOfferFacade { get; set; }
-
         public UserFacade UserFacade { get; set; }
 
         // GET: OffersController
@@ -123,10 +121,11 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             return (user.Id, user.UserRole);
         }
 
-        public async Task<ActionResult> Enroll(int id)
+        public async Task<ActionResult> Enroll(int id, bool authenticated)
         {
             var offer = await OfferFacade.GetOfferAsync(id);
             string name = "";
+
             if (offer.CreatorRole == UserRole.Corporation)
             {
                 var corporation = await UserFacade.GetCorporationAsync(offer.CreatorId);
@@ -137,32 +136,88 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 var freelancer = await UserFacade.GetFreelancerAsync(offer.CreatorId);
                 name = freelancer.Name;
             }
-            var offerEnrolModel = new OfferEnrollViewModel { Offer = offer, CreatorId = offer.CreatorId, Creator = name, OfferId = offer.Id};
-            return View("OfferEnrollView", offerEnrolModel);
+
+            if (!authenticated)
+            {
+                var model = new OfferEnrollUnregisteredViewModel { Offer = offer, CreatorId = offer.CreatorId, Creator = name, OfferId = offer.Id };
+                return View("OfferEnrollUnregisteredView", model);
+            }
+
+            UserDTO loggedInUser = await UserFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
+
+            var offerEnrollModel = new OfferEnrollRegisteredViewModel { Offer = offer, CreatorId = offer.CreatorId, Creator = name, OfferId = offer.Id, User = loggedInUser };
+            return View("OfferEnrollRegisteredView", offerEnrollModel);
 
         }
 
-        public async Task<ActionResult> FinishEnrollment(OfferEnrollViewModel model, FormCollection collection)
+        [HttpPost]
+        public async Task<ActionResult> EnrollUnregistered(FormCollection collection, int id)
         {
-            string role = "";
-            if (collection != null)
+            try
             {
-                model.Applier = collection["Applier"];
-                role = collection["UserRole"];
+                UnregisteredUserDTO newUnregistered = new UnregisteredUserDTO();
+
+                foreach (string key in collection.AllKeys)
+                {
+                    switch (key)
+                    {
+                        case "Name":
+                            newUnregistered.Name = collection[key];
+                            break;
+                        case "Email":
+                            newUnregistered.Email = collection[key];
+                            break;
+                        case "PhoneNumber":
+                            newUnregistered.PhoneNumber = collection[key];
+                            break;
+                        case "Info":
+                            newUnregistered.Info = collection[key];
+                            break;
+                        case "Location":
+                            newUnregistered.Location = collection[key];
+                            break;
+                    }
+                }
+
+                //Treba spojazdnit UserFacade s UnregisteredServisou
+                //int newId = await UserFacade.CreateUnregisteredAsync(newUnregistered);
+
+                var offer = await OfferFacade.GetOfferAsync(id);
+                //offer.ApplierId = newId;
+                offer.ApplierRole = UserRole.Unregistered;
+                offer.State = State.InProgress;
+
+                await OfferFacade.EditOfferAsync(offer);
+
+                return View("EnrollmentCompleteView");
             }
-            model.Offer.State = State.InProgress;
-
-            var offer = await OfferFacade.GetOfferAsync(model.OfferId);
-
-            if (role.Equals("Unregistered"))
+            catch
             {
-                await ApplyOfferFacade.ApplyUserForOffer(new UserAppliesForOfferDTO { Offer = offer, ApplierId = null, ApplierName = model.Applier, ApplierRole = UserRole.Unregistered});
-            } else
+                return View("~/Views/Home/Index.cshtml");
+            }
+        }
+
+        public async Task<ActionResult> EnrollRegistered(int id, int userId, string userRole)
+        {
+            var offer = await OfferFacade.GetOfferAsync(id);
+
+            if (userRole == "Corporation")
             {
-                await ApplyOfferFacade.ApplyUserForOffer(new UserAppliesForOfferDTO { Offer = offer, ApplierId = null, ApplierRole = UserRole.Unregistered });
+                var corp = await UserFacade.GetCorporationAsync(userId);
+                offer.ApplierId = corp.Id;
+                offer.ApplierRole = UserRole.Corporation;
+            }
+            if (userRole == "Freelancer")
+            {
+                var free = await UserFacade.GetFreelancerAsync(userId);
+                offer.ApplierId = free.Id;
+                offer.ApplierRole = UserRole.Freelancer;
             }
 
-            return View("Home");
+            offer.State = State.InProgress;
+            await OfferFacade.EditOfferAsync(offer);
+
+            return View("EnrollmentCompleteView");
         }
 
         // GET: OffersController/Edit/5

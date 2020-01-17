@@ -62,13 +62,13 @@
         }
         else
         {
-            @Html.ActionLink("Enroll", "Enroll", new { id = Model.Offer.Id })
+            @Html.ActionLink("Enroll", "Enroll", new { id = Model.Offer.Id, authenticated = Request.IsAuthenticated })
         }
 
     }
     @if (!Request.IsAuthenticated)
     {
-        @Html.ActionLink("Enroll", "Enroll", new { id = Model.Offer.Id })
+        @Html.ActionLink("Enroll", "Enroll", new { id = Model.Offer.Id, authenticated = Request.IsAuthenticated })
     }
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -51,13 +51,13 @@ namespace FreelancerCorp.WebApi.Controllers
         }
 
         // PUT: api/Offer/5
-        public async Task<string> Put(int id, [FromBody]UserAppliesForOfferDTO offer)
+        public async Task<string> Put(int id, [FromBody]OfferDTO offer)
         {
             if (!ModelState.IsValid)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            var success = await OfferFacade.AppyForOfferAsync(offer);
+            var success = await OfferFacade.EditOfferAsync(offer);
             if (!success)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

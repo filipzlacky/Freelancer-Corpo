@@ -169,7 +169,8 @@
     <Compile Include="Models\Offers\OfferCreateViewModel.cs" />
     <Compile Include="Models\Offers\OfferDetailViewModel.cs" />
     <Compile Include="Models\Offers\OfferEditViewModel.cs" />
-    <Compile Include="Models\Offers\OfferEnrollViewModel.cs" />
+    <Compile Include="Models\Offers\OfferEnrollRegisteredViewModel.cs" />
+    <Compile Include="Models\Offers\OfferEnrollUnregisteredViewModel.cs" />
     <Compile Include="Models\Offers\OfferListViewModel.cs" />
     <Compile Include="Models\Ratings\RatingViewModel.cs" />
     <Compile Include="Plumbing\WindsorControllerFactory.cs" />
@@ -236,11 +237,12 @@
     <Content Include="Views\Ratings\RatingCreateView.cshtml" />
     <Content Include="Views\Ratings\RatingDetailView.cshtml" />
     <Content Include="Views\Ratings\RatingEditView.cshtml" />
-    <Content Include="Views\Offers\OfferEnrollView.cshtml" />
+    <Content Include="Views\Offers\OfferEnrollUnregisteredView.cshtml" />
+    <Content Include="Views\Offers\EnrollmentCompleteView.cshtml" />
+    <Content Include="Views\Offers\OfferEnrollRegisteredView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\RegisterDecider\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -43,15 +43,15 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        public async Task<bool> AppyForOfferAsync(UserAppliesForOfferDTO offer)
+        public async Task<bool> AppyForOfferAsync(OfferDTO offer)
         {
             using (var uow = UnitOfWorkProvider.Create())
             {
-                if ((await offerService.GetAsync(offer.Offer.Id, false)) == null)
+                if ((await offerService.GetAsync(offer.Id, false)) == null)
                 {
                     return false;
                 }
-                await offerService.Update(offer.Offer, (int)offer.ApplierId);
+                await offerService.Update(offer, (int)offer.ApplierId);
                 await uow.Commit();
                 return true;
             }

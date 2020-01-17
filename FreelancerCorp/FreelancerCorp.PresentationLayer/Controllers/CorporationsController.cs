@@ -76,6 +76,9 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             var idOffers = await OfferFacade.ListOffersAsync(new OfferFilterDTO { SearchedAuthorsIds = new int[] { id } });
             model.Offers = new List<OfferDTO>(idOffers.Items);
 
+            var appliedOffers = await OfferFacade.ListOffersAsync(new OfferFilterDTO { SearchedAppliersIds = new int[] { id } });
+            model.AppliedToOffers = new List<OfferDTO>(appliedOffers.Items);
+
             var ratings = await RatingFacade.ListRatingsAsync(new RatingFilterDTO { SearchedRatedUsersId = new int[] { id } });
             model.Ratings = await RatingHelper.MergeRatingsCreators(UserFacade, ratings.Items.ToList());
 

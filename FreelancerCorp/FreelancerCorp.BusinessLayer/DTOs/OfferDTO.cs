@@ -23,5 +23,9 @@ namespace FreelancerCorp.BusinessLayer.DTOs
         public int CreatorId { get; set; }
 
         public UserRole CreatorRole { get; set; }
+
+        public int? ApplierId { get; set; }
+
+        public UserRole? ApplierRole { get; set; }
     }
 }
