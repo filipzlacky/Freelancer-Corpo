@@ -8,7 +8,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 namespace FreelancerCorp.DataAccessLayer {
     public class FreelancerCorpDbContext : DbContext {
 
-        //public DbSet<User> Users { get; set; }
+        public DbSet<UnregisteredUser> UnregisteredUsers { get; set; }
         public DbSet<Freelancer> Freelancers { get; set; }
         public DbSet<Corporation> Corporations { get; set; }
         public DbSet<Rating> Ratings { get; set; }

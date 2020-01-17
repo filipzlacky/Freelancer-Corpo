@@ -76,10 +76,12 @@
     <Compile Include="DTOs\Filter\CorporationFilterDTO.cs" />
     <Compile Include="DTOs\Filter\FreelancerFilterDTO.cs" />
     <Compile Include="DTOs\Filter\OfferFilterDTO.cs" />
+    <Compile Include="DTOs\Filter\UnregisteredUserFilterDTO.cs" />
     <Compile Include="DTOs\Filter\UserFilterDTO.cs" />
     <Compile Include="DTOs\FreelancerDTO.cs" />
     <Compile Include="DTOs\OfferDTO.cs" />
     <Compile Include="DTOs\CreateRatingDTO.cs" />
+    <Compile Include="DTOs\UnregisteredUserDTO.cs" />
     <Compile Include="DTOs\UserCreateCorporationDTO.cs" />
     <Compile Include="DTOs\UserCreateFreelancerDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
@@ -111,6 +113,8 @@
     <Compile Include="Services\Ratings\IRatingService.cs" />
     <Compile Include="DTOs\Filter\RatingFilterDTO.cs" />
     <Compile Include="Services\Ratings\RatingService.cs" />
+    <Compile Include="Services\Unregistered\IUnregisteredService.cs" />
+    <Compile Include="Services\Unregistered\UnregisteredService.cs" />
     <Compile Include="Services\Users\IUserService.cs" />
     <Compile Include="Services\Users\UserService.cs" />
   </ItemGroup>

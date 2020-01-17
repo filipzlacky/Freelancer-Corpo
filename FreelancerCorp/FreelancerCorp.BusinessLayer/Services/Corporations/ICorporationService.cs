@@ -11,11 +11,6 @@ namespace FreelancerCorp.BusinessLayer.Services.Corporations
 {
     public interface ICorporationService
     {
-        //Task<int[]> GetCorporationIdsByNamesAsync(params string[] names);
-
-        //Task<int[]> GetCorporationIdsByLocationAsync(string location);
-
-        //Task<int[]> GetCorporationIdsByAllAsync(string location, params string[] names);
         Task<QueryResultDTO<CorporationDTO, CorporationFilterDTO>> ListCorporationsAsync(CorporationFilterDTO filter);
 
         Task<CorporationDTO> GetAsync(int entityId, bool withIncludes = true);
