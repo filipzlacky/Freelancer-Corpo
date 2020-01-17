@@ -111,7 +111,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             catch
             {
                 
-                return View("~/Views/Home/Index.cshtml");
+                return View("~/Views/Home/GeneralExceptionView.cshtml");
             }
         }
 
@@ -193,7 +193,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             }
             catch
             {
-                return View("~/Views/Home/Index.cshtml");
+                return View("~/Views/Home/GeneralExceptionView.cshtml");
             }
         }
 
@@ -216,7 +216,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
             offer.State = State.InProgress;
             await OfferFacade.EditOfferAsync(offer);
-
+            
             return View("EnrollmentCompleteView");
         }
 
@@ -240,7 +240,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 if (!Enum.TryParse<UserRole>(idRoleTuple.Item2, out userRole))
                 {
-                    return View("~/Views/Home/Index.cshtml");
+                    return View("~/Views/Home/GeneralExceptionView.cshtml");
                 }
 
                 newOffer.CreatorId = idRoleTuple.Item1;
@@ -280,7 +280,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             }
             catch (Exception ex)
             {
-                return View("~/Views/Home/Index.cshtml");
+                return View("~/Views/Home/GeneralExceptionView.cshtml");
             }
 
         }
@@ -313,7 +313,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             }
             catch
             {
-                return View("~/Views/Home/Index.cshtml");
+                return View("~/Views/Home/GeneralExceptionView.cshtml");
             }
         }
 

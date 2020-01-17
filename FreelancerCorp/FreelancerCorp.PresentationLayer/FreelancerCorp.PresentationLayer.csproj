@@ -240,6 +240,7 @@
     <Content Include="Views\Offers\OfferEnrollUnregisteredView.cshtml" />
     <Content Include="Views\Offers\EnrollmentCompleteView.cshtml" />
     <Content Include="Views\Offers\OfferEnrollRegisteredView.cshtml" />
+    <Content Include="Views\Home\GeneralExceptionView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

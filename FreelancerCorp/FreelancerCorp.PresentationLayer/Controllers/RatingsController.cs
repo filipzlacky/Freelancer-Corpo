@@ -72,7 +72,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 if (!Enum.TryParse<UserRole>(creator.UserRole, out creatorUserRole))
                 {
-                    return View("~/Views/Home/Index.cshtml");
+                    return View("~/Views/Home/GeneralExceptionView.cshtml");
                 }
 
                 var ratedUser = await UserFacade.GetUserAsync(id);
@@ -80,7 +80,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 if (!Enum.TryParse<UserRole>(ratedUser.UserRole, out ratedUserRole))
                 {
-                    return View("~/Views/Home/Index.cshtml");
+                    return View("~/Views/Home/GeneralExceptionView.cshtml");
                 }
 
                 int ratingId = await RatingFacade.CreateRatingAsync(CreateRating(id, creator.Id, creatorUserRole, ratedUserRole, collection));                
@@ -89,7 +89,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             }
             catch
             {
-                return View("~/Views/Home/Index.cshtml");
+                return View("~/Views/Home/GeneralExceptionView.cshtml");
             }
         }        
 
@@ -167,7 +167,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 corporation.SumRating = DecreaseRating(corporation.SumRating.Value, ratingsCount, rating.Score);
                 corporation.RatingCount -= 1;
                 
-                UserFacade.EditCorporationAsync(corporation);
+                await UserFacade.EditCorporationAsync(corporation);
             }
             else
             {
@@ -175,7 +175,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 freelancer.SumRating = DecreaseRating(freelancer.SumRating.Value, ratingsCount, rating.Score);
                 freelancer.RatingCount -= 1;
 
-                UserFacade.EditFreelancerAsync(freelancer);
+                await UserFacade.EditFreelancerAsync(freelancer);
             }
         }
 

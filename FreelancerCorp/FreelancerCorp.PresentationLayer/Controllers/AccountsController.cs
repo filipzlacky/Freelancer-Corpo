@@ -209,7 +209,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             }
             catch
             {
-                return View("~/Views/Home/Index.cshtml");
+                return View("~/Views/Home/GeneralExceptionView.cshtml");
             }
         }
 
@@ -253,7 +253,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             }
             catch
             {
-                return View("~/Views/Home/Index.cshtml");
+                return View("~/Views/Home/GeneralExceptionView.cshtml");
             }
         }
 
