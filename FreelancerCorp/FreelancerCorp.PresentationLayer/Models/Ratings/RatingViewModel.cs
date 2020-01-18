@@ -11,5 +11,7 @@ namespace FreelancerCorp.PresentationLayer.Models.Ratings
         public RatingDTO Rating { get; set; }
         public string CreatorUserName { get; set; }
         public string RatedUserName { get; set; }
+        public int RatedUserId { get; set; }
+        public string RatedUserRole { get; set; }
     }
 }

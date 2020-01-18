@@ -95,23 +95,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             {
                 return (await ratingService.GetAsync(id));
             }
-        }
-
-        //public async Task<IEnumerable<int>> GetRatingsAsync(int[] ids)
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        return (await ratingService.GetRatingsIdsByUserIdsAsync(ids));
-        //    }
-        //}
-
-        //public async Task<IEnumerable<int>> GetRatingsAsync(int score, int[] ids)
-        //{
-        //    using (UnitOfWorkProvider.Create())
-        //    {
-        //        return (await ratingService.GetRatingsIdsByUserIdsScoreAsync(score, ids));
-        //    }
-        //}
+        }        
 
         public async Task<QueryResultDTO<RatingDTO, RatingFilterDTO>> ListRatingsAsync(RatingFilterDTO filter)
         {

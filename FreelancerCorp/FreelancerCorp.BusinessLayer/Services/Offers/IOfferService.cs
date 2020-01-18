@@ -9,12 +9,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Offers
 {
     public interface IOfferService
     {
-        Task<QueryResultDTO<OfferDTO, OfferFilterDTO>> ListOffersAsync(OfferFilterDTO filter);
-        //Task<int[]> GetOfferIdsByCategoryAsync(Category category);
-
-        //Task<int[]> GetOfferIdsByPriceAsync(int price);
-
-        //Task<int[]> GetOfferIdsByAllAsync(int price, Category category);
+        Task<QueryResultDTO<OfferDTO, OfferFilterDTO>> ListOffersAsync(OfferFilterDTO filter);        
 
         Task<OfferDTO> GetAsync(int entityId, bool withIncludes = true);
 

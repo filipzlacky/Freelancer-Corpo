@@ -10,6 +10,6 @@ namespace FreelancerCorp.PresentationLayer.Models.Offers
     {
         public OfferDTO Offer { get; set; }
         public (string name, int id) Creator { get; set; }
-        public (string name, int id) Applier { get; set; }
+        public (string name, int? id) Applier { get; set; }
     }
 }

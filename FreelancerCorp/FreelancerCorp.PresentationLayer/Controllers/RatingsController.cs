@@ -24,13 +24,14 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
             var creator = await UserFacade.GetUserAsync(rating.CreatorId);            
 
-            return View("RatingDetailView", InitializeRatingViewModel(rating, creator.UserName, ratedUserName));
+            return View("RatingDetailView", InitializeRatingViewModel(rating, creator.UserName, ratedUserName, rating.RatedUserId, rating.RatedUserRole.ToString()));
         }
 
         // GET: Ratings/Create
-        public ActionResult Create(int id, string ratedUserName)
+        public async Task<ActionResult> Create(int id, string ratedUserName)
         {
-            return View("RatingCreateView", InitializeRatingViewModel(new RatingDTO(), null, ratedUserName));
+            var user = await UserFacade.GetUserAsync(id);
+            return View("RatingCreateView", InitializeRatingViewModel(new RatingDTO(), null, ratedUserName, id, user.UserRole));
         }
 
         private RatingDTO CreateRating(int ratedId, int creatorId, UserRole creatorUserRole, UserRole ratedUserRole, FormCollection collection)
@@ -209,13 +210,15 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             }
         }
 
-        public RatingViewModel InitializeRatingViewModel(RatingDTO rating, string creatorUserName, string ratedUserName)
+        public RatingViewModel InitializeRatingViewModel(RatingDTO rating, string creatorUserName, string ratedUserName, int ratedId, string ratedUserRole)
         {
             return new RatingViewModel
             {
                 Rating = rating,
                 CreatorUserName = creatorUserName,
-                RatedUserName = ratedUserName
+                RatedUserName = ratedUserName,
+                RatedUserId = ratedId,
+                RatedUserRole = ratedUserRole
             };
         }
     }

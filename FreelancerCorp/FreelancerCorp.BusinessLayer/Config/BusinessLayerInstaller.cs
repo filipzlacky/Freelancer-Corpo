@@ -19,9 +19,7 @@ namespace FreelancerCorp.BusinessLayer.Config
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            // Choose prefered DAL
             new EntityFrameworkInstaller().Install(container, store);
-            //new PetaPocoInstaller().Install(container, store);
 
             container.Register(
                 Classes.FromThisAssembly()
@@ -32,12 +30,7 @@ namespace FreelancerCorp.BusinessLayer.Config
                 Classes.FromThisAssembly()
                     .BasedOn<ServiceBase>()
                     .WithServiceDefaultInterfaces()
-                    .LifestyleTransient(),
-
-                //Classes.FromThisAssembly()
-                //    .BasedOn<IPriceCalculator>()
-                //    .WithService.FromInterface()
-                //    .LifestyleSingleton(),
+                    .LifestyleTransient(),                
 
                 Classes.FromThisAssembly()
                     .BasedOn<FacadeBase>()
@@ -48,7 +41,6 @@ namespace FreelancerCorp.BusinessLayer.Config
                     .LifestyleSingleton()
             );
 
-            // add collection subresolver in order to resolve IEnumerable in Price Calculator Resolver
             container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel));
         }
     }

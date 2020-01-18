@@ -68,10 +68,5 @@ namespace FreelancerCorp.BusinessLayer.QueryObjects
         {
             return query;
         }
-
-        //protected override IQuery<Offer> GetAll(IQuery<Offer> query, OfferFilterDTO filter)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
     }
 }

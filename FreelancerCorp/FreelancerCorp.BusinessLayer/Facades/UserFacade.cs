@@ -18,14 +18,15 @@ namespace FreelancerCorp.BusinessLayer.Facades
     {
         private readonly IFreelancerService freelancerService;
         private readonly ICorporationService corporationService;
-        //private readonly IUnregisteredService unregisteredService;
+        private readonly IUnregisteredService unregisteredService;
         private readonly IUserService userService;
-        public UserFacade(IUnitOfWorkProvider unitOfWorkProvider, IFreelancerService freelancer, ICorporationService corporation, /*IUnregisteredService unregistered,*/  IUserService user) 
+
+        public UserFacade(IUnitOfWorkProvider unitOfWorkProvider, IFreelancerService freelancer, ICorporationService corporation, IUnregisteredService unregistered, IUserService user) 
             : base(unitOfWorkProvider)
         {
             freelancerService = freelancer;
             corporationService = corporation;
-            //unregisteredService = unregistered;
+            unregisteredService = unregistered;
             userService = user;
         }
 
@@ -112,7 +113,6 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        /**
         public async Task<int> CreateUnregisteredAsync(UnregisteredUserDTO unregistered)
         {
             using (var uow = UnitOfWorkProvider.Create())
@@ -153,7 +153,6 @@ namespace FreelancerCorp.BusinessLayer.Facades
                 return true;
             }
         }
-        **/
 
         public async Task<UserDTO> GetUserAsync(int id)
         {
@@ -179,7 +178,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        /**
+        
         public async Task<UnregisteredUserDTO> GetUnregisteredAsync(int id)
         {
             using (UnitOfWorkProvider.Create())
@@ -187,7 +186,7 @@ namespace FreelancerCorp.BusinessLayer.Facades
                 return await unregisteredService.GetAsync(id);
             }
         }
-        **/
+        
 
         #endregion
 
@@ -258,7 +257,6 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        /**
         public async Task<IEnumerable<UnregisteredUserDTO>> GetUnregisteredsAsync()
         {
             using (UnitOfWorkProvider.Create())
@@ -266,7 +264,6 @@ namespace FreelancerCorp.BusinessLayer.Facades
                 return (await unregisteredService.ListAllAsync()).Items;
             }
         }
-        **/
 
         public async Task<QueryResultDTO<FreelancerDTO, FreelancerFilterDTO>> GetFreelancersAsync(FreelancerFilterDTO filter)
         {
@@ -284,7 +281,6 @@ namespace FreelancerCorp.BusinessLayer.Facades
             }
         }
 
-        /**
         public async Task<QueryResultDTO<UnregisteredUserDTO, UnregisteredUserFilterDTO>> GetUnregisteredsAsync(UnregisteredUserFilterDTO filter)
         {
             using (UnitOfWorkProvider.Create())
@@ -292,7 +288,6 @@ namespace FreelancerCorp.BusinessLayer.Facades
                 return await unregisteredService.ListUnregisteredsAsync(filter);
             }
         }
-        **/
 
         public double GetCorporationAverageRating(CorporationDTO corporation)
         {

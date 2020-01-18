@@ -14,25 +14,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Offers
     public class OfferService : CrudQueryServiceBase<Offer, OfferDTO, OfferFilterDTO>, IOfferService
     {
         public OfferService(IMapper mapper, IRepository<Offer> categoryRepository, QueryObjectBase<OfferDTO, Offer, OfferFilterDTO, IQuery<Offer>> categoryListQuery)
-            : base(mapper, categoryRepository, categoryListQuery) { }
-
-        //public async Task<int[]> GetOfferIdsByAllAsync(int price, Category category)
-        //{
-        //    var queryResult = await Query.ExecuteQuery(new OfferFilterDTO { SearchedCategory = category, SearchedPrice = price });
-        //    return queryResult.Items.Select(offer => offer.Id).ToArray();
-        //}
-
-        //public async Task<int[]> GetOfferIdsByCategoryAsync(Category category)
-        //{
-        //    var queryResult = await Query.ExecuteQuery(new OfferFilterDTO { SearchedCategory = category });
-        //    return queryResult.Items.Select(offer => offer.Id).ToArray();
-        //}
-
-        //public async Task<int[]> GetOfferIdsByPriceAsync(int price)
-        //{
-        //    var queryResult = await Query.ExecuteQuery(new OfferFilterDTO { SearchedPrice = price });
-        //    return queryResult.Items.Select(offer => offer.Id).ToArray();
-        //}        
+            : base(mapper, categoryRepository, categoryListQuery) { }       
 
         public async Task<QueryResultDTO<OfferDTO, OfferFilterDTO>> ListOffersAsync(OfferFilterDTO filter)
         {

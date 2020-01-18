@@ -179,11 +179,17 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                     }
                 }
 
-                //Treba spojazdnit UserFacade s UnregisteredServisou
-                //int newId = await UserFacade.CreateUnregisteredAsync(newUnregistered);
+                await UserFacade.CreateUnregisteredAsync(newUnregistered);
+
+
+                // Tuto cast kodu prosim zignorujme. DB nam pri Create vzdy vracala Id 0, hoci objekt ho ma v DB ako napr. 47. 
+                // Inak neviem ako ziskat toho uzivatela
+                var unregisteredUsersLikeThis = await UserFacade.GetUnregisteredsAsync(new UnregisteredUserFilterDTO {
+                    SearchedName = newUnregistered.Name, 
+                    SearchedLocation = newUnregistered.Location });
 
                 var offer = await OfferFacade.GetOfferAsync(id);
-                //offer.ApplierId = newId;
+                offer.ApplierId = unregisteredUsersLikeThis.Items.Last().Id;
                 offer.ApplierRole = UserRole.Unregistered;
                 offer.State = State.InProgress;
 
@@ -191,7 +197,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 return View("EnrollmentCompleteView");
             }
-            catch
+            catch (Exception ex)
             {
                 return View("~/Views/Home/GeneralExceptionView.cshtml");
             }
@@ -201,17 +207,10 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {
             var offer = await OfferFacade.GetOfferAsync(id);
 
-            if (userRole == "Corporation")
+            offer.ApplierId = userId;
+            if (Enum.TryParse<UserRole>(userRole, out UserRole role))
             {
-                var corp = await UserFacade.GetCorporationAsync(userId);
-                offer.ApplierId = corp.Id;
-                offer.ApplierRole = UserRole.Corporation;
-            }
-            if (userRole == "Freelancer")
-            {
-                var free = await UserFacade.GetFreelancerAsync(userId);
-                offer.ApplierId = free.Id;
-                offer.ApplierRole = UserRole.Freelancer;
+                offer.ApplierRole = role;
             }
 
             offer.State = State.InProgress;
@@ -285,13 +284,22 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
         }
 
+        public async Task<ActionResult> FinishOffer(int id)
+        {
+            var offer = await OfferFacade.GetOfferAsync(id);
+            offer.State = State.Finished;
+
+            await OfferFacade.EditOfferAsync(offer);
+
+            return RedirectToAction("Details", new { id = id });
+        }
+
         // GET: OffersController/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
             bool success = await OfferFacade.DeleteOfferAsync(id);
 
-            if (!success)
-                // THROW ERROR
+            if (!success)                
                 throw new NotImplementedException();
 
             return RedirectToAction("Index");
@@ -317,20 +325,32 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             }
         }
 
-        private async Task<string> GetCreatorName(OfferDTO offer)
+        private async Task<string> GetUserName(int userId, bool isUnregistered)
         {
-            var creator = await UserFacade.GetUserAsync(offer.CreatorId);            
-            return creator.UserName;
+            if (isUnregistered)
+            {
+                var unregistered = await UserFacade.GetUnregisteredAsync(userId);
+                return unregistered.Name;
+            }
+            var user = await UserFacade.GetUserAsync(userId);    
+            return user.UserName;
         }
 
         private async Task<OfferDetailViewModel> InitializeOfferDetailViewModel(OfferDTO offer)
         {
-            string creatorName = await GetCreatorName(offer);
+            string creatorName = await GetUserName(offer.CreatorId, offer.CreatorRole == UserRole.Unregistered);
+            string applierName = "";
+
+            if (offer.ApplierId.HasValue)
+            {
+                applierName = await GetUserName(offer.ApplierId.Value, offer.ApplierRole == UserRole.Unregistered);
+            }
 
             return new OfferDetailViewModel
             {
                 Offer = offer,
-                Creator = (creatorName, offer.CreatorId)
+                Creator = (creatorName, offer.CreatorId),
+                Applier = (applierName, offer.ApplierId)
             };
         }
 
@@ -342,7 +362,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             string name;
             foreach(var offer in finalList)
             {
-                name = await GetCreatorName(offer);
+                name = await GetUserName(offer.CreatorId, offer.CreatorRole == UserRole.Unregistered);
                 offers.Add((offer,name));
             }
             return new OfferListViewModel

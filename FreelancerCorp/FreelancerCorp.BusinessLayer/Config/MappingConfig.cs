@@ -29,15 +29,15 @@ namespace FreelancerCorp.BusinessLayer.Config
             config.CreateMap<Corporation, CorporationDTO>().ReverseMap();
             config.CreateMap<Rating, RatingDTO>().ReverseMap();
 
-            //config.CreateMap<User, UnregisteredUserDTO>().ReverseMap();
-            //config.CreateMap<UnregisteredUser, UnregisteredUserDTO>().ReverseMap();
+            config.CreateMap<User, UnregisteredUserDTO>().ReverseMap();
+            config.CreateMap<UnregisteredUser, UnregisteredUserDTO>().ReverseMap();
 
             config.CreateMap<QueryResult<Freelancer>, QueryResultDTO<FreelancerDTO, FreelancerFilterDTO>>();
             config.CreateMap<QueryResult<Corporation>, QueryResultDTO<CorporationDTO, CorporationFilterDTO>>();
             config.CreateMap<QueryResult<Offer>, QueryResultDTO<OfferDTO, OfferFilterDTO>>();
             config.CreateMap<QueryResult<Rating>, QueryResultDTO<RatingDTO, RatingFilterDTO>>();
             config.CreateMap<QueryResult<User>, QueryResultDTO<UserDTO, UserFilterDTO>>();
-            //config.CreateMap<QueryResult<UnregisteredUser>, QueryResultDTO<UnregisteredUserDTO, UnregisteredUserFilterDTO>>();
+            config.CreateMap<QueryResult<UnregisteredUser>, QueryResultDTO<UnregisteredUserDTO, UnregisteredUserFilterDTO>>();
         }
     }
 }

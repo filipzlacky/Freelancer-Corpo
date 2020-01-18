@@ -97,6 +97,7 @@
     <Compile Include="Facades\RatingFacade.cs" />
     <Compile Include="Facades\UserFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryObjects\UnregisteredUserQueryObject.cs" />
     <Compile Include="QueryObjects\UserQueryObject.cs" />
     <Compile Include="Services\Common\CrudQueryServiceBase.cs" />
     <Compile Include="Services\Common\ServiceBase.cs" />

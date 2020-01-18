@@ -113,13 +113,13 @@
 
         <tr>
             <td>
-                <strong class="text-danger">@offer.Name</strong>
+                <strong class="text-danger" style="color:silver">@offer.Name</strong>
             </td>
             <td>
-                <strong class="text-danger">@offer.Category</strong>
+                <strong class="text-danger" style="color:silver">@offer.Category</strong>
             </td>
             <td>
-                <strong class="text-danger">@offer.Price</strong>
+                <strong class="text-danger" style="color:silver">@offer.Price</strong>
             </td>
             <td>
                 <strong class="text-danger">@Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })</strong>
@@ -148,13 +148,13 @@
 
         <tr>
             <td>
-                <strong class="text-danger">@offer.Name</strong>
+                <strong class="text-danger" style="color:silver">@offer.Name</strong>
             </td>
             <td>
-                <strong class="text-danger">@offer.Category</strong>
+                <strong class="text-danger" style="color:silver">@offer.Category</strong>
             </td>
             <td>
-                <strong class="text-danger">@offer.Price</strong>
+                <strong class="text-danger" style="color:silver">@offer.Price</strong>
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })
@@ -178,10 +178,10 @@
     {
         <tr>
             <td>
-                <strong class="text-danger">@rating.creator</strong>
+                <strong class="text-danger" style="color:silver">@rating.creator</strong>
             </td>
             <td>
-                <strong class="text-danger">@rating.rating.Score</strong>
+                <strong class="text-danger" style="color:silver">@rating.rating.Score</strong>
             </td>
             <td>
             </td>
@@ -194,6 +194,5 @@
 </table>
 
 <p>
-    @Html.ActionLink("Edit", "EditProfile") |
-    @Html.ActionLink("Back", "Index")
+    @Html.ActionLink("Edit", "EditProfile")
 </p>

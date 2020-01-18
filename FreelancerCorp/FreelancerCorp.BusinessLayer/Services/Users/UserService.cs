@@ -60,7 +60,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Users
             
             if (await GetIfUserExistsAsync(freelancer.UserName))
             {
-                throw new ArgumentException();
+                throw new ArgumentException("User already exists");
             }
             freelancer.UserRole = "Freelancer";
 

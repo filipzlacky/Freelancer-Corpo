@@ -20,24 +20,7 @@ namespace FreelancerCorp.BusinessLayer.Services.Corporations
         public CorporationService(IMapper mapper, IRepository<Corporation> categoryRepository, QueryObjectBase<CorporationDTO, Corporation, CorporationFilterDTO, IQuery<Corporation>> categoryListQuery)
             : base(mapper, categoryRepository, categoryListQuery) { }
 
-
-        //public async Task<int[]> GetCorporationIdsByAllAsync(string location, params string[] names)
-        //{
-        //    var queryResult = await Query.ExecuteQuery(new CorporationFilterDTO { CorporationNames = names, SearchedLocation = location }) ;
-        //    return queryResult.Items.Select(corporation => corporation.Id).ToArray();
-        //}
-
-        //public async Task<int[]> GetCorporationIdsByLocationAsync(string location)
-        //{
-        //    var queryResult = await Query.ExecuteQuery(new CorporationFilterDTO { SearchedLocation = location });
-        //    return queryResult.Items.Select(corporation => corporation.Id).ToArray();
-        //}
-
-        //public async Task<int[]> GetCorporationIdsByNamesAsync(params string[] names)
-        //{
-        //    var queryResult = await Query.ExecuteQuery(new CorporationFilterDTO { CorporationNames = names });
-        //    return queryResult.Items.Select(corporation => corporation.Id).ToArray();
-        //}
+        
         public async Task<QueryResultDTO<CorporationDTO, CorporationFilterDTO>> ListCorporationsAsync(CorporationFilterDTO filter)
         {
             return await Query.ExecuteQuery(filter);
