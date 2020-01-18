@@ -203,8 +203,8 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 bool success = await userFacade.EditFreelancerAsync(newFreelancer);
                 if (!success)
-                    // Throw ERROR
-                    throw new NotImplementedException();
+                    return View("~/Views/Home/GeneralExceptionView.cshtml");
+
                 return RedirectToAction("Profile");
             }
             catch
@@ -247,8 +247,8 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 bool success = await userFacade.EditCorporationAsync(newCorporation);
                 if (!success)
-                    // Throw ERROR
-                    throw new NotImplementedException();
+                    return View("~/Views/Home/GeneralExceptionView.cshtml");
+
                 return RedirectToAction("Profile");
             }
             catch

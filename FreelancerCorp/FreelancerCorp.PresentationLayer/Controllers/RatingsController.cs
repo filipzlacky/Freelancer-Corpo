@@ -206,7 +206,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             }
             catch
             {
-                return View();
+                return View("~/Views/Home/GeneralExceptionView.cshtml");
             }
         }
 

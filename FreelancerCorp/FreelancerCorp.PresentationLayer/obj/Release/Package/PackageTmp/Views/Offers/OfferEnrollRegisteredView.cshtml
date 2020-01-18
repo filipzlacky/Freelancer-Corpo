@@ -1,0 +1,70 @@
+﻿@model FreelancerCorp.PresentationLayer.Models.Offers.OfferEnrollRegisteredViewModel
+
+<div>
+    <h4>Offer Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Offer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Offer.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Offer.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Offer.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Offer.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Offer.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Offer.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Offer.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Creator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creator)
+        </dd>
+
+    </dl>
+    <h4>Your Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserRole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserRole)
+
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Enroll", "EnrollRegistered", new { id = Model.Offer.Id, userId = Model.User.Id, userRole = Model.User.UserRole } )
+    @Html.ActionLink("Back to List", "Index")
+</p>

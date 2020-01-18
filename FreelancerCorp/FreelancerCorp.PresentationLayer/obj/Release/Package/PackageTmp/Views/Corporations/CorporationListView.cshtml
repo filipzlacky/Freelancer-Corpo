@@ -6,42 +6,111 @@
 
 <h2>Here is the place to list all ULTIMATE corporations:</h2>
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>Filter fields:</h4>
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.Label("Corporation name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedCorporationName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SearchedCorporationName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Location", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedLocation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SearchedLocation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Average", htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedAverage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SearchedAverage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Filter" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .table th {
+        background-image: linear-gradient(to bottom, black, black) !important;
+        text-shadow: none !important;
+    }
+
+        .table th a {
+            color: white !important;
+        }
+</style>
+
 <table class="table">
     <tr>
         <th>
             Name
-        </th>        
+        </th>
         <th>
             Address
         </th>
         <th>
+            Location
+        </th>
+        <th>
             Average rating
+        </th>
+        <th>
+            Details
         </th>
     </tr>
     @foreach (var corporation in Model.Corporations)
     {
-        <div class="card clickable-area" @("onclick=GoToDetail('" + corporation.Id + "')")>
-            <tr>
-                <td>
-                    <strong class="text-danger">@corporation.Name</strong>
-                </td>
-                <td>
-                    <strong class="text-danger">@corporation.Address</strong>
-                </td>
-                <td>
-                    <strong class="text-danger">@corporation.Average</strong>
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = corporation.Id })
-                </td>
-            </tr>
-        </div>
+        <tr>
+            <td>
+                <strong class="text-danger" style="color:aliceblue">@corporation.Name</strong>
+            </td>
+            <td>
+                <strong class="text-danger" style="color:silver">@corporation.Address</strong>
+            </td>
+            <td>
+                <strong class="text-danger" style="color:silver">@corporation.Location</strong>
+            </td>
+            <td>
+                @if (corporation.SumRating.HasValue)
+                {
+                    <strong class="text-danger" style="color:darkorange">@string.Format("{0:N2}", @corporation.SumRating)</strong>
+                }
+                else
+                {
+                    <strong class="text-danger" style="color:silver">No rated yet</strong>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = corporation.Id })
+            </td>
+        </tr>
     }
 </table>
 
-
-<script>
-function GoToDetail(id) {
-    window.location = "/Corporations/Details/" + id;
-}
-</script>
+<div>
+    <ul class="pagination justify-content-center">
+        @for (var i = 1; i <= Model.PageCount; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPageIndex ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+            </li>
+        }
+    </ul>
+</div>

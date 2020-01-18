@@ -6831,4 +6831,10 @@ button.close {
     display: none !important;
   }
 }
+
+<style >
+.border-primary {
+    border: 1px solid #007bff;
+}
+</style >
 /*# sourceMappingURL=bootstrap.css.map */

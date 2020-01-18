@@ -1,4 +1,4 @@
-﻿@model FreelancerCorp.PresentationLayer.Models.Accounts.CorporationProfileModel
+﻿@model FreelancerCorp.BusinessLayer.DTOs.CorporationDTO
 
 @{
     ViewBag.Title = "Corporation details";
@@ -10,51 +10,75 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.CorporationDTO.Name)
+            @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CorporationDTO.Name)
+            @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CorporationDTO.Info)
+            @Html.DisplayNameFor(model => model.Info)
+        </dt>
+
+        <dt>
+            Average rating
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CorporationDTO.Info)
+            @if (Model.SumRating.HasValue)
+            {
+                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.SumRating)</strong>
+            }
+            else
+            {
+                <strong class="text-danger">No rated yet</strong>
+            }
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.Info)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CorporationDTO.PhoneNumber)
+            @Html.DisplayNameFor(model => model.PhoneNumber)
         </dt>
 
         <dd>
-            @if (!string.IsNullOrEmpty(@Model.CorporationDTO.PhoneNumber))
+            @if (!string.IsNullOrEmpty(@Model.PhoneNumber))
             {
-                <a href="tel:@Model.CorporationDTO.PhoneNumber">@Model.CorporationDTO.PhoneNumber</a>
-            } else
+                <a href="tel:@Model.PhoneNumber">@Model.PhoneNumber</a>
+            }
+            else
             {
-               <p>
-                   No phone number given.
-               </p>
+                <p>
+                    No phone number given.
+                </p>
             }
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CorporationDTO.Email)
+            @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>
-            <a href="mailto:@Model.CorporationDTO.Email">@Model.CorporationDTO.Email</a>
+            <a href="mailto:@Model.Email">@Model.Email</a>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CorporationDTO.Address)
+            @Html.DisplayNameFor(model => model.Address)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CorporationDTO.Address)
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
         </dd>
     </dl>
 </div>
@@ -72,7 +96,7 @@
             Price
         </th>
     </tr>
-    @foreach (var offer in Model.CorporationDTO.AppliedToOffers)
+    @foreach (var offer in Model.AppliedToOffers)
     {
 
         <tr>
@@ -86,7 +110,7 @@
                 <strong class="text-danger">@offer.Price</strong>
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })
+                <strong class="text-danger">@Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })</strong>
             </td>
         </tr>
 
@@ -107,7 +131,7 @@
             Price
         </th>
     </tr>
-    @foreach (var offer in Model.CorporationDTO.Offers)
+    @foreach (var offer in Model.Offers)
     {
 
         <tr>
@@ -128,7 +152,35 @@
     }
 </table>
 
+<h4> Ratings for you: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Creator
+        </th>
+        <th>
+            Score
+        </th>
+    </tr>
+    @foreach (var rating in Model.Ratings)
+    {
+        <tr>
+            <td>
+                <strong class="text-danger">@rating.creator</strong>
+            </td>
+            <td>
+                <strong class="text-danger">@rating.rating.Score</strong>
+            </td>
+            <td>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id, ratedUserName = User.Identity.Name }, new { @class = "navbar-brand" })
+            </td>
+        </tr>
+
+    }
+</table>
+
 <p>
-    @Html.ActionLink("Edit", "EditProfile") |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "EditProfile")
 </p>

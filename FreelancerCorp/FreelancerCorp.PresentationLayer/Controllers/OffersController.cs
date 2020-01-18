@@ -277,7 +277,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 if (!success) throw new NotImplementedException();
                 return RedirectToAction("Details", new { id = newOffer.Id });
             }
-            catch (Exception ex)
+            catch
             {
                 return View("~/Views/Home/GeneralExceptionView.cshtml");
             }
@@ -299,8 +299,8 @@ namespace FreelancerCorp.PresentationLayer.Controllers
         {
             bool success = await OfferFacade.DeleteOfferAsync(id);
 
-            if (!success)                
-                throw new NotImplementedException();
+            if (!success)
+                return View("~/Views/Home/GeneralExceptionView.cshtml");
 
             return RedirectToAction("Index");
         }
@@ -313,9 +313,8 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             {
                 bool success = await OfferFacade.DeleteOfferAsync(id);
 
-                if (!success)
-                    // THROW ERROR
-                    throw new NotImplementedException();
+                if (!success)                    
+                    return View("~/Views/Home/GeneralExceptionView.cshtml");
 
                 return RedirectToAction("Index");
             }

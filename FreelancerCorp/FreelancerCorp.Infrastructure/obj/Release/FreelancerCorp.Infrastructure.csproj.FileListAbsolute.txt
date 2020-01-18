@@ -8,3 +8,4 @@ C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infra
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Release\FreelancerCorp.Infrastructure.csproj.CopyComplete
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Release\FreelancerCorp.Infrastructure.dll
 C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Release\FreelancerCorp.Infrastructure.pdb
+C:\Filip\MUNI\Programovanie\C#\pv179\Project\FreelancerCorp\FreelancerCorp.Infrastructure\obj\Release\FreelancerCorp.Infrastructure.csprojAssemblyReference.cache

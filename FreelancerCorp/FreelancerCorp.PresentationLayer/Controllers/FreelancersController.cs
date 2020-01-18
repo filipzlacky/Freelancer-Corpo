@@ -116,7 +116,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                     case "Sex":
                         if (!Enum.TryParse(collection[key], out Sex newSex))
                         {
-                            // THROW ERROR
+                            return null;
                         }
                         else
                         {
@@ -126,7 +126,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                     case "DoB":
                         if (!DateTime.TryParse(collection[key], out DateTime newDate))
                         {
-                            // THROW ERROR
+                            return null;
                         }
                         else
                         {
@@ -154,6 +154,11 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             try
             {
                 FreelancerDTO newFreelancer = ParseCollection(collection, new FreelancerDTO());
+
+                if (newFreelancer == null)
+                {
+                    return View("~/Views/Home/GeneralExceptionView.cshtml");
+                }
 
                 int newId = await UserFacade.CreateFreelancerAsync(newFreelancer);
 
@@ -183,10 +188,15 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 editedFreelancer = ParseCollection(collection, editedFreelancer);
 
+                if (editedFreelancer == null)
+                {
+                    return View("~/Views/Home/GeneralExceptionView.cshtml");
+                }
+
                 bool success = await UserFacade.EditFreelancerAsync(editedFreelancer);
                 if (!success)
-                    // Throw ERROR
-                    throw new NotImplementedException();
+                    return View("~/Views/Home/GeneralExceptionView.cshtml");
+
                 return RedirectToAction("Details", id);
             }
             catch
@@ -201,8 +211,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             bool success = await UserFacade.DeleteFreelancerAsync(id);
 
             if (!success)
-                // THROW ERROR
-                throw new NotImplementedException();
+                return View("~/Views/Home/GeneralExceptionView.cshtml");
 
             return RedirectToAction("Index");
         }
@@ -216,8 +225,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
                 bool success = await UserFacade.DeleteFreelancerAsync(id);
 
                 if (!success)
-                    // THROW ERROR
-                    throw new NotImplementedException();
+                    return View("~/Views/Home/GeneralExceptionView.cshtml");
 
                 return RedirectToAction("Index");
             }

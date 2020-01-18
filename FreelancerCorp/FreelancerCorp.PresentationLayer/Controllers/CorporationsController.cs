@@ -163,8 +163,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 if (!success)
                 {
-                    // THROW ERROR
-                    throw new NotImplementedException();
+                    return View("~/Views/Home/GeneralExceptionView.cshtml");
                 }
 
                 return RedirectToAction("Index");
@@ -181,8 +180,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             bool success = await UserFacade.DeleteCorporationAsync(id);
 
             if (!success)
-                // THROW ERROR
-                throw new NotImplementedException();
+                return View("~/Views/Home/GeneralExceptionView.cshtml");
 
             return RedirectToAction("Index");
         }
@@ -197,15 +195,14 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 if (!success)
                 {
-                    // THROW ERROR
-                    throw new NotImplementedException();
+                    return View("~/Views/Home/GeneralExceptionView.cshtml");
                 }
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("~/Views/Home/GeneralExceptionView.cshtml");
             }
         }
 

@@ -7,12 +7,12 @@
 <h2>Here is the place to look at details about the ULTIMATE corporation:</h2>
 
 <div>
-    <h4>CorporationDTO</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            User name/ Name
         </dt>
+        
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
@@ -23,6 +23,21 @@
 
         <dd>
             @Html.DisplayFor(model => model.Info)
+        </dd>
+
+        <dt>
+            Average rating
+        </dt>
+
+        <dd>
+            @if (Model.SumRating.HasValue)
+            {
+                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.SumRating)</strong>
+            }
+            else
+            {
+                <strong class="text-danger">No rated yet</strong>
+            }
         </dd>
 
         <dt>
@@ -58,6 +73,13 @@
             @Html.DisplayFor(model => model.Address)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
     </dl>
 </div>
 
@@ -76,19 +98,18 @@
     </tr>
     @foreach (var offer in Model.Offers)
     {
-        <div class="card clickable-area" @("onclick=GoToDetail('" + offer.Id + "')")></div>
 
         <tr>
             <td>
-                <strong class="text-danger">@offer.Name</strong>
+                <strong class="text-danger" style="color:silver">@offer.Name</strong>
             </td>
             <td>
-                <strong class="text-danger">@offer.Category</strong>
+                <strong class="text-danger" style="color:silver">@offer.Category</strong>
             </td>
             <td>
-                <strong class="text-danger">@offer.Price</strong>
+                <strong class="text-danger" style="color:silver">@offer.Price</strong>
             </td>
-            <td>                
+            <td>
                 @Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })
             </td>
         </tr>
@@ -96,12 +117,42 @@
     }
 </table>
 
+<h4> Ratings for this user: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Creator
+        </th>
+        <th>
+            Score
+        </th>
+    </tr>
+    @foreach (var rating in Model.Ratings)
+    {
+        <tr>
+            <td>
+                <strong class="text-danger" style="color:silver">@rating.creator</strong>
+            </td>
+            <td>
+                <strong class="text-danger" style="color:silver">@rating.rating.Score</strong>
+            </td>
+            <td>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id, ratedUserName = Model.Name }, new { @class = "navbar-brand" })
+            </td>
+        </tr>
 
-<script>
-function GoToDetail(id) {
-    window.location = "/Offers/Details/" + id;
-}</script>
+    }
+</table>
 
 <p>
     @Html.ActionLink("Back to List", "Index")
+    @if (Request.IsAuthenticated)
+    {
+        if (User.Identity.Name != Model.Name)
+        {
+            @Html.ActionLink("Add rating", "Create", "Ratings", new { id = Model.Id, ratedUserName = Model.Name }, null)
+        }
+    }
 </p>

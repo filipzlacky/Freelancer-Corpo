@@ -1,4 +1,5 @@
 ﻿@model FreelancerCorp.PresentationLayer.Models.Offers.OfferDetailViewModel
+@using FreelancerCorp.BusinessLayer.DTOs.Enums
 
 @{
     ViewBag.Title = "OfferDetailView";
@@ -49,14 +50,49 @@
             Applier name
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Applier.name)
+            @if (Model.Applier.id.HasValue)
+            {
+                @Html.DisplayFor(model => model.Applier.name)
+            }
+            else
+            {
+                <p style="color:darkred">No one applied yet</p>
+            }
         </dd>
     </dl>
 </div>
 <p>
-    @if (Request.IsAuthenticated && User.Identity.Name == Model.Creator.name)
+    @if (Request.IsAuthenticated)
     {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Offer.Id }) 
+        if (User.Identity.Name == Model.Creator.name)
+        {
+            if (!Model.Offer.State.Equals(State.Finished))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Offer.Id })
+            }
+        }
+        else
+        {
+            if (!Model.Applier.id.HasValue)
+            {
+                @Html.ActionLink("Enroll", "Enroll", new { id = Model.Offer.Id, authenticated = Request.IsAuthenticated })
+            }
+        }
+
+    }
+    @if (!Request.IsAuthenticated)
+    {
+        if (!Model.Applier.id.HasValue)
+        {
+            @Html.ActionLink("Enroll", "Enroll", new { id = Model.Offer.Id, authenticated = Request.IsAuthenticated })
+        }
+    }
+    @if (Model.Applier.id.HasValue)
+    {
+        if (Request.IsAuthenticated && Model.Creator.name == User.Identity.Name)
+        {
+            @Html.ActionLink("Close offer", "Finish", new { id = Model.Offer.Id })
+        }
     }
     @Html.ActionLink("Back to List", "Index")
 </p>

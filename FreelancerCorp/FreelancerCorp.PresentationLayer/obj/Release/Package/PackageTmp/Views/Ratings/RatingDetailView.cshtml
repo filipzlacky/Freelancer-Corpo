@@ -1,0 +1,53 @@
+﻿@model FreelancerCorp.PresentationLayer.Models.Ratings.RatingViewModel
+
+@{
+    ViewBag.Title = "RatingDetails";
+}
+
+<h2>Rating details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Creator
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatorUserName)
+        </dd>
+
+        <dt>
+            Rated user
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RatedUserName)
+        </dd>
+
+        <dt>
+            Score (0 - the worst, 100 - the best)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating.Score)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating.Comment)
+        </dd>
+    </dl>
+</div>
+<p>
+    @if (Request.IsAuthenticated && User.Identity.Name == Model.CreatorUserName)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Rating.Id })
+        @Html.ActionLink("Delete", "Delete", new { id = Model.Rating.Id })
+    }
+
+    @Html.ActionLink("Back", "Details", Model.Rating.RatedUserRole + "s", new { id = Model.Rating.RatedUserId }, null)
+</p>

@@ -1,37 +1,112 @@
 ﻿@model FreelancerCorp.PresentationLayer.Models.Offers.OfferListViewModel
+@using FreelancerCorp.BusinessLayer.DTOs.Enums
 
 @{
-    ViewBag.Title = "OfferListView";
+    ViewBag.Title = "Offers list";
 }
 
-<h2>OfferListView</h2>
+<h2>Here you can see all ULTIMATE offers</h2>
 
-<table class="table">
-    <tr>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Price</th>
-        <th>Creator name</th>
-    </tr>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>Filter fields:</h4>
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-@foreach (var offer in Model.Offers) {
-<tr>
-    <td>
-        <strong class="text-danger">@offer.offer.Name</strong>
-    </td>
-    <td>
-        <strong class="text-danger">@offer.offer.Category</strong>
-    </td>
-    <td>
-        <strong class="text-danger">@offer.offer.Price</strong>
-    </td>
-    <td>
-        <strong class="text-danger">@offer.creatorName</strong>
-    </td>
-    <td>
-        @Html.ActionLink("Details", "Details", new { id = offer.offer.Id})
-    </td>
-</tr>
+        <div class="form-group">
+            @Html.Label("Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SearchedName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Category", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedCategory, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Price", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.SearchedPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Filter.SearchedPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Filter" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
 }
 
-</table>
+@section Styles {
+    <style>
+        .grid {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+
+            .grid:after {
+                content: "";
+                flex: auto;
+            }
+
+        .grid-child {
+            padding: 15px;
+            width: 25%;
+            box-sizing: border-box;
+        }
+    </style>
+}
+
+<div class="grid row">
+    @foreach (var item in Model.Offers)
+    {
+        <div class="grid-child">
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style="color:aliceblue">@item.offer.Name</h4>
+                    <p class="card-text">Category: @item.offer.Category</p>
+                    <p class="card-text">Price: €@item.offer.Price</p>
+                    <p class="card-text">Author: @item.creatorName</p>
+                    <p class="card-text">
+                        State:
+                        @if (item.offer.State == State.Finished)
+                        {
+                            <strong class="text-danger" style="color:red">Finished</strong>
+                        }
+                        else if (item.offer.State == State.InProgress)
+                        {
+                            <strong class="text-danger" style="color:orange">In progress</strong>
+                        }
+                        else
+                        {
+                            <strong class="text-danger" style="color:green">Not assigned</strong>
+                        }
+                    </p>
+                    <p>@Html.ActionLink("Details", "Details", new { id = item.offer.Id })</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    <ul class="pagination justify-content-center">
+        @for (var i = 1; i <= Model.PageCount; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPageIndex ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+            </li>
+        }
+    </ul>
+</div>
+

@@ -1,4 +1,4 @@
-﻿@model FreelancerCorp.BusinessLayer.DTOs.FreelancerDTO
+﻿@model FreelancerCorp.PresentationLayer.Models.Freelancers.FreelancerDetailViewModel
 
 
 @{
@@ -8,33 +8,40 @@
 <h2>Here is the place to look at details about the ULTIMATE freelancer:</h2>
 
 <div>
-    <hr />
+
     <dl class="dl-horizontal">
-
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            User name
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.UserName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Freelancer.Name)
         </dt>
 
         <dd>
-            <a href="mailto:@Model.Email">@Model.Email</a>
+            @Html.DisplayFor(model => model.Freelancer.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            @Html.DisplayNameFor(model => model.Freelancer.Email)
         </dt>
 
         <dd>
-            @if (!string.IsNullOrEmpty(@Model.PhoneNumber))
+            <a href="mailto:@Model.Freelancer.Email">@Model.Freelancer.Email</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Freelancer.PhoneNumber)
+        </dt>
+
+        <dd>
+            @if (!string.IsNullOrEmpty(@Model.Freelancer.PhoneNumber))
             {
-                <a href="tel:@Model.PhoneNumber">@Model.PhoneNumber</a>
+                <a href="tel:@Model.Freelancer.PhoneNumber">@Model.Freelancer.PhoneNumber</a>
             }
             else
             {
@@ -45,38 +52,56 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Location)
+            Average rating
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Location)
+            @if (Model.Freelancer.SumRating.HasValue)
+            {
+                <strong class="text-danger" style="color:darkgreen">@string.Format("{0:N2}", @Model.Freelancer.SumRating)</strong>
+            }
+            else
+            {
+                <strong class="text-danger">No rated yet</strong>
+            }
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Info)
+            @Html.DisplayNameFor(model => model.Freelancer.Location)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Info)
+            @Html.DisplayFor(model => model.Freelancer.Location)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sex)
+            @Html.DisplayNameFor(model => model.Freelancer.Info)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Sex)
+            @Html.DisplayFor(model => model.Freelancer.Info)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DoB)
+            @Html.DisplayNameFor(model => model.Freelancer.Sex)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DoB)
+            @Html.DisplayFor(model => model.Freelancer.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Freelancer.DoB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Freelancer.DoB)
         </dd>
 
     </dl>
+    <d1 class="dl-horizontal">
+
+    </d1>
 </div>
 
 <h4> Created Offers: </h4>
@@ -92,17 +117,17 @@
             Price
         </th>
     </tr>
-    @foreach (var offer in Model.Offers)
+    @foreach (var offer in Model.Freelancer.Offers)
     {
         <tr>
             <td>
-                <strong class="text-danger">@offer.Name</strong>
+                <strong class="text-danger" style="color:silver">@offer.Name</strong>
             </td>
             <td>
-                <strong class="text-danger">@offer.Category</strong>
+                <strong class="text-danger" style="color:silver">@offer.Category</strong>
             </td>
             <td>
-                <strong class="text-danger">@offer.Price</strong>
+                <strong class="text-danger" style="color:silver">@offer.Price</strong>
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", "Offers", new { id = offer.Id }, new { @class = "navbar-brand" })
@@ -112,6 +137,42 @@
     }
 </table>
 
+<h4> Ratings for this user: </h4>
+<table class="table">
+    <tr>
+        <th>
+            Creator
+        </th>
+        <th>
+            Score
+        </th>
+    </tr>
+    @foreach (var rating in Model.Freelancer.Ratings)
+    {
+        <tr>
+            <td>
+                <strong class="text-danger" style="color:silver">@rating.creator</strong>
+            </td>
+            <td>
+                <strong class="text-danger" style="color:silver">@rating.rating.Score</strong>
+            </td>
+            <td>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Ratings", new { id = rating.rating.Id, ratedUserName = Model.UserName }, new { @class = "navbar-brand" })
+            </td>
+        </tr>
+
+    }
+</table>
+
 <p>
     @Html.ActionLink("Back to List", "Index")
+    @if (Request.IsAuthenticated)
+    {
+        if (User.Identity.Name != Model.UserName)
+        {
+            @Html.ActionLink("Add rating", "Create", "Ratings", new { id = Model.Freelancer.Id, ratedUserName = Model.UserName }, null)
+        }
+    }
 </p>
