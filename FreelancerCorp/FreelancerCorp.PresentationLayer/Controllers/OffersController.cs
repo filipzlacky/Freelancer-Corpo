@@ -197,7 +197,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 return View("EnrollmentCompleteView");
             }
-            catch (Exception ex)
+            catch
             {
                 return View("~/Views/Home/GeneralExceptionView.cshtml");
             }

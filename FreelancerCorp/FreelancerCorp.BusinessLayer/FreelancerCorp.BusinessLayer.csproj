@@ -85,7 +85,6 @@
     <Compile Include="DTOs\UserCreateCorporationDTO.cs" />
     <Compile Include="DTOs\UserCreateFreelancerDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
-    <Compile Include="Facades\CreateUserRatingFacade.cs" />
     <Compile Include="QueryObjects\Common\QueryObjectBase.cs" />
     <Compile Include="QueryObjects\CorporationQueryObject.cs" />
     <Compile Include="QueryObjects\FreelancerQueryObject.cs" />

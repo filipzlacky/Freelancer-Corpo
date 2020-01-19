@@ -64,7 +64,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 ModelState.AddModelError("UserName", "Account with that user name already exists!");
                 return View();
@@ -105,7 +105,7 @@ namespace FreelancerCorp.PresentationLayer.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Profile()
+        public new async Task<ActionResult> Profile()
         {
             var user = await userFacade.GetUserAccordingToUsernameAsync(User.Identity.Name);
 
